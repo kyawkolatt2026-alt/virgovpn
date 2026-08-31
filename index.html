@@ -1,0 +1,2621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AGE VIP PANNEL LOGIN</title>
+    
+    <!-- PWA Icons for Add to Home Screen - Fixed -->
+    <meta name="theme-color" content="#667eea">
+    <link rel="icon" href="https://raw.githubusercontent.com/kyawkolatt2026-alt/vip/refs/heads/main/mtk_logo.png">
+    <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/kyawkolatt2026-alt/vip/refs/heads/main/mtk_logo.png">
+    <link rel="shortcut icon" href="https://raw.githubusercontent.com/kyawkolatt2026-alt/vip/refs/heads/main/mtk_logo.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="AGE VIP PANNEL">
+    
+    <!-- Simple PWA Manifest -->
+    <link rel="manifest" href="data:application/json;charset=utf-8;base64,ewogICJuYW1lIjogIkpLIFZJUCBBZG1pbiIsCiAgInNob3J0X25hbWUiOiAiSksgVklQIiwKICAiZGVzY3JpcHRpb24iOiAiSksgVklQIEFkbWluIFBhbmVsIiwKICAic3RhcnRfdXJsIjogIi8iLAogICJkaXNwbGF5IjogInN0YW5kYWxvbmUiLAogICJiYWNrZ3JvdW5kX2NvbG9yIjogIiM2NjdlZWEiLAogICJ0aGVtZV9jb2xvciI6ICIjNjY3ZWVhIiwKICAiaWNvbnMiOiBbCiAgICB7CiAgICAgICJzcmMiOiAiaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL1ZwbkFwcE5ldC9teXVkcC9tYWluL2ltYWdlL0lNR18yMDI1MTIyMV8xNzQ0NDJfNzE2LnBuZyIsCiAgICAgICJzaXplcyI6ICIxOTJ4MTkyIiwKICAgICAgInR5cGUiOiAiaW1hZ2UvcG5nIgogICAgfSwKICAgIHsKICAgICAgInNyYyI6ICJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vVnBuQXBwTmV0L215dWRwL21haW4vaW1hZ2UvSU1HXzIwMjUxMjIxXzE3NDQ0Ml83MTYucG5nIiwKICAgICAgInNpemVzIjogIjUxMng1MTIiLAogICAgICAidHlwZSI6ICJpbWFnZS9wbmciCiAgICB9CiAgXQp9">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: #f5f7fa;
+            min-height: 100vh;
+            padding: 15px;
+            color: #333;
+            font-size: 14px;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        body.dark-mode {
+            background: #121826;
+            color: #e2e8f0;
+        }
+
+        /* Login Page Styles */
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .login-box {
+            background: white;
+            border-radius: 15px;
+            padding: 40px 30px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .dark-mode .login-box {
+            background: #1e293b;
+        }
+
+        .login-logo {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 35px;
+        }
+
+        .login-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 5px;
+        }
+
+        .dark-mode .login-title {
+            color: #e2e8f0;
+        }
+
+        .login-subtitle {
+            font-size: 14px;
+            color: #64748b;
+            margin-bottom: 30px;
+        }
+
+        .dark-mode .login-subtitle {
+            color: #94a3b8;
+        }
+
+        .login-form {
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #475569;
+        }
+
+        .dark-mode .form-group label {
+            color: #cbd5e1;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 14px;
+            background: #f8fafc;
+        }
+
+        .dark-mode .form-group input {
+            background: #334155;
+            border-color: #475569;
+            color: #e2e8f0;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #667eea;
+            background: white;
+        }
+
+        .dark-mode .form-group input:focus {
+            background: #475569;
+            border-color: #818cf8;
+        }
+
+        .btn-login {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 14px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 10px;
+        }
+
+        .btn-login:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .login-error {
+            background: #fee2e2;
+            color: #dc2626;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 13px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .dark-mode .login-error {
+            background: #450a0a;
+            color: #fca5a5;
+        }
+
+        /* Main App Container (hidden initially) */
+        .app-container {
+            display: none;
+        }
+
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            transition: background 0.3s;
+        }
+
+        .dark-mode .container {
+            background: #1e293b;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Theme Toggle Button */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        /* Logout Button */
+        .logout-btn {
+            position: fixed;
+            top: 70px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #f87171 0%, #dc2626 100%);
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+        }
+
+        .logout-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* Compact Header */
+        .compact-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 15px;
+            text-align: center;
+        }
+
+        .dark-mode .compact-header {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+        }
+
+        .title-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .logo-small {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo-small img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .website-logo {
+            font-weight: bold;
+            font-size: 18px;
+            letter-spacing: 1px;
+        }
+
+        .compact-title {
+            font-size: 22px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .title-lines {
+            text-align: left;
+        }
+
+        .title-line {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .subtitle-small {
+            font-size: 13px;
+            opacity: 0.9;
+            margin-top: 5px;
+        }
+
+        /* Compact Stats - 4 Items */
+        .compact-stats {
+            display: flex;
+            justify-content: space-between;
+            margin: 15px 0;
+            padding: 0 10px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 60px;
+            flex: 1;
+        }
+
+        .stat-value-small {
+            font-size: 22px;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .stat-label-small {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.9);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .total-stat .stat-value-small { color: #fff; }
+        .active-stat .stat-value-small { color: #4ade80; }
+        .inactive-stat .stat-value-small { color: #fbbf24; }
+        .offline-stat .stat-value-small { color: #f87171; }
+
+        .stat-icon {
+            font-size: 14px;
+        }
+
+        /* Divider */
+        .divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.2);
+            margin: 15px 20px;
+        }
+
+        /* Main Content - Compact */
+        .compact-content {
+            padding: 20px 15px;
+        }
+
+        .dark-mode .compact-content {
+            background: #1e293b;
+        }
+
+        /* Search Box - Compact */
+        .search-container-small {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .search-box-small {
+            position: relative;
+            flex: 1;
+        }
+
+        .search-box-small i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #667eea;
+            font-size: 16px;
+        }
+
+        .dark-mode .search-box-small i {
+            color: #818cf8;
+        }
+
+        .search-box-small input {
+            width: 100%;
+            padding: 12px 15px 12px 45px;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 14px;
+            background: #f8fafc;
+        }
+
+        .dark-mode .search-box-small input {
+            background: #334155;
+            border-color: #475569;
+            color: #e2e8f0;
+        }
+
+        .search-box-small input:focus {
+            outline: none;
+            border-color: #667eea;
+            background: white;
+        }
+
+        .dark-mode .search-box-small input:focus {
+            background: #475569;
+            border-color: #818cf8;
+        }
+
+        /* Back button for search */
+        .btn-back-search {
+            background: #94a3b8;
+            color: white;
+            border: none;
+            padding: 12px 15px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: none;
+        }
+
+        .btn-back-search:hover {
+            opacity: 0.9;
+        }
+
+        .dark-mode .btn-back-search {
+            background: #475569;
+        }
+
+        /* Add Button - Moved below search */
+        .btn-add-small {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 14px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-add-small:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        /* VIP Badge - နဂိုအတိုင်းပြန်ထားခြင်း (အပေါ်ဘောင်အလယ်) */
+        .vip-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            color: #92400e;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 8px;
+            font-weight: 800;
+            z-index: 10;
+            border: 2px solid white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .dark-mode .vip-badge {
+            border-color: #1e293b;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .vip-badge i {
+            font-size: 10px;
+            margin-bottom: 1px;
+        }
+
+        .vip-badge span {
+            line-height: 1;
+        }
+
+        /* Success Modal VIP Badge - အမှန်ခြစ်နေရာမှာ ပြောင်းထည့်ခြင်း */
+        .success-vip-badge {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: #92400e;
+            font-size: 30px;
+            position: relative;
+            z-index: 2;
+            border: 2px solid white;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .dark-mode .success-vip-badge {
+            border-color: #1e293b;
+        }
+
+        .success-vip-badge i {
+            font-size: 24px;
+            margin-bottom: 2px;
+        }
+
+        .success-vip-badge span {
+            font-size: 9px;
+            font-weight: 800;
+            line-height: 1;
+            letter-spacing: 0.5px;
+        }
+
+        /* Users List - Compact */
+        .compact-users-list {
+            max-height: 500px;
+            overflow-y: auto;
+            margin-top: 20px;
+        }
+
+        .user-item {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 4px;
+            margin-bottom: 8px;
+            transition: all 0.2s;
+            cursor: pointer;
+            position: relative;
+            border: 2px solid transparent;
+        }
+
+        .dark-mode .user-item {
+            background: #334155;
+        }
+
+        .user-item:hover {
+            background: #f1f5f9;
+            transform: translateY(-1px);
+        }
+
+        .dark-mode .user-item:hover {
+            background: #475569;
+        }
+
+        .user-item.active {
+            border-color: #22c55e;
+            background: #f0fdf4;
+        }
+
+        .dark-mode .user-item.active {
+            background: #1a2e05;
+            border-color: #22c55e;
+        }
+
+        .user-item.inactive {
+            border-color: #f59e0b;
+            background: #fef3c7;
+        }
+
+        .dark-mode .user-item.inactive {
+            background: #2d240a;
+            border-color: #f59e0b;
+        }
+
+        .user-item.offline {
+            border-color: #ef4444;
+            background: #fef2f2;
+        }
+
+        .dark-mode .user-item.offline {
+            background: #2d1a1a;
+            border-color: #ef4444;
+        }
+
+        .user-item.expired {
+            border-color: #f59e0b;
+            background: #fef3c7;
+        }
+
+        .dark-mode .user-item.expired {
+            background: #451a03;
+            border-color: #f59e0b;
+        }
+
+        .user-header-small {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3px;
+        }
+
+        .user-name-container {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .status-light {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .status-light.active {
+            background-color: #22c55e;
+            box-shadow: 0 0 5px #22c55e;
+            animation: pulse-green 1.5s infinite;
+        }
+
+        .status-light.inactive {
+            background-color: #f59e0b;
+            box-shadow: 0 0 5px #f59e0b;
+            animation: pulse-yellow 2s infinite;
+        }
+
+        .status-light.offline {
+            background-color: #ef4444;
+            box-shadow: 0 0 5px #ef4444;
+            animation: pulse-red 1s infinite;
+        }
+
+        .status-light.expired {
+            background-color: #f59e0b;
+            box-shadow: 0 0 5px #f59e0b;
+            animation: pulse-yellow 2s infinite;
+        }
+
+        .user-name {
+            font-weight: 600;
+            color: #1e293b;
+            font-size: 12px;
+        }
+
+        .dark-mode .user-name {
+            color: #e2e8f0;
+        }
+
+        .user-actions {
+            display: flex;
+            gap: 5px;
+        }
+
+        .btn-action {
+            width: 22px;
+            height: 22px;
+            border-radius: 5px;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 10px;
+        }
+
+        .btn-edit {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .btn-delete {
+            background: #ef4444;
+            color: white;
+        }
+
+        .btn-action:hover {
+            opacity: 0.8;
+            transform: scale(1.05);
+        }
+
+        .user-status-small {
+            padding: 2px 6px;
+            border-radius: 10px;
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .status-active-small {
+            background: #dcfce7;
+            color: #16a34a;
+        }
+
+        .dark-mode .status-active-small {
+            background: #14532d;
+            color: #86efac;
+        }
+
+        .status-inactive-small {
+            background: #fef3c7;
+            color: #d97706;
+        }
+
+        .dark-mode .status-inactive-small {
+            background: #451a03;
+            color: #fbbf24;
+        }
+
+        .status-offline-small {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+
+        .dark-mode .status-offline-small {
+            background: #450a0a;
+            color: #fca5a5;
+        }
+
+        .status-expired-small {
+            background: #fef3c7;
+            color: #d97706;
+        }
+
+        .dark-mode .status-expired-small {
+            background: #451a03;
+            color: #fbbf24;
+        }
+
+        .user-details-small {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4px;
+            font-size: 10px;
+            margin-bottom: 4px;
+        }
+
+        .detail-row {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: #64748b;
+        }
+
+        .dark-mode .detail-row {
+            color: #94a3b8;
+        }
+
+        .detail-row i {
+            color: #667eea;
+            font-size: 11px;
+            width: 12px;
+            text-align: center;
+        }
+
+        .dark-mode .detail-row i {
+            color: #818cf8;
+        }
+
+        .detail-label {
+            font-weight: 500;
+            color: #475569;
+            min-width: 55px;
+        }
+
+        .dark-mode .detail-label {
+            color: #cbd5e1;
+        }
+
+        .detail-value {
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .dark-mode .detail-value {
+            color: #e2e8f0;
+        }
+
+        /* Fixed: Day Left colors in Dark Mode */
+        .day-left.green {
+            color: #16a34a;
+        }
+        .dark-mode .day-left.green {
+            color: #4ade80 !important;
+        }
+
+        .day-left.yellow {
+            color: #d97706;
+        }
+        .dark-mode .day-left.yellow {
+            color: #fbbf24 !important;
+        }
+
+        .day-left.red {
+            color: #dc2626;
+        }
+        .dark-mode .day-left.red {
+            color: #f87171 !important;
+        }
+
+        /* Progress Bar - Based on 30 days */
+        .progress-container {
+            margin-top: 4px;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2px;
+        }
+
+        .progress-label {
+            font-size: 9px;
+            font-weight: 600;
+            color: #475569;
+        }
+
+        .dark-mode .progress-label {
+            color: #cbd5e1;
+        }
+
+        .progress-percent {
+            font-size: 9px;
+            font-weight: 700;
+        }
+
+        .progress-percent.green { color: #16a34a; }
+        .dark-mode .progress-percent.green { color: #4ade80 !important; }
+        
+        .progress-percent.yellow { color: #d97706; }
+        .dark-mode .progress-percent.yellow { color: #fbbf24 !important; }
+        
+        .progress-percent.red { color: #dc2626; }
+        .dark-mode .progress-percent.red { color: #f87171 !important; }
+
+        .progress-bar {
+            height: 3px;
+            background: #e2e8f0;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .dark-mode .progress-bar {
+            background: #475569;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+
+        .progress-fill.green { background: #22c55e; }
+        .progress-fill.yellow { background: #f59e0b; }
+        .progress-fill.red { background: #ef4444; }
+
+        /* Status Display Row */
+        .status-display-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 4px;
+            padding: 4px;
+            background: rgba(0,0,0,0.03);
+            border-radius: 5px;
+        }
+
+        .dark-mode .status-display-row {
+            background: rgba(255,255,255,0.05);
+        }
+
+        .status-text-label {
+            font-weight: 600;
+            color: #475569;
+            font-size: 10px;
+        }
+
+        .dark-mode .status-text-label {
+            color: #cbd5e1;
+        }
+
+        .status-text-value {
+            font-weight: 700;
+            font-size: 10px;
+            padding: 2px 8px;
+            border-radius: 10px;
+            /* ADDED BLINKING ANIMATION */
+            animation: blink 1.5s infinite;
+        }
+
+        .status-text-online {
+            color: #16a34a;
+            background: #dcfce7;
+        }
+
+        .dark-mode .status-text-online {
+            color: #86efac;
+            background: #14532d;
+        }
+
+        .status-text-offline {
+            color: #dc2626;
+            background: #fee2e2;
+        }
+
+        .dark-mode .status-text-offline {
+            color: #fca5a5;
+            background: #450a0a;
+        }
+
+        .status-text-expired {
+            color: #d97706;
+            background: #fef3c7;
+        }
+
+        .dark-mode .status-text-expired {
+            color: #fbbf24;
+            background: #451a03;
+        }
+
+        /* Blinking Animation for Status Text */
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+
+        /* Empty State - Compact */
+        .empty-state-small {
+            text-align: center;
+            padding: 40px 20px;
+            color: #94a3b8;
+        }
+
+        .dark-mode .empty-state-small {
+            color: #64748b;
+        }
+
+        .empty-state-small i {
+            font-size: 40px;
+            margin-bottom: 15px;
+            opacity: 0.5;
+        }
+
+        .empty-state-small h3 {
+            font-size: 16px;
+            color: #475569;
+            margin-bottom: 8px;
+        }
+
+        .dark-mode .empty-state-small h3 {
+            color: #cbd5e1;
+        }
+
+        /* Form - Compact */
+        .form-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            z-index: 1000;
+        }
+
+        .form-modal {
+            background: white;
+            border-radius: 15px;
+            width: 100%;
+            max-width: 400px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .dark-mode .form-modal {
+            background: #1e293b;
+        }
+
+        .form-header-small {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 15px 15px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .form-header-small h3 {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .btn-close {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .form-body {
+            padding: 20px;
+        }
+
+        .form-group-small {
+            margin-bottom: 18px;
+        }
+
+        .form-group-small label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #475569;
+        }
+
+        .dark-mode .form-group-small label {
+            color: #cbd5e1;
+        }
+
+        .form-input-small {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 14px;
+            background: #f8fafc;
+        }
+
+        .dark-mode .form-input-small {
+            background: #334155;
+            border-color: #475569;
+            color: #e2e8f0;
+        }
+
+        .form-input-small:focus {
+            outline: none;
+            border-color: #667eea;
+            background: white;
+        }
+
+        .dark-mode .form-input-small:focus {
+            background: #475569;
+            border-color: #818cf8;
+        }
+
+        .switch-group-small {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px;
+            background: #f8fafc;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .dark-mode .switch-group-small {
+            background: #334155;
+            border-color: #475569;
+        }
+
+        .switch-small {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 28px;
+        }
+
+        .switch-small input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider-small {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #cbd5e1;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider-small:before {
+            position: absolute;
+            content: "";
+            height: 20px;
+            width: 20px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider-small {
+            background-color: #4ade80;
+        }
+
+        input:checked + .slider-small:before {
+            transform: translateX(22px);
+        }
+
+        .form-actions-small {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 10px;
+            margin-top: 25px;
+        }
+
+        .btn-form-small {
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-form-small:hover {
+            opacity: 0.9;
+        }
+
+        .btn-back-form {
+            background: #94a3b8;
+            color: white;
+        }
+
+        .btn-add-form {
+            background: #4ade80;
+            color: white;
+        }
+
+        .btn-update-form {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-delete-form {
+            background: #f87171;
+            color: white;
+        }
+
+        /* Success Message Modal */
+        .success-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            z-index: 1001;
+        }
+
+        .success-modal {
+            background: white;
+            border-radius: 15px;
+            width: 100%;
+            max-width: 350px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            padding: 25px;
+            text-align: center;
+            position: relative;
+        }
+
+        .dark-mode .success-modal {
+            background: #1e293b;
+        }
+
+        .success-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #16a34a;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .success-message {
+            font-size: 14px;
+            color: #475569;
+            margin-bottom: 25px;
+            line-height: 1.5;
+            position: relative;
+            z-index: 2;
+        }
+
+        .dark-mode .success-message {
+            color: #cbd5e1;
+        }
+
+        .user-details-box {
+            background: #f8fafc;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 25px;
+            text-align: left;
+            position: relative;
+        }
+
+        .dark-mode .user-details-box {
+            background: #334155;
+        }
+
+        .detail-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #e2e8f0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .dark-mode .detail-item {
+            border-bottom-color: #475569;
+        }
+
+        .detail-item:last-child {
+            border-bottom: none;
+        }
+
+        .detail-label {
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        .dark-mode .detail-label {
+            color: #94a3b8;
+        }
+
+        .detail-value {
+            color: #1e293b;
+            font-weight: 600;
+        }
+
+        .dark-mode .detail-value {
+            color: #e2e8f0;
+        }
+
+        .success-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .btn-success {
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-success:hover {
+            opacity: 0.9;
+        }
+
+        .btn-ok {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-save {
+            background: #4ade80;
+            color: white;
+        }
+
+        /* Notification - Compact */
+        .notification-small {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            left: 20px;
+            padding: 15px 20px;
+            border-radius: 10px;
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1001;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .notification-small.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .notification-small.success {
+            background: #4ade80;
+        }
+
+        .notification-small.error {
+            background: #f87171;
+        }
+
+        .notification-small.info {
+            background: #667eea;
+        }
+
+        /* Loading */
+        .loading-small {
+            text-align: center;
+            padding: 30px;
+            color: #94a3b8;
+        }
+
+        .loading-spinner-small {
+            border: 3px solid #f1f5f9;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px;
+        }
+
+        /* Footer - Compact */
+        .footer-small {
+            text-align: center;
+            padding: 15px;
+            color: #94a3b8;
+            font-size: 12px;
+            border-top: 1px solid #f1f5f9;
+        }
+
+        .dark-mode .footer-small {
+            border-top-color: #334155;
+            color: #64748b;
+        }
+
+        /* Demo Data Badge */
+        .demo-badge {
+            display: inline-block;
+            background: #fef3c7;
+            color: #92400e;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .dark-mode .demo-badge {
+            background: #451a03;
+            color: #fbbf24;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes pulse-green {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes pulse-yellow {
+            0% { opacity: 1; }
+            50% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes pulse-red {
+            0% { opacity: 1; }
+            50% { opacity: 0.2; }
+            100% { opacity: 1; }
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .compact-title {
+                font-size: 20px;
+            }
+            
+            .title-line {
+                font-size: 16px;
+            }
+            
+            .stat-value-small {
+                font-size: 20px;
+            }
+            
+            .compact-stats {
+                gap: 5px;
+            }
+            
+            .stat-item {
+                min-width: 50px;
+            }
+            
+            .user-details-small {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-actions-small {
+                grid-template-columns: 1fr;
+            }
+            
+            .success-actions {
+                grid-template-columns: 1fr;
+            }
+            
+            .search-container-small {
+                flex-direction: column;
+            }
+            
+            .btn-back-search {
+                width: 100%;
+            }
+            
+            .theme-toggle, .logout-btn {
+                width: 36px;
+                height: 36px;
+                font-size: 14px;
+            }
+            
+            .logout-btn {
+                top: 66px;
+            }
+            
+            .vip-badge {
+                width: 26px;
+                height: 26px;
+                top: -10px;
+                font-size: 7px;
+            }
+            
+            .vip-badge i {
+                font-size: 9px;
+            }
+
+            .success-vip-badge {
+                width: 55px;
+                height: 55px;
+                font-size: 26px;
+            }
+            
+            .success-vip-badge i {
+                font-size: 22px;
+            }
+            
+            .success-vip-badge span {
+                font-size: 8px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                max-width: 500px;
+                margin: 20px auto;
+            }
+            
+            .compact-header {
+                padding: 25px 20px;
+            }
+            
+            .compact-title {
+                font-size: 24px;
+            }
+            
+            .title-line {
+                font-size: 20px;
+            }
+            
+            .stat-value-small {
+                font-size: 24px;
+            }
+            
+            .compact-stats {
+                margin: 20px 0;
+            }
+            
+            .compact-content {
+                padding: 25px 20px;
+            }
+            
+            .search-container-small {
+                margin-bottom: 25px;
+            }
+            
+            .btn-add-small {
+                margin-top: 25px;
+                padding: 15px;
+            }
+            
+            .theme-toggle, .logout-btn {
+                width: 44px;
+                height: 44px;
+                font-size: 18px;
+            }
+            
+            .logout-btn {
+                top: 74px;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .container {
+                max-width: 600px;
+            }
+            
+            .compact-header {
+                padding: 30px 25px;
+            }
+            
+            .compact-title {
+                font-size: 26px;
+            }
+            
+            .title-line {
+                font-size: 22px;
+            }
+            
+            .stat-value-small {
+                font-size: 26px;
+            }
+            
+            .compact-stats {
+                margin: 25px 0;
+            }
+            
+            .compact-content {
+                padding: 30px 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Page -->
+    <div class="login-container" id="loginContainer">
+        <div class="login-box">
+            <div class="login-logo">
+                <i class="fas fa-crown"></i>
+            </div>
+            <h1 class="login-title">AGE VIP PANNEL LOGIN</h1>
+            <p class="login-subtitle">Enter your credentials to access the admin panel</p>
+            
+            <div class="login-error" id="loginError">
+                <i class="fas fa-exclamation-circle"></i> Invalid username or password
+            </div>
+            
+            <div class="login-form">
+                <div class="form-group">
+                    <label for="loginUsername">Username</label>
+                    <input type="text" id="loginUsername" placeholder="Enter username">
+                </div>
+                
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" placeholder="Enter password">
+                </div>
+                
+                <button class="btn-login" id="btnLogin">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </button>
+            </div>
+            
+            <div style="color: #64748b; font-size: 12px; margin-top: 20px;">
+                <i class="fas fa-info-circle"></i> Default: JueHtet / 171991
+            </div>
+        </div>
+    </div>
+
+    <!-- Main App Container -->
+    <div class="app-container" id="appContainer">
+        <!-- Theme Toggle Button -->
+        <button class="theme-toggle" id="themeToggle">
+            <i class="fas fa-moon"></i>
+        </button>
+        
+        <!-- Logout Button -->
+        <button class="logout-btn" id="logoutBtn">
+            <i class="fas fa-sign-out-alt"></i>
+        </button>
+
+        <div class="container">
+            <!-- Compact Header -->
+            <div class="compact-header">
+                <div class="title-row">
+                    <div class="logo-small">
+                        <img src="https://raw.githubusercontent.com/kyawkolatt2026-alt/vip/refs/heads/main/mtk_logo.png" alt="AGE VIP Logo">
+                    </div>
+                    <div class="title-lines">
+                        <div class="compact-title">
+                            <div class="title-line">AGE VIP PANNEL</div>
+                            <div class="title-line">For VIP Users</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <p class="subtitle-small">Manage VIP users in real-time</p>
+                
+                <!-- Compact Stats - 4 Items -->
+                <div class="compact-stats">
+                    <div class="stat-item total-stat">
+                        <div class="stat-value-small">
+                            <i class="fas fa-users stat-icon"></i>
+                            <span id="totalUsers">4</span>
+                        </div>
+                        <div class="stat-label-small">Total</div>
+                    </div>
+                    <div class="stat-item active-stat">
+                        <div class="stat-value-small">
+                            <i class="fas fa-circle stat-icon"></i>
+                            <span id="activeUsers">3</span>
+                        </div>
+                        <div class="stat-label-small">Active</div>
+                    </div>
+                    <div class="stat-item inactive-stat">
+                        <div class="stat-value-small">
+                            <i class="fas fa-circle stat-icon"></i>
+                            <span id="inactiveUsers">0</span>
+                        </div>
+                        <div class="stat-label-small">Inactive</div>
+                    </div>
+                    <div class="stat-item offline-stat">
+                        <div class="stat-value-small">
+                            <i class="fas fa-circle stat-icon"></i>
+                            <span id="offlineUsers">1</span>
+                        </div>
+                        <div class="stat-label-small">Offline</div>
+                    </div>
+                </div>
+                
+                <div class="demo-badge">Owner : JueHtet</div>
+            </div>
+
+            <!-- Divider -->
+            <div class="divider"></div>
+
+            <!-- Main Content -->
+            <div class="compact-content">
+                <div class="search-container-small">
+                    <div class="search-box-small">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchInput" placeholder="Search by ID or Username...">
+                    </div>
+                    <button class="btn-back-search" id="backFromSearch">
+                        <i class="fas fa-arrow-left"></i> Back
+                    </button>
+                </div>
+
+                <!-- Add Button moved below search -->
+                <button class="btn-add-small" id="openForm">
+                    <i class="fas fa-plus-circle"></i> Add New User
+                </button>
+
+                <div class="compact-users-list" id="usersList">
+                    <div class="loading-small">
+                        <div class="loading-spinner-small"></div>
+                        <p>Loading users...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="footer-small">
+                <p>👑 AGE VIP Users Management 👑 </p>
+            </div>
+        </div>
+
+        <!-- Form Modal -->
+        <div class="form-overlay" id="formOverlay">
+            <div class="form-modal">
+                <div class="form-header-small">
+                    <h3><i class="fas fa-user-edit"></i> Add New User</h3>
+                    <button class="btn-close" id="closeForm">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <div class="form-body">
+                    <div class="form-group-small">
+                        <label for="token">ID *</label>
+                        <input type="text" id="token" class="form-input-small" placeholder="Enter ID">
+                    </div>
+                    
+                    <div class="form-group-small">
+                        <label for="formUsername">Username</label>
+                        <input type="text" id="formUsername" class="form-input-small" placeholder="Enter username">
+                    </div>
+                    
+                    <div class="form-group-small">
+                        <label for="expiry">Expiry Date</label>
+                        <input type="date" id="expiry" class="form-input-small">
+                    </div>
+                    
+                    <div class="form-group-small">
+                        <div class="switch-group-small">
+                            <span>Active Status</span>
+                            <label class="switch-small">
+                                <input type="checkbox" id="isActive" checked>
+                                <span class="slider-small"></span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions-small">
+                        <button class="btn-form-small btn-back-form" id="btnBack">
+                            <i class="fas fa-arrow-left"></i> Back
+                        </button>
+                        <button class="btn-form-small btn-add-form" id="btnAdd">
+                            <i class="fas fa-plus"></i> Add
+                        </button>
+                        <button class="btn-form-small btn-update-form" id="btnUpdate">
+                            <i class="fas fa-sync"></i> Update
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Success Message Modal -->
+        <div class="success-overlay" id="successOverlay">
+            <div class="success-modal" id="successModal">
+                <!-- VIP Badge in Success Modal - အမှန်ခြစ်နေရာမှာ -->
+                <div class="success-vip-badge">
+                    <i class="fas fa-crown"></i>
+                    <span>VIP</span>
+                </div>
+                
+                <h3 class="success-title">User Added Successfully!</h3>
+                <p class="success-message">User has been added to the database.</p>
+                
+                <div class="user-details-box">
+                    <div class="detail-item">
+                        <span class="detail-label">ID:</span>
+                        <span class="detail-value" id="successId">-</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Username:</span>
+                        <span class="detail-value" id="successUsername">-</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Expired:</span>
+                        <span class="detail-value" id="successExpiry">-</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Status:</span>
+                        <span class="detail-value" id="successStatus">-</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Day Left:</span>
+                        <span class="detail-value" id="successDayLeft">-</span>
+                    </div>
+                </div>
+                
+                <div class="success-actions">
+                    <button class="btn-success btn-ok" id="btnOk">
+                        <i class="fas fa-check"></i> OK
+                    </button>
+                    <button class="btn-success btn-save" id="btnSaveImage">
+                        <i class="fas fa-camera"></i> Save Image
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notification -->
+        <div class="notification-small" id="notification"></div>
+    </div>
+
+    <script>
+        // Firebase Configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyAYqzOFopYD2ay-4KGGOGMn8W22N4N-YaY",
+            authDomain: "virgo-vpn-panel.firebaseapp.com",
+            projectId: "virgo-vpn-panel",
+            storageBucket: "virgo-vpn-panel.firebasestorage.app",
+            messagingSenderId: "522406699863",
+            appId: "1:522406699863:web:b1df01908b30d2f4555412"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+        
+        // Global variables
+        let allUsers = [];
+        let filteredUsers = [];
+        let currentEditToken = null;
+
+        // DOM Elements
+        const loginContainer = document.getElementById('loginContainer');
+        const appContainer = document.getElementById('appContainer');
+        const usernameInput = document.getElementById('loginUsername');
+        const passwordInput = document.getElementById('loginPassword');
+        const btnLogin = document.getElementById('btnLogin');
+        const loginError = document.getElementById('loginError');
+        const logoutBtn = document.getElementById('logoutBtn');
+        
+        const formOverlay = document.getElementById('formOverlay');
+        const openFormBtn = document.getElementById('openForm');
+        const closeFormBtn = document.getElementById('closeForm');
+        const searchInput = document.getElementById('searchInput');
+        const usersList = document.getElementById('usersList');
+        const notification = document.getElementById('notification');
+        const successOverlay = document.getElementById('successOverlay');
+        const successModal = document.getElementById('successModal');
+        const themeToggle = document.getElementById('themeToggle');
+        const backFromSearch = document.getElementById('backFromSearch');
+
+        // Form elements
+        const tokenInput = document.getElementById('token');
+        const formUsernameInput = document.getElementById('formUsername');
+        const expiryInput = document.getElementById('expiry');
+        const isActiveInput = document.getElementById('isActive');
+        const btnAdd = document.getElementById('btnAdd');
+        const btnUpdate = document.getElementById('btnUpdate');
+        const btnBack = document.getElementById('btnBack');
+
+        // Success modal elements
+        const successId = document.getElementById('successId');
+        const successUsername = document.getElementById('successUsername');
+        const successExpiry = document.getElementById('successExpiry');
+        const successStatus = document.getElementById('successStatus');
+        const successDayLeft = document.getElementById('successDayLeft');
+        const btnOk = document.getElementById('btnOk');
+        const btnSaveImage = document.getElementById('btnSaveImage');
+
+        // Stats elements
+        const totalUsersEl = document.getElementById('totalUsers');
+        const activeUsersEl = document.getElementById('activeUsers');
+        const inactiveUsersEl = document.getElementById('inactiveUsers');
+        const offlineUsersEl = document.getElementById('offlineUsers');
+
+        // Demo data (from your image)
+        const demoUsers = [
+            {
+                token: "AyeNyin",
+                username: "AyeNyin",
+                expiryDate: "2026-2-24",
+                isActive: true,
+                remainingDays: "38 days"
+            },
+            {
+                token: "root",
+                username: "root",
+                expiryDate: "2026-2-23",
+                isActive: true,
+                remainingDays: "37 days"
+            },
+            {
+                token: "min",
+                username: "min",
+                expiryDate: "2026.5.4",
+                isActive: true,
+                remainingDays: "Unknown"
+            },
+            {
+                token: "inactive_user",
+                username: "Unknown",
+                expiryDate: "2024-01-01",
+                isActive: false,
+                remainingDays: "Expired"
+            }
+        ];
+
+        // Login credentials
+        const validUsername = "AGEVPN";
+        const validPassword = "1234567";
+
+        // Event Listeners
+        document.addEventListener('DOMContentLoaded', () => {
+            // Check if user is already logged in
+            const isLoggedIn = localStorage.getItem('jkVipLoggedIn');
+            if (isLoggedIn === 'true') {
+                showApp();
+            }
+            
+            // Login button event
+            btnLogin.addEventListener('click', handleLogin);
+            
+            // Allow Enter key to login
+            passwordInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    handleLogin();
+                }
+            });
+            
+            usernameInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    handleLogin();
+                }
+            });
+            
+            // Logout button event
+            logoutBtn.addEventListener('click', handleLogout);
+        });
+
+        // Login function
+        function handleLogin() {
+            const username = usernameInput.value.trim();
+            const password = passwordInput.value.trim();
+            
+            if (username === validUsername && password === validPassword) {
+                // Successful login
+                localStorage.setItem('jkVipLoggedIn', 'true');
+                showApp();
+            } else {
+                // Show error
+                loginError.style.display = 'block';
+                passwordInput.value = '';
+                
+                // Shake animation for error
+                loginContainer.style.animation = 'none';
+                setTimeout(() => {
+                    loginContainer.style.animation = 'shake 0.5s ease-in-out';
+                }, 10);
+            }
+        }
+
+        // Logout function
+        function handleLogout() {
+            if (confirm('Are you sure you want to logout?')) {
+                localStorage.removeItem('jkVipLoggedIn');
+                appContainer.style.display = 'none';
+                loginContainer.style.display = 'flex';
+                usernameInput.value = '';
+                passwordInput.value = '';
+                loginError.style.display = 'none';
+            }
+        }
+
+        // Show main app
+        function showApp() {
+            loginContainer.style.display = 'none';
+            appContainer.style.display = 'block';
+            
+            // Initialize the app
+            initApp();
+        }
+
+        // Initialize the app
+        function initApp() {
+            // Set initial demo stats
+            updateCounters(4, 3, 0, 1);
+            renderDemoUsers();
+            
+            openFormBtn.addEventListener('click', openForm);
+            closeFormBtn.addEventListener('click', closeForm);
+            btnAdd.addEventListener('click', addUser);
+            btnUpdate.addEventListener('click', updateUser);
+            btnBack.addEventListener('click', closeForm);
+            searchInput.addEventListener('input', filterUsers);
+            themeToggle.addEventListener('click', toggleTheme);
+            backFromSearch.addEventListener('click', clearSearch);
+            
+            // Success modal buttons
+            btnOk.addEventListener('click', closeSuccessModal);
+            btnSaveImage.addEventListener('click', saveAsImage);
+            
+            // Set today's date as default for expiry
+            const today = new Date().toISOString().split('T')[0];
+            expiryInput.value = today;
+            
+            // Try to load real users
+            loadUsers();
+            
+            // Load theme preference
+            loadTheme();
+        }
+
+        // Theme functions
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            themeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        }
+
+        function loadTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            }
+        }
+
+        // Clear search and show back button
+        function clearSearch() {
+            searchInput.value = '';
+            backFromSearch.style.display = 'none';
+            filterUsers();
+        }
+
+        // Load users from Firestore
+        function loadUsers() {
+            db.collection("users").onSnapshot((snapshot) => {
+                allUsers = [];
+                filteredUsers = [];
+                
+                let activeCount = 0;
+                let inactiveCount = 0;
+                let offlineCount = 0;
+                
+                snapshot.forEach(doc => {
+                    const user = {
+                        token: doc.id,
+                        ...doc.data()
+                    };
+                    allUsers.push(user);
+                    
+                    // Calculate user status
+                    const isExpired = user.expiryDate ? isDateExpired(user.expiryDate) : true;
+                    
+                    if (user.isActive && !isExpired) {
+                        activeCount++;
+                    } else if (!user.isActive && !isExpired) {
+                        inactiveCount++;
+                    } else {
+                        offlineCount++;
+                    }
+                });
+                
+                // If no real users, show demo
+                if (allUsers.length === 0) {
+                    updateCounters(4, 3, 0, 1);
+                    renderDemoUsers();
+                } else {
+                    updateCounters(allUsers.length, activeCount, inactiveCount, offlineCount);
+                    filteredUsers = [...allUsers];
+                    renderUsers();
+                }
+            }, (error) => {
+                console.error("Error loading users:", error);
+                // On error, show demo data
+                updateCounters(4, 3, 0, 1);
+                renderDemoUsers();
+                showNotification("⚠️ Using demo data", "info");
+            });
+        }
+
+        // Check if date is expired
+        function isDateExpired(dateString) {
+            if (!dateString) return true;
+            
+            // Try to parse different date formats
+            let date;
+            if (dateString.includes('.')) {
+                // Format: 2026.5.4
+                const parts = dateString.split('.');
+                date = new Date(parts[0], parts[1] - 1, parts[2]);
+            } else if (dateString.includes('-')) {
+                // Format: 2026-2-24 or 2026-02-24
+                date = new Date(dateString);
+            } else {
+                return true;
+            }
+            
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            date.setHours(0, 0, 0, 0);
+            
+            return date < today;
+        }
+
+        // Calculate days remaining
+        function calculateDaysRemaining(dateString) {
+            if (!dateString) return { days: 0, text: "No date" };
+            
+            let date;
+            if (dateString.includes('.')) {
+                const parts = dateString.split('.');
+                date = new Date(parts[0], parts[1] - 1, parts[2]);
+            } else if (dateString.includes('-')) {
+                date = new Date(dateString);
+            } else {
+                return { days: 0, text: "Invalid date" };
+            }
+            
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            date.setHours(0, 0, 0, 0);
+            
+            const diffTime = date - today;
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            
+            if (diffDays < 0) {
+                return { days: 0, text: "Expired" };
+            } else if (diffDays === 0) {
+                return { days: 0, text: "Today" };
+            } else {
+                return { days: diffDays, text: `${diffDays} days` };
+            }
+        }
+
+        // Calculate progress percentage based on 30 days
+        function calculateProgressPercentage(dateString) {
+            if (!dateString) return { percentage: 0, color: "red", text: "Expired" };
+            
+            let date;
+            if (dateString.includes('.')) {
+                const parts = dateString.split('.');
+                date = new Date(parts[0], parts[1] - 1, parts[2]);
+            } else if (dateString.includes('-')) {
+                date = new Date(dateString);
+            } else {
+                return { percentage: 0, color: "red", text: "Expired" };
+            }
+            
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            date.setHours(0, 0, 0, 0);
+            
+            const diffTime = date - today;
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            
+            if (diffDays <= 0) {
+                return { percentage: 0, color: "red", text: "Expired" };
+            }
+            
+            // Calculate percentage based on 30 days
+            let percentage = (diffDays / 30) * 100;
+            if (percentage > 100) percentage = 100;
+            
+            let color = "green";
+            if (diffDays <= 10) {
+                color = "yellow";
+            }
+            if (diffDays <= 5) {
+                color = "red";
+            }
+            
+            return { percentage: Math.round(percentage), color: color, text: `${Math.round(percentage)}%` };
+        }
+
+        // Get day left color
+        function getDayLeftColor(days) {
+            if (days <= 5) return "red";
+            if (days <= 10) return "yellow";
+            return "green";
+        }
+
+        // Get user status with display text
+        function getUserStatus(user) {
+            const isExpired = user.expiryDate ? isDateExpired(user.expiryDate) : true;
+            
+            if (isExpired) {
+                return { 
+                    statusClass: "expired", 
+                    statusText: "Expired",
+                    statusBadgeClass: "status-expired-small",
+                    statusTextClass: "status-text-expired"
+                };
+            } else if (user.isActive) {
+                return { 
+                    statusClass: "active", 
+                    statusText: "Online",
+                    statusBadgeClass: "status-active-small",
+                    statusTextClass: "status-text-online"
+                };
+            } else {
+                return { 
+                    statusClass: "inactive", 
+                    statusText: "Offline",
+                    statusBadgeClass: "status-offline-small",
+                    statusTextClass: "status-text-offline"
+                };
+            }
+        }
+
+        // Update counters
+        function updateCounters(total, active, inactive, offline) {
+            totalUsersEl.textContent = total;
+            activeUsersEl.textContent = active;
+            inactiveUsersEl.textContent = inactive;
+            offlineUsersEl.textContent = offline;
+        }
+
+        // Render demo users (from your image)
+        function renderDemoUsers() {
+            usersList.innerHTML = demoUsers.map(user => {
+                const daysRemaining = calculateDaysRemaining(user.expiryDate);
+                const progress = calculateProgressPercentage(user.expiryDate);
+                const dayLeftColor = getDayLeftColor(daysRemaining.days);
+                const status = getUserStatus(user);
+                
+                return `
+                    <div class="user-item ${status.statusClass}" 
+                         data-token="${user.token}">
+                        
+                        <!-- VIP Badge - အပေါ်ဘောင်အလယ် (နဂိုအတိုင်း) -->
+                        <div class="vip-badge">
+                            <i class="fas fa-crown"></i>
+                            <span>VIP</span>
+                        </div>
+                        
+                        <!-- Status Display Row -->
+                        <div class="status-display-row">
+                            <span class="status-text-label">Status:</span>
+                            <span class="status-text-value ${status.statusTextClass}">
+                                ${status.statusText}
+                            </span>
+                        </div>
+                        
+                        <div class="user-header-small">
+                            <div class="user-name-container">
+                                <div class="status-light ${status.statusClass}"></div>
+                                <div class="user-name">${user.username}</div>
+                            </div>
+                            <div class="user-actions">
+                                <button class="btn-action btn-edit" onclick="fillForm('${user.token}')">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="btn-action btn-delete" onclick="deleteUserByToken('${user.token}')">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="user-details-small">
+                            <div class="detail-row">
+                                <i class="fas fa-key"></i>
+                                <span class="detail-label">Token ID:</span>
+                                <span class="detail-value">${user.token}</span>
+                            </div>
+                            <div class="detail-row">
+                                <i class="fas fa-user"></i>
+                                <span class="detail-label">Username:</span>
+                                <span class="detail-value">${user.username}</span>
+                            </div>
+                            <div class="detail-row">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span class="detail-label">Expiry:</span>
+                                <span class="detail-value">${user.expiryDate || 'null'}</span>
+                            </div>
+                            <div class="detail-row">
+                                <i class="fas fa-clock"></i>
+                                <span class="detail-label">Remaining:</span>
+                                <span class="detail-value day-left ${dayLeftColor}">${daysRemaining.text}</span>
+                            </div>
+                        </div>
+                        <div class="progress-container">
+                            <div class="progress-header">
+                                <span class="progress-label">Subscription Progress</span>
+                                <span class="progress-percent ${progress.color}">${progress.text}</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill ${progress.color}" style="width: ${progress.percentage}%"></div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Render real users
+        function renderUsers() {
+            if (filteredUsers.length === 0) {
+                usersList.innerHTML = `
+                    <div class="empty-state-small">
+                        <i class="fas fa-users-slash"></i>
+                        <h3>No Users Found</h3>
+                        <p>Add your first user</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            usersList.innerHTML = filteredUsers.map(user => {
+                const daysRemaining = calculateDaysRemaining(user.expiryDate);
+                const progress = calculateProgressPercentage(user.expiryDate);
+                const dayLeftColor = getDayLeftColor(daysRemaining.days);
+                const status = getUserStatus(user);
+                
+                return `
+                    <div class="user-item ${status.statusClass}" 
+                         data-token="${user.token}">
+                        
+                        <!-- VIP Badge - အပေါ်ဘောင်အလယ် (နဂိုအတိုင်း) -->
+                        <div class="vip-badge">
+                            <i class="fas fa-crown"></i>
+                            <span>VIP</span>
+                        </div>
+                        
+                        <!-- Status Display Row -->
+                        <div class="status-display-row">
+                            <span class="status-text-label">Status:</span>
+                            <span class="status-text-value ${status.statusTextClass}">
+                                ${status.statusText}
+                            </span>
+                        </div>
+                        
+                        <div class="user-header-small">
+                            <div class="user-name-container">
+                                <div class="status-light ${status.statusClass}"></div>
+                                <div class="user-name">${user.username || user.token}</div>
+                            </div>
+                            <div class="user-actions">
+                                <button class="btn-action btn-edit" onclick="fillForm('${user.token}')">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="btn-action btn-delete" onclick="deleteUserByToken('${user.token}')">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="user-details-small">
+                            <div class="detail-row">
+                                <i class="fas fa-key"></i>
+                                <span class="detail-label">Token ID:</span>
+                                <span class="detail-value">${user.token}</span>
+                            </div>
+                            <div class="detail-row">
+                                <i class="fas fa-user"></i>
+                                <span class="detail-label">Username:</span>
+                                <span class="detail-value">${user.username || user.token}</span>
+                            </div>
+                            <div class="detail-row">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span class="detail-label">Expiry:</span>
+                                <span class="detail-value">${user.expiryDate || 'No date'}</span>
+                            </div>
+                            <div class="detail-row">
+                                <i class="fas fa-clock"></i>
+                                <span class="detail-label">Remaining:</span>
+                                <span class="detail-value day-left ${dayLeftColor}">${daysRemaining.text}</span>
+                            </div>
+                        </div>
+                        <div class="progress-container">
+                            <div class="progress-header">
+                                <span class="progress-label">Subscription Progress</span>
+                                <span class="progress-percent ${progress.color}">${progress.text}</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill ${progress.color}" style="width: ${progress.percentage}%"></div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Filter users based on search input
+        function filterUsers() {
+            const keyword = searchInput.value.toLowerCase().trim();
+            
+            // Show/hide back button
+            if (keyword !== '') {
+                backFromSearch.style.display = 'flex';
+            } else {
+                backFromSearch.style.display = 'none';
+            }
+            
+            if (keyword === '') {
+                if (allUsers.length > 0) {
+                    filteredUsers = [...allUsers];
+                    renderUsers();
+                } else {
+                    filteredUsers = [...demoUsers];
+                    renderDemoUsers();
+                }
+            } else {
+                const source = allUsers.length > 0 ? allUsers : demoUsers;
+                filteredUsers = source.filter(user => 
+                    (user.token && user.token.toLowerCase().includes(keyword)) ||
+                    (user.username && user.username.toLowerCase().includes(keyword))
+                );
+                
+                if (allUsers.length > 0) {
+                    renderUsers();
+                } else {
+                    renderDemoUsers();
+                }
+            }
+        }
+
+        // Form functions
+        function openForm() {
+            formOverlay.style.display = 'flex';
+            clearForm();
+        }
+
+        function closeForm() {
+            formOverlay.style.display = 'none';
+            clearForm();
+        }
+
+        function closeSuccessModal() {
+            successOverlay.style.display = 'none';
+        }
+
+        function clearForm() {
+            tokenInput.value = '';
+            tokenInput.disabled = false;
+            formUsernameInput.value = '';
+            expiryInput.value = new Date().toISOString().split('T')[0];
+            isActiveInput.checked = true;
+            currentEditToken = null;
+        }
+
+        // Fill form with user data for editing
+        function fillForm(token) {
+            let user;
+            
+            // Check in real users first
+            if (allUsers.length > 0) {
+                user = allUsers.find(u => u.token === token);
+            } else {
+                // Check in demo users
+                user = demoUsers.find(u => u.token === token);
+            }
+            
+            if (!user) return;
+            
+            tokenInput.value = user.token;
+            tokenInput.disabled = true;
+            formUsernameInput.value = user.username || '';
+            expiryInput.value = user.expiryDate || '';
+            isActiveInput.checked = user.isActive || false;
+            currentEditToken = user.token;
+            
+            formOverlay.style.display = 'flex';
+        }
+
+        // Show success message
+        function showSuccessMessage(user) {
+            const status = getUserStatus(user);
+            const daysRemaining = calculateDaysRemaining(user.expiryDate);
+            
+            successId.textContent = user.token;
+            successUsername.textContent = user.username || user.token;
+            successExpiry.textContent = user.expiryDate || 'No date';
+            successStatus.textContent = status.statusText;
+            successDayLeft.textContent = daysRemaining.text;
+            
+            successOverlay.style.display = 'flex';
+        }
+
+        // Save success modal as image
+        function saveAsImage() {
+            html2canvas(successModal).then(canvas => {
+                const link = document.createElement('a');
+                link.download = `user_${successId.textContent}_details.png`;
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+                showNotification("✅ Image saved successfully", "success");
+            });
+        }
+
+        // Delete user by token (for button click)
+        function deleteUserByToken(token) {
+            if (!token) {
+                showNotification("Please select a user to delete", "error");
+                return;
+            }
+            
+            if (!confirm(`Are you sure you want to delete user "${token}"?`)) {
+                return;
+            }
+            
+            // If using demo data
+            if (allUsers.length === 0) {
+                showNotification("Demo data - cannot delete", "info");
+                return;
+            }
+            
+            db.collection("users").doc(token).delete()
+                .then(() => {
+                    showNotification("🗑️ User deleted successfully", "success");
+                })
+                .catch(error => {
+                    showNotification("❌ Error deleting user: " + error.message, "error");
+                });
+        }
+
+        // CRUD Operations
+        function addUser() {
+            const token = tokenInput.value.trim();
+            const username = formUsernameInput.value.trim();
+            const expiryDate = expiryInput.value;
+            const isActive = isActiveInput.checked;
+            
+            if (!token) {
+                showNotification("ID is required", "error");
+                return;
+            }
+            
+            const user = {
+                username: username || token,
+                expiryDate: expiryDate,
+                isActive: isActive
+            };
+            
+            db.collection("users").doc(token).set(user)
+                .then(() => {
+                    closeForm();
+                    showSuccessMessage({
+                        token: token,
+                        username: username || token,
+                        expiryDate: expiryDate,
+                        isActive: isActive
+                    });
+                })
+                .catch(error => {
+                    showNotification("❌ Error adding user: " + error.message, "error");
+                });
+        }
+
+        function updateUser() {
+            const token = currentEditToken || tokenInput.value.trim();
+            
+            if (!token) {
+                showNotification("Please select a user to update", "error");
+                return;
+            }
+            
+            const user = {
+                username: formUsernameInput.value.trim(),
+                expiryDate: expiryInput.value,
+                isActive: isActiveInput.checked
+            };
+            
+            db.collection("users").doc(token).set(user, { merge: true })
+                .then(() => {
+                    showNotification("✅ User updated successfully", "success");
+                    closeForm();
+                })
+                .catch(error => {
+                    showNotification("❌ Error updating user: " + error.message, "error");
+                });
+        }
+
+        // Notification system
+        function showNotification(message, type = "info") {
+            const icon = type === 'success' ? 'fas fa-check-circle' : 
+                        type === 'error' ? 'fas fa-exclamation-circle' : 
+                        'fas fa-info-circle';
+            
+            notification.innerHTML = `
+                <i class="${icon}"></i>
+                <span>${message}</span>
+            `;
+            notification.className = `notification-small ${type} show`;
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+
+        // Make functions available globally for onclick events
+        window.fillForm = fillForm;
+        window.deleteUserByToken = deleteUserByToken;
+</script>
+</body>
+</html>
