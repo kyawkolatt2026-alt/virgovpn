@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AGE VIP PANNEL LOGIN</title>
+    <title>VIRGO VPN PANEL LOGIN</title>
     
     <!-- PWA Icons for Add to Home Screen - Fixed -->
     <meta name="theme-color" content="#667eea">
-    <link rel="icon" href="https://raw.githubusercontent.com/kyawkolatt2026-alt/vip/refs/heads/main/mtk_logo.png">
-    <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/kyawkolatt2026-alt/vip/refs/heads/main/mtk_logo.png">
-    <link rel="shortcut icon" href="https://raw.githubusercontent.com/kyawkolatt2026-alt/vip/refs/heads/main/mtk_logo.png">
+    <link rel="icon" href="https://raw.githubusercontent.com/kyawkolatt2026-alt/virgovpn/main/file_00000000db78821181d9b896c0f7b588.png">
+    <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/kyawkolatt2026-alt/virgovpn/main/file_00000000db78821181d9b896c0f7b588.png">
+    <link rel="shortcut icon" href="https://raw.githubusercontent.com/kyawkolatt2026-alt/virgovpn/main/file_00000000db78821181d9b896c0f7b588.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="AGE VIP PANNEL">
+    <meta name="apple-mobile-web-app-title" content="VIRGO VPN PANEL">
     
     <!-- Simple PWA Manifest -->
     <link rel="manifest" href="data:application/json;charset=utf-8;base64,ewogICJuYW1lIjogIkpLIFZJUCBBZG1pbiIsCiAgInNob3J0X25hbWUiOiAiSksgVklQIiwKICAiZGVzY3JpcHRpb24iOiAiSksgVklQIEFkbWluIFBhbmVsIiwKICAic3RhcnRfdXJsIjogIi8iLAogICJkaXNwbGF5IjogInN0YW5kYWxvbmUiLAogICJiYWNrZ3JvdW5kX2NvbG9yIjogIiM2NjdlZWEiLAogICJ0aGVtZV9jb2xvciI6ICIjNjY3ZWVhIiwKICAiaWNvbnMiOiBbCiAgICB7CiAgICAgICJzcmMiOiAiaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL1ZwbkFwcE5ldC9teXVkcC9tYWluL2ltYWdlL0lNR18yMDI1MTIyMV8xNzQ0NDJfNzE2LnBuZyIsCiAgICAgICJzaXplcyI6ICIxOTJ4MTkyIiwKICAgICAgInR5cGUiOiAiaW1hZ2UvcG5nIgogICAgfSwKICAgIHsKICAgICAgInNyYyI6ICJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vVnBuQXBwTmV0L215dWRwL21haW4vaW1hZ2UvSU1HXzIwMjUxMjIxXzE3NDQ0Ml83MTYucG5nIiwKICAgICAgInNpemVzIjogIjUxMng1MTIiLAogICAgICAidHlwZSI6ICJpbWFnZS9wbmciCiAgICB9CiAgXQp9">
@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <style>
         * {
@@ -1607,7 +1608,7 @@
             <div class="login-logo">
                 <i class="fas fa-crown"></i>
             </div>
-            <h1 class="login-title">AGE VIP PANNEL LOGIN</h1>
+            <h1 class="login-title">VIRGO VPN PANEL LOGIN</h1>
             <p class="login-subtitle">Enter your credentials to access the admin panel</p>
             
             <div class="login-error" id="loginError">
@@ -1616,8 +1617,8 @@
             
             <div class="login-form">
                 <div class="form-group">
-                    <label for="loginUsername">Username</label>
-                    <input type="text" id="loginUsername" placeholder="Enter username">
+                    <label for="loginUsername">Email</label>
+                    <input type="email" id="loginUsername" placeholder="Enter email address">
                 </div>
                 
                 <div class="form-group">
@@ -1631,7 +1632,7 @@
             </div>
             
             <div style="color: #64748b; font-size: 12px; margin-top: 20px;">
-                <i class="fas fa-info-circle"></i> Default: JueHtet / 171991
+                <i class="fas fa-info-circle"></i> Firebase Admin Email / Password
             </div>
         </div>
     </div>
@@ -1653,17 +1654,17 @@
             <div class="compact-header">
                 <div class="title-row">
                     <div class="logo-small">
-                        <img src="https://raw.githubusercontent.com/kyawkolatt2026-alt/vip/refs/heads/main/mtk_logo.png" alt="AGE VIP Logo">
+                        <img src="https://raw.githubusercontent.com/kyawkolatt2026-alt/virgovpn/main/file_00000000db78821181d9b896c0f7b588.png" alt="VIRGO VPN PANEL Logo">
                     </div>
                     <div class="title-lines">
                         <div class="compact-title">
-                            <div class="title-line">AGE VIP PANNEL</div>
+                            <div class="title-line">VIRGO VPN PANEL</div>
                             <div class="title-line">For VIP Users</div>
                         </div>
                     </div>
                 </div>
                 
-                <p class="subtitle-small">Manage VIP users in real-time</p>
+                <p class="subtitle-small">Manage VIRGO VPN users in real-time</p>
                 
                 <!-- Compact Stats - 4 Items -->
                 <div class="compact-stats">
@@ -1697,7 +1698,7 @@
                     </div>
                 </div>
                 
-                <div class="demo-badge">Owner : JueHtet</div>
+                <div class="demo-badge">Owner : KKL</div>
             </div>
 
             <!-- Divider -->
@@ -1730,7 +1731,7 @@
 
             <!-- Footer -->
             <div class="footer-small">
-                <p>👑 AGE VIP Users Management 👑 </p>
+                <p>👑 VIRGO VPN Users Management 👑 </p>
             </div>
         </div>
 
@@ -1931,64 +1932,62 @@
             }
         ];
 
-        // Login credentials
-        const validUsername = "AGEVPN";
-        const validPassword = "1234567";
+        // Firebase Authentication
+        const auth = firebase.auth();
 
         // Event Listeners
         document.addEventListener('DOMContentLoaded', () => {
-            // Check if user is already logged in
-            const isLoggedIn = localStorage.getItem('jkVipLoggedIn');
-            if (isLoggedIn === 'true') {
-                showApp();
-            }
-            
-            // Login button event
+            auth.onAuthStateChanged((user) => {
+                if (user) {
+                    showApp();
+                } else {
+                    appContainer.style.display = 'none';
+                    loginContainer.style.display = 'flex';
+                }
+            });
+
             btnLogin.addEventListener('click', handleLogin);
-            
-            // Allow Enter key to login
+
             passwordInput.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    handleLogin();
-                }
+                if (e.key === 'Enter') handleLogin();
             });
-            
+
             usernameInput.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    handleLogin();
-                }
+                if (e.key === 'Enter') handleLogin();
             });
-            
-            // Logout button event
+
             logoutBtn.addEventListener('click', handleLogout);
         });
 
-        // Login function
-        function handleLogin() {
-            const username = usernameInput.value.trim();
+        // Firebase Email/Password login
+        async function handleLogin() {
+            const email = usernameInput.value.trim();
             const password = passwordInput.value.trim();
-            
-            if (username === validUsername && password === validPassword) {
-                // Successful login
-                localStorage.setItem('jkVipLoggedIn', 'true');
-                showApp();
-            } else {
-                // Show error
+            loginError.style.display = 'none';
+
+            if (!email || !password) {
+                loginError.textContent = 'Enter your email and password';
+                loginError.style.display = 'block';
+                return;
+            }
+
+            btnLogin.disabled = true;
+            try {
+                await auth.signInWithEmailAndPassword(email, password);
+            } catch (error) {
+                console.error('Firebase login error:', error);
+                loginError.textContent = 'Invalid email or password';
                 loginError.style.display = 'block';
                 passwordInput.value = '';
-                
-                // Shake animation for error
-                loginContainer.style.animation = 'none';
-                setTimeout(() => {
-                    loginContainer.style.animation = 'shake 0.5s ease-in-out';
-                }, 10);
+            } finally {
+                btnLogin.disabled = false;
             }
         }
 
-        // Logout function
-        function handleLogout() {
+        // Firebase logout
+        async function handleLogout() {
             if (confirm('Are you sure you want to logout?')) {
-                localStorage.removeItem('jkVipLoggedIn');
+                await auth.signOut();
                 appContainer.style.display = 'none';
                 loginContainer.style.display = 'flex';
                 usernameInput.value = '';
