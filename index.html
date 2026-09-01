@@ -1,23 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>VIRGO VPN PANEL</title>
+<title>VIRGO VPN PANEL</title><meta name="theme-color" content="#080b14"><link rel="icon" href="https://raw.githubusercontent.com/kyawkolatt2026-alt/virgovpn/main/file_00000000db78821181d9b896c0f7b588.png"><link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"><script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script><script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script><script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script><script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script><style>
 
-<meta name="theme-color" content="#080b14">
-
-<link rel="icon" href="https://raw.githubusercontent.com/kyawkolatt2026-alt/virgovpn/main/file_00000000db78821181d9b896c0f7b588.png">
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
-<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-
-<style>
 *{
     margin:0;
     padding:0;
@@ -65,7 +52,10 @@ body.light-mode{
         var(--bg);
 }
 
-/* LOGIN */
+
+/* =========================
+   LOGIN
+========================= */
 
 .login-container{
     min-height:100vh;
@@ -165,7 +155,10 @@ body.light-mode{
     margin-bottom:14px;
 }
 
-/* APP */
+
+/* =========================
+   APP
+========================= */
 
 .app-container{
     display:none;
@@ -222,7 +215,10 @@ body.light-mode{
     margin:12px 0 18px 67px;
 }
 
-/* STATS */
+
+/* =========================
+   STATS
+========================= */
 
 .compact-stats{
     display:grid;
@@ -276,7 +272,10 @@ body.light-mode{
     font-weight:800;
 }
 
-/* CONTENT */
+
+/* =========================
+   CONTENT
+========================= */
 
 .compact-content{
     padding:10px 18px 30px;
@@ -334,7 +333,10 @@ body.light-mode{
     cursor:pointer;
 }
 
-/* USER */
+
+/* =========================
+   USER
+========================= */
 
 .user-item{
     position:relative;
@@ -557,7 +559,10 @@ body.light-mode{
 .progress-fill.yellow{background:#f59e0b}
 .progress-fill.red{background:#ef4444}
 
-/* FLOAT */
+
+/* =========================
+   FLOAT BUTTONS
+========================= */
 
 .theme-toggle,
 .logout-btn{
@@ -585,7 +590,10 @@ body.light-mode{
     background:linear-gradient(135deg,#ef4444,#b91c1c);
 }
 
-/* MODAL */
+
+/* =========================
+   MODAL
+========================= */
 
 .form-overlay,
 .success-overlay{
@@ -716,7 +724,10 @@ body.light-mode{
     transform:translateX(22px);
 }
 
-/* EXTEND */
+
+/* =========================
+   EXTEND
+========================= */
 
 .extend-box{
     display:none;
@@ -755,145 +766,337 @@ body.light-mode{
 .btn-add-form{background:#22c55e}
 .btn-update-form{background:#6366f1}
 
-/* VISITING CARD */
+
+/* =====================================================
+   PREMIUM VISITING CARD
+===================================================== */
 
 .card-capture-area{
     position:fixed;
     left:-10000px;
     top:0;
+    width:1000px;
+    pointer-events:none;
 }
 
 .vip-card{
-    width:760px;
-    min-height:430px;
-    padding:36px;
-    background:
-        radial-gradient(circle at 100% 0%,rgba(139,92,246,.28),transparent 35%),
-        radial-gradient(circle at 0% 100%,rgba(6,182,212,.16),transparent 35%),
-        #0b1020;
-    color:white;
-    border-radius:28px;
+    width:900px;
+    height:520px;
+
+    padding:52px 58px;
+
     position:relative;
     overflow:hidden;
-    border:1px solid rgba(255,255,255,.12);
+
+    background:
+        linear-gradient(
+            135deg,
+            #0b1020 0%,
+            #11182a 55%,
+            #17142d 100%
+        );
+
+    color:#ffffff;
+
+    border-radius:32px;
+
+    border:1px solid rgba(255,255,255,.10);
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.45);
+
+    font-family:
+        Inter,
+        "Segoe UI",
+        Arial,
+        sans-serif;
 }
+
+
+/* GLOW */
 
 .vip-card:before{
     content:"";
+
     position:absolute;
-    width:240px;
-    height:240px;
-    right:-100px;
-    bottom:-100px;
+
+    width:360px;
+    height:360px;
+
+    right:-150px;
+    top:-150px;
+
     border-radius:50%;
-    border:35px solid rgba(139,92,246,.08);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(139,92,246,.28),
+            rgba(139,92,246,0) 70%
+        );
+
+    pointer-events:none;
 }
 
+.vip-card:after{
+    content:"";
+
+    position:absolute;
+
+    width:300px;
+    height:300px;
+
+    left:-170px;
+    bottom:-180px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(6,182,212,.16),
+            rgba(6,182,212,0) 70%
+        );
+
+    pointer-events:none;
+}
+
+
+/* CARD TOP */
+
 .vip-card-top{
+    position:relative;
+    z-index:2;
+
     display:flex;
     align-items:center;
     justify-content:space-between;
 }
 
+
+/* BRAND */
+
 .vip-card-brand{
     display:flex;
     align-items:center;
-    gap:14px;
+    gap:18px;
 }
 
 .vip-card-logo{
-    width:65px;
-    height:65px;
-    border-radius:19px;
-    padding:2px;
-    background:linear-gradient(135deg,#8b5cf6,#6366f1,#06b6d4);
+    width:82px;
+    height:82px;
+
+    padding:3px;
+
+    border-radius:23px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #8b5cf6,
+            #6366f1,
+            #06b6d4
+        );
+
+    flex-shrink:0;
 }
 
 .vip-card-logo img{
     width:100%;
     height:100%;
+
     object-fit:cover;
-    border-radius:17px;
+
+    border-radius:20px;
+
+    display:block;
 }
 
 .vip-card-title{
-    font-size:25px;
+    font-size:34px;
+    line-height:1.05;
+
     font-weight:900;
+
+    letter-spacing:.3px;
+
+    color:#ffffff;
 }
 
 .vip-card-subtitle{
-    font-size:10px;
+    margin-top:8px;
+
+    font-size:12px;
+
     color:#94a3b8;
-    letter-spacing:1.5px;
-    margin-top:3px;
+
+    font-weight:700;
+
+    letter-spacing:2px;
 }
+
+
+/* CROWN */
 
 .vip-card-crown{
-    width:54px;
-    height:54px;
-    border-radius:17px;
-    background:linear-gradient(135deg,#fbbf24,#f59e0b);
-    color:#422006;
+    width:62px;
+    height:62px;
+
+    border-radius:19px;
+
     display:flex;
-    justify-content:center;
     align-items:center;
-    font-size:23px;
+    justify-content:center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fbbf24,
+            #f59e0b
+        );
+
+    color:#422006;
+
+    font-size:25px;
+
+    box-shadow:
+        0 10px 30px rgba(245,158,11,.18);
+
+    flex-shrink:0;
 }
+
+
+/* LINE */
 
 .vip-card-line{
+    position:relative;
+    z-index:2;
+
+    width:100%;
     height:1px;
-    background:rgba(255,255,255,.1);
-    margin:28px 0;
+
+    margin:38px 0 30px;
+
+    background:
+        rgba(255,255,255,.10);
 }
+
+
+/* USER */
 
 .vip-card-user{
-    font-size:31px;
+    position:relative;
+    z-index:2;
+
+    font-size:42px;
+
+    line-height:1.15;
+
     font-weight:900;
-    margin-bottom:22px;
+
+    color:#ffffff;
+
+    margin-bottom:30px;
+
+    max-width:780px;
+
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
 }
 
+
+/* INFO */
+
 .vip-card-info{
+    position:relative;
+    z-index:2;
+
     display:grid;
-    grid-template-columns:1fr 1fr 1fr;
-    gap:15px;
+
+    grid-template-columns:
+        1fr
+        1fr
+        1fr;
+
+    gap:18px;
 }
 
 .vip-info{
-    padding:15px;
-    border-radius:15px;
-    background:rgba(255,255,255,.055);
-    border:1px solid rgba(255,255,255,.06);
+    min-height:105px;
+
+    padding:20px 21px;
+
+    border-radius:18px;
+
+    background:
+        rgba(255,255,255,.055);
+
+    border:
+        1px solid rgba(255,255,255,.08);
 }
 
 .vip-info-label{
-    color:#64748b;
-    font-size:9px;
-    text-transform:uppercase;
-    letter-spacing:1px;
-    margin-bottom:6px;
+    color:#7f8ba3;
+
+    font-size:11px;
+
+    font-weight:800;
+
+    letter-spacing:1.5px;
+
+    margin-bottom:11px;
 }
 
 .vip-info-value{
-    font-size:14px;
-    font-weight:800;
-    color:#f8fafc;
+    color:#ffffff;
+
+    font-size:18px;
+
+    line-height:1.3;
+
+    font-weight:900;
+
     word-break:break-word;
 }
 
+
+/* FOOTER */
+
 .vip-card-footer{
+    position:absolute;
+
+    left:58px;
+    right:58px;
+    bottom:34px;
+
+    z-index:2;
+
     display:flex;
-    justify-content:space-between;
+
     align-items:center;
-    margin-top:28px;
+
+    justify-content:space-between;
+
     color:#64748b;
-    font-size:9px;
+
+    font-size:11px;
+
+    font-weight:700;
+
+    letter-spacing:.5px;
 }
 
 .vip-card-footer strong{
     color:#a78bfa;
+
+    font-weight:900;
 }
 
-/* SUCCESS */
+
+/* =========================
+   SUCCESS MODAL
+========================= */
 
 .success-overlay{
     z-index:4000;
@@ -978,28 +1181,48 @@ body.light-mode{
     cursor:pointer;
 }
 
-.btn-ok{background:#475569}
-.btn-save{background:#22c55e}
+.btn-ok{
+    background:#475569;
+}
 
-/* NOTIFICATION */
+.btn-save{
+    background:#22c55e;
+}
+
+
+/* =========================
+   NOTIFICATION
+========================= */
 
 .notification-small{
     position:fixed;
     bottom:20px;
     left:50%;
+
     transform:translate(-50%,100px);
+
     opacity:0;
+
     z-index:5000;
+
     min-width:250px;
     max-width:90%;
+
     padding:13px 17px;
+
     border-radius:13px;
+
     color:white;
+
     font-size:12px;
     font-weight:800;
+
     display:flex;
+
     gap:9px;
+
     align-items:center;
+
     transition:.3s;
 }
 
@@ -1008,11 +1231,22 @@ body.light-mode{
     opacity:1;
 }
 
-.notification-small.success{background:#16a34a}
-.notification-small.error{background:#dc2626}
-.notification-small.info{background:#6366f1}
+.notification-small.success{
+    background:#16a34a;
+}
 
-/* EMPTY */
+.notification-small.error{
+    background:#dc2626;
+}
+
+.notification-small.info{
+    background:#6366f1;
+}
+
+
+/* =========================
+   EMPTY
+========================= */
 
 .loading-small,
 .empty-state-small{
@@ -1024,15 +1258,22 @@ body.light-mode{
 .loading-spinner-small{
     width:35px;
     height:35px;
+
     border:3px solid rgba(127,127,127,.15);
+
     border-top-color:#8b5cf6;
+
     border-radius:50%;
+
     animation:spin 1s linear infinite;
+
     margin:0 auto 13px;
 }
 
 @keyframes spin{
-    to{transform:rotate(360deg)}
+    to{
+        transform:rotate(360deg);
+    }
 }
 
 .footer-small{
@@ -1042,7 +1283,10 @@ body.light-mode{
     font-size:10px;
 }
 
-/* MOBILE */
+
+/* =====================================================
+   MOBILE
+===================================================== */
 
 @media(max-width:600px){
 
@@ -1086,105 +1330,129 @@ body.light-mode{
         grid-template-columns:1fr;
     }
 
+    /*
+       Keep the saved card large even on mobile.
+       This makes the final PNG readable.
+    */
+
+    .card-capture-area{
+        width:900px;
+    }
+
     .vip-card{
-        width:380px;
-        min-height:280px;
-        padding:22px;
-        border-radius:20px;
+        width:900px;
+        height:520px;
+
+        padding:52px 58px;
+
+        border-radius:32px;
     }
 
     .vip-card-logo{
-        width:45px;
-        height:45px;
-        border-radius:14px;
+        width:82px;
+        height:82px;
     }
 
     .vip-card-title{
-        font-size:17px;
+        font-size:34px;
     }
 
-    .vip-card-crown{
-        width:42px;
-        height:42px;
-        font-size:17px;
-    }
-
-    .vip-card-line{
-        margin:18px 0;
+    .vip-card-subtitle{
+        font-size:12px;
     }
 
     .vip-card-user{
-        font-size:23px;
-        margin-bottom:15px;
-    }
-
-    .vip-card-info{
-        gap:7px;
+        font-size:42px;
     }
 
     .vip-info{
-        padding:9px;
+        min-height:105px;
+        padding:20px 21px;
     }
 
     .vip-info-label{
-        font-size:7px;
+        font-size:11px;
     }
 
     .vip-info-value{
-        font-size:10px;
+        font-size:18px;
     }
 
     .vip-card-footer{
-        margin-top:17px;
-        font-size:7px;
+        left:58px;
+        right:58px;
+        bottom:34px;
+
+        font-size:11px;
     }
 }
-</style>
-</head>
 
-<body>
+</style></head><body><!-- =====================================================
+     LOGIN
+===================================================== --><div class="login-container" id="loginContainer"><div class="login-box">
 
-<!-- LOGIN -->
+    <div class="login-logo">
 
-<div class="login-container" id="loginContainer">
-
-    <div class="login-box">
-
-        <div class="login-logo">
-            <img src="https://raw.githubusercontent.com/kyawkolatt2026-alt/virgovpn/main/file_00000000db78821181d9b896c0f7b588.png">
-        </div>
-
-        <h1 class="login-title">VIRGO VPN</h1>
-        <p class="login-subtitle">Secure Admin Control Panel</p>
-
-        <div class="login-error" id="loginError">
-            Invalid email or password
-        </div>
-
-        <div class="form-group">
-            <label>Email</label>
-            <input type="email" id="loginUsername" placeholder="Enter admin email">
-        </div>
-
-        <div class="form-group">
-            <label>Password</label>
-            <input type="password" id="loginPassword" placeholder="Enter password">
-        </div>
-
-        <button class="btn-login" id="btnLogin">
-            <i class="fas fa-arrow-right-to-bracket"></i>
-            LOGIN TO PANEL
-        </button>
+        <img
+            src="https://raw.githubusercontent.com/kyawkolatt2026-alt/virgovpn/main/file_00000000db78821181d9b896c0f7b588.png"
+            crossorigin="anonymous"
+        >
 
     </div>
+
+    <h1 class="login-title">
+        VIRGO VPN
+    </h1>
+
+    <p class="login-subtitle">
+        Secure Admin Control Panel
+    </p>
+
+    <div class="login-error" id="loginError">
+        Invalid email or password
+    </div>
+
+    <div class="form-group">
+
+        <label>
+            Email
+        </label>
+
+        <input
+            type="email"
+            id="loginUsername"
+            placeholder="Enter admin email"
+        >
+
+    </div>
+
+    <div class="form-group">
+
+        <label>
+            Password
+        </label>
+
+        <input
+            type="password"
+            id="loginPassword"
+            placeholder="Enter password"
+        >
+
+    </div>
+
+    <button class="btn-login" id="btnLogin">
+
+        <i class="fas fa-arrow-right-to-bracket"></i>
+
+        LOGIN TO PANEL
+
+    </button>
+
 </div>
 
-
-<!-- APP -->
-
-<div class="app-container" id="appContainer">
-
-<button class="theme-toggle" id="themeToggle">
+</div><!-- =====================================================
+     APP
+===================================================== --><div class="app-container" id="appContainer"><button class="theme-toggle" id="themeToggle">
     <i class="fas fa-moon"></i>
 </button>
 
@@ -1192,503 +1460,966 @@ body.light-mode{
     <i class="fas fa-power-off"></i>
 </button>
 
+
 <div class="container">
 
-<!-- HEADER -->
 
-<div class="compact-header">
+    <!-- HEADER -->
 
-    <div class="title-row">
+    <div class="compact-header">
 
-        <div class="logo-small">
-            <img src="https://raw.githubusercontent.com/kyawkolatt2026-alt/virgovpn/main/file_00000000db78821181d9b896c0f7b588.png">
-        </div>
+        <div class="title-row">
 
-        <div>
-            <div class="compact-title">VIRGO VPN PANEL</div>
-            <div class="title-line">VIP USER MANAGEMENT</div>
-        </div>
+            <div class="logo-small">
 
-    </div>
+                <img
+                    src="https://raw.githubusercontent.com/kyawkolatt2026-alt/virgovpn/main/file_00000000db78821181d9b896c0f7b588.png"
+                    crossorigin="anonymous"
+                >
 
-    <p class="subtitle-small">
-        Real-time VPN subscription management
-    </p>
-
-    <div class="compact-stats">
-
-        <div class="stat-item total-stat">
-            <div class="stat-value-small">
-                <i class="fas fa-users stat-icon"></i>
-                <span id="totalUsers">0</span>
-            </div>
-            <div class="stat-label-small">Total</div>
-        </div>
-
-        <div class="stat-item active-stat">
-            <div class="stat-value-small">
-                <i class="fas fa-circle stat-icon"></i>
-                <span id="activeUsers">0</span>
-            </div>
-            <div class="stat-label-small">Online</div>
-        </div>
-
-        <div class="stat-item inactive-stat">
-            <div class="stat-value-small">
-                <i class="fas fa-circle stat-icon"></i>
-                <span id="inactiveUsers">0</span>
-            </div>
-            <div class="stat-label-small">Offline</div>
-        </div>
-
-        <div class="stat-item offline-stat">
-            <div class="stat-value-small">
-                <i class="fas fa-circle stat-icon"></i>
-                <span id="offlineUsers">0</span>
-            </div>
-            <div class="stat-label-small">Expired</div>
-        </div>
-
-    </div>
-
-    <div class="demo-badge">
-        <i class="fas fa-crown"></i>
-        OWNER : KKL
-    </div>
-
-</div>
-
-
-<!-- CONTENT -->
-
-<div class="compact-content">
-
-    <div class="search-container-small">
-
-        <div class="search-box-small">
-            <i class="fas fa-search"></i>
-            <input type="text"
-                   id="searchInput"
-                   placeholder="Search ID or username...">
-        </div>
-
-        <button class="btn-back-search" id="backFromSearch">
-            <i class="fas fa-arrow-left"></i>
-            Back
-        </button>
-
-    </div>
-
-    <button class="btn-add-small" id="openForm">
-        <i class="fas fa-user-plus"></i>
-        ADD NEW VIP USER
-    </button>
-
-    <div class="compact-users-list" id="usersList">
-        <div class="loading-small">
-            <div class="loading-spinner-small"></div>
-            <p>Loading users...</p>
-        </div>
-    </div>
-
-</div>
-
-<div class="footer-small">
-    <i class="fas fa-shield-halved"></i>
-    VIRGO VPN • VIP MANAGEMENT SYSTEM
-</div>
-
-
-<!-- FORM -->
-
-<div class="form-overlay" id="formOverlay">
-
-    <div class="form-modal">
-
-        <div class="form-header-small">
-
-            <h3>
-                <i class="fas fa-user-pen"></i>
-                Manage VIP User
-            </h3>
-
-            <button class="btn-close" id="closeForm">
-                <i class="fas fa-xmark"></i>
-            </button>
-
-        </div>
-
-        <div class="form-body">
-
-            <div class="form-group-small">
-                <label>ID *</label>
-                <input type="text"
-                       id="token"
-                       class="form-input-small"
-                       placeholder="Enter user ID">
             </div>
 
-            <div class="form-group-small">
-                <label>Username</label>
-                <input type="text"
-                       id="formUsername"
-                       class="form-input-small"
-                       placeholder="Enter username">
-            </div>
+            <div>
 
-            <div class="form-group-small">
-                <label>Expiry Date</label>
-                <input type="date"
-                       id="expiry"
-                       class="form-input-small">
-            </div>
+                <div class="compact-title">
+                    VIRGO VPN PANEL
+                </div>
 
-            <div class="form-group-small">
-
-                <div class="switch-group-small">
-
-                    <span>
-                        <i class="fas fa-toggle-on"></i>
-                        Active Status
-                    </span>
-
-                    <label class="switch-small">
-
-                        <input type="checkbox"
-                               id="isActive"
-                               checked>
-
-                        <span class="slider-small"></span>
-
-                    </label>
-
+                <div class="title-line">
+                    VIP USER MANAGEMENT
                 </div>
 
             </div>
 
-            <!-- EXTEND 30 DAYS -->
-
-            <div class="extend-box" id="extendBox">
-
-                <button class="btn-extend" id="btnExtend">
-                    <i class="fas fa-calendar-plus"></i>
-                    EXTEND 30 DAYS
-                </button>
-
-            </div>
-
-            <div class="form-actions-small">
-
-                <button class="btn-form-small btn-back-form"
-                        id="btnBack">
-                    <i class="fas fa-arrow-left"></i>
-                    Back
-                </button>
-
-                <button class="btn-form-small btn-add-form"
-                        id="btnAdd">
-                    <i class="fas fa-plus"></i>
-                    Add
-                </button>
-
-                <button class="btn-form-small btn-update-form"
-                        id="btnUpdate">
-                    <i class="fas fa-save"></i>
-                    Update
-                </button>
-
-            </div>
-
         </div>
 
-    </div>
-</div>
-
-
-<!-- SUCCESS -->
-
-<div class="success-overlay" id="successOverlay">
-
-    <div class="success-modal" id="successModal">
-
-        <div class="success-icon">
-            <i class="fas fa-check"></i>
-        </div>
-
-        <h3 class="success-title" id="successTitle">
-            User Saved Successfully
-        </h3>
-
-        <p class="success-message" id="successMessage">
-            VIP account information has been updated.
+        <p class="subtitle-small">
+            Real-time VPN subscription management
         </p>
 
-        <div class="user-details-box">
 
-            <div class="detail-item">
-                <span class="detail-label">ID</span>
-                <span class="detail-value" id="successId">-</span>
+        <div class="compact-stats">
+
+            <div class="stat-item total-stat">
+
+                <div class="stat-value-small">
+
+                    <i class="fas fa-users stat-icon"></i>
+
+                    <span id="totalUsers">
+                        0
+                    </span>
+
+                </div>
+
+                <div class="stat-label-small">
+                    Total
+                </div>
+
             </div>
 
-            <div class="detail-item">
-                <span class="detail-label">Username</span>
-                <span class="detail-value" id="successUsername">-</span>
+
+            <div class="stat-item active-stat">
+
+                <div class="stat-value-small">
+
+                    <i class="fas fa-circle stat-icon"></i>
+
+                    <span id="activeUsers">
+                        0
+                    </span>
+
+                </div>
+
+                <div class="stat-label-small">
+                    Online
+                </div>
+
             </div>
 
-            <div class="detail-item">
-                <span class="detail-label">Expiry</span>
-                <span class="detail-value" id="successExpiry">-</span>
+
+            <div class="stat-item inactive-stat">
+
+                <div class="stat-value-small">
+
+                    <i class="fas fa-circle stat-icon"></i>
+
+                    <span id="inactiveUsers">
+                        0
+                    </span>
+
+                </div>
+
+                <div class="stat-label-small">
+                    Offline
+                </div>
+
             </div>
 
-            <div class="detail-item">
-                <span class="detail-label">Status</span>
-                <span class="detail-value" id="successStatus">-</span>
-            </div>
 
-            <div class="detail-item">
-                <span class="detail-label">Day Left</span>
-                <span class="detail-value" id="successDayLeft">-</span>
+            <div class="stat-item offline-stat">
+
+                <div class="stat-value-small">
+
+                    <i class="fas fa-circle stat-icon"></i>
+
+                    <span id="offlineUsers">
+                        0
+                    </span>
+
+                </div>
+
+                <div class="stat-label-small">
+                    Expired
+                </div>
+
             </div>
 
         </div>
 
-        <div class="success-actions">
 
-            <button class="btn-success btn-ok" id="btnOk">
+        <div class="demo-badge">
+
+            <i class="fas fa-crown"></i>
+
+            OWNER : KKL
+
+        </div>
+
+    </div>
+
+
+    <!-- CONTENT -->
+
+    <div class="compact-content">
+
+        <div class="search-container-small">
+
+            <div class="search-box-small">
+
+                <i class="fas fa-search"></i>
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search ID or username..."
+                >
+
+            </div>
+
+            <button
+                class="btn-back-search"
+                id="backFromSearch"
+            >
+
+                <i class="fas fa-arrow-left"></i>
+
+                Back
+
+            </button>
+
+        </div>
+
+
+        <button
+            class="btn-add-small"
+            id="openForm"
+        >
+
+            <i class="fas fa-user-plus"></i>
+
+            ADD NEW VIP USER
+
+        </button>
+
+
+        <div
+            class="compact-users-list"
+            id="usersList"
+        >
+
+            <div class="loading-small">
+
+                <div class="loading-spinner-small"></div>
+
+                <p>
+                    Loading users...
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-small">
+
+        <i class="fas fa-shield-halved"></i>
+
+        VIRGO VPN • VIP MANAGEMENT SYSTEM
+
+    </div>
+
+
+    <!-- =================================================
+         FORM MODAL
+    ================================================= -->
+
+    <div
+        class="form-overlay"
+        id="formOverlay"
+    >
+
+        <div class="form-modal">
+
+            <div class="form-header-small">
+
+                <h3>
+
+                    <i class="fas fa-user-pen"></i>
+
+                    Manage VIP User
+
+                </h3>
+
+                <button
+                    class="btn-close"
+                    id="closeForm"
+                >
+
+                    <i class="fas fa-xmark"></i>
+
+                </button>
+
+            </div>
+
+
+            <div class="form-body">
+
+
+                <div class="form-group-small">
+
+                    <label>
+                        ID *
+                    </label>
+
+                    <input
+                        type="text"
+                        id="token"
+                        class="form-input-small"
+                        placeholder="Enter user ID"
+                    >
+
+                </div>
+
+
+                <div class="form-group-small">
+
+                    <label>
+                        Username
+                    </label>
+
+                    <input
+                        type="text"
+                        id="formUsername"
+                        class="form-input-small"
+                        placeholder="Enter username"
+                    >
+
+                </div>
+
+
+                <div class="form-group-small">
+
+                    <label>
+                        Expiry Date
+                    </label>
+
+                    <input
+                        type="date"
+                        id="expiry"
+                        class="form-input-small"
+                    >
+
+                </div>
+
+
+                <div class="form-group-small">
+
+                    <div class="switch-group-small">
+
+                        <span>
+
+                            <i class="fas fa-toggle-on"></i>
+
+                            Active Status
+
+                        </span>
+
+
+                        <label class="switch-small">
+
+                            <input
+                                type="checkbox"
+                                id="isActive"
+                                checked
+                            >
+
+                            <span class="slider-small"></span>
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+                <!-- EXTEND 30 DAYS -->
+
+                <div
+                    class="extend-box"
+                    id="extendBox"
+                >
+
+                    <button
+                        class="btn-extend"
+                        id="btnExtend"
+                    >
+
+                        <i class="fas fa-calendar-plus"></i>
+
+                        EXTEND 30 DAYS
+
+                    </button>
+
+                </div>
+
+
+                <div class="form-actions-small">
+
+                    <button
+                        class="btn-form-small btn-back-form"
+                        id="btnBack"
+                    >
+
+                        <i class="fas fa-arrow-left"></i>
+
+                        Back
+
+                    </button>
+
+
+                    <button
+                        class="btn-form-small btn-add-form"
+                        id="btnAdd"
+                    >
+
+                        <i class="fas fa-plus"></i>
+
+                        Add
+
+                    </button>
+
+
+                    <button
+                        class="btn-form-small btn-update-form"
+                        id="btnUpdate"
+                    >
+
+                        <i class="fas fa-save"></i>
+
+                        Update
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         SUCCESS MODAL
+    ================================================= -->
+
+    <div
+        class="success-overlay"
+        id="successOverlay"
+    >
+
+        <div
+            class="success-modal"
+            id="successModal"
+        >
+
+            <div class="success-icon">
+
                 <i class="fas fa-check"></i>
-                OK
-            </button>
 
-            <button class="btn-success btn-save" id="btnSaveImage">
-                <i class="fas fa-id-card"></i>
-                Save Card
-            </button>
+            </div>
+
+
+            <h3
+                class="success-title"
+                id="successTitle"
+            >
+                User Saved Successfully
+            </h3>
+
+
+            <p
+                class="success-message"
+                id="successMessage"
+            >
+                VIP account information has been updated.
+            </p>
+
+
+            <div class="user-details-box">
+
+                <div class="detail-item">
+
+                    <span class="detail-label">
+                        ID
+                    </span>
+
+                    <span
+                        class="detail-value"
+                        id="successId"
+                    >
+                        -
+                    </span>
+
+                </div>
+
+
+                <div class="detail-item">
+
+                    <span class="detail-label">
+                        Username
+                    </span>
+
+                    <span
+                        class="detail-value"
+                        id="successUsername"
+                    >
+                        -
+                    </span>
+
+                </div>
+
+
+                <div class="detail-item">
+
+                    <span class="detail-label">
+                        Expiry
+                    </span>
+
+                    <span
+                        class="detail-value"
+                        id="successExpiry"
+                    >
+                        -
+                    </span>
+
+                </div>
+
+
+                <div class="detail-item">
+
+                    <span class="detail-label">
+                        Status
+                    </span>
+
+                    <span
+                        class="detail-value"
+                        id="successStatus"
+                    >
+                        -
+                    </span>
+
+                </div>
+
+
+                <div class="detail-item">
+
+                    <span class="detail-label">
+                        Day Left
+                    </span>
+
+                    <span
+                        class="detail-value"
+                        id="successDayLeft"
+                    >
+                        -
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="success-actions">
+
+                <button
+                    class="btn-success btn-ok"
+                    id="btnOk"
+                >
+
+                    <i class="fas fa-check"></i>
+
+                    OK
+
+                </button>
+
+
+                <button
+                    class="btn-success btn-save"
+                    id="btnSaveImage"
+                >
+
+                    <i class="fas fa-id-card"></i>
+
+                    Save Card
+
+                </button>
+
+            </div>
 
         </div>
 
     </div>
-</div>
 
 
-<!-- HIDDEN VISITING CARD -->
+    <!-- =================================================
+         HIDDEN VISITING CARD
+    ================================================= -->
 
-<div class="card-capture-area">
+    <div class="card-capture-area">
 
-    <div class="vip-card" id="vipCard">
+        <div
+            class="vip-card"
+            id="vipCard"
+        >
 
-        <div class="vip-card-top">
 
-            <div class="vip-card-brand">
+            <div class="vip-card-top">
 
-                <div class="vip-card-logo">
-                    <img src="https://raw.githubusercontent.com/kyawkolatt2026-alt/virgovpn/main/file_00000000db78821181d9b896c0f7b588.png">
+
+                <div class="vip-card-brand">
+
+
+                    <div class="vip-card-logo">
+
+                        <img
+                            src="https://raw.githubusercontent.com/kyawkolatt2026-alt/virgovpn/main/file_00000000db78821181d9b896c0f7b588.png"
+                            crossorigin="anonymous"
+                        >
+
+                    </div>
+
+
+                    <div>
+
+                        <div class="vip-card-title">
+                            VIRGO VPN
+                        </div>
+
+                        <div class="vip-card-subtitle">
+                            PREMIUM VIP MEMBERSHIP
+                        </div>
+
+                    </div>
+
                 </div>
 
-                <div>
-                    <div class="vip-card-title">
+
+                <div class="vip-card-crown">
+
+                    <i class="fas fa-crown"></i>
+
+                </div>
+
+            </div>
+
+
+            <div class="vip-card-line"></div>
+
+
+            <div
+                class="vip-card-user"
+                id="cardUsername"
+            >
+                VIP USER
+            </div>
+
+
+            <div class="vip-card-info">
+
+
+                <div class="vip-info">
+
+                    <div class="vip-info-label">
+                        USER ID
+                    </div>
+
+                    <div
+                        class="vip-info-value"
+                        id="cardId"
+                    >
+                        -
+                    </div>
+
+                </div>
+
+
+                <div class="vip-info">
+
+                    <div class="vip-info-label">
+                        EXPIRY DATE
+                    </div>
+
+                    <div
+                        class="vip-info-value"
+                        id="cardExpiry"
+                    >
+                        -
+                    </div>
+
+                </div>
+
+
+                <div class="vip-info">
+
+                    <div class="vip-info-label">
+                        REMAINING
+                    </div>
+
+                    <div
+                        class="vip-info-value"
+                        id="cardDays"
+                    >
+                        -
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="vip-card-footer">
+
+                <span>
+
+                    <strong>
                         VIRGO VPN
-                    </div>
+                    </strong>
 
-                    <div class="vip-card-subtitle">
-                        PREMIUM VIP MEMBERSHIP
-                    </div>
-                </div>
+                    • VIP ACCESS
+
+                </span>
+
+
+                <span>
+                    OWNER : KKL
+                </span>
 
             </div>
-
-            <div class="vip-card-crown">
-                <i class="fas fa-crown"></i>
-            </div>
-
-        </div>
-
-        <div class="vip-card-line"></div>
-
-        <div class="vip-card-user" id="cardUsername">
-            VIP USER
-        </div>
-
-        <div class="vip-card-info">
-
-            <div class="vip-info">
-                <div class="vip-info-label">USER ID</div>
-                <div class="vip-info-value" id="cardId">-</div>
-            </div>
-
-            <div class="vip-info">
-                <div class="vip-info-label">EXPIRY</div>
-                <div class="vip-info-value" id="cardExpiry">-</div>
-            </div>
-
-            <div class="vip-info">
-                <div class="vip-info-label">REMAINING</div>
-                <div class="vip-info-value" id="cardDays">-</div>
-            </div>
-
-        </div>
-
-        <div class="vip-card-footer">
-
-            <span>
-                <strong>VIRGO VPN</strong> • VIP ACCESS
-            </span>
-
-            <span>
-                OWNER : KKL
-            </span>
 
         </div>
 
     </div>
 
+
+    <div
+        class="notification-small"
+        id="notification"
+    ></div>
+
 </div>
 
+</div><script>
 
-<div class="notification-small" id="notification"></div>
+/* =====================================================
+   FIREBASE
+===================================================== */
 
-</div>
-</div>
+const firebaseConfig={
 
+    apiKey:
+        "AIzaSyCFYW9uE4vn_0KqhoDC1hKaM0_uFx8w9rg",
 
-<script>
+    authDomain:
+        "virgo-vpn-panel-624bb.firebaseapp.com",
 
-/* FIREBASE */
+    projectId:
+        "virgo-vpn-panel-624bb",
 
-const firebaseConfig = {
-    apiKey: "AIzaSyCFYW9uE4vn_0KqhoDC1hKaM0_uFx8w9rg",
-    authDomain: "virgo-vpn-panel-624bb.firebaseapp.com",
-    projectId: "virgo-vpn-panel-624bb",
-    storageBucket: "virgo-vpn-panel-624bb.firebasestorage.app",
-    messagingSenderId: "306616479145",
-    appId: "1:306616479145:web:b5ec32aed6a5e2765968b8"
+    storageBucket:
+        "virgo-vpn-panel-624bb.firebasestorage.app",
+
+    messagingSenderId:
+        "306616479145",
+
+    appId:
+        "1:306616479145:web:b5ec32aed6a5e2765968b8"
+
 };
+
 
 firebase.initializeApp(firebaseConfig);
 
-const db = firebase.firestore();
-const auth = firebase.auth();
+const db=firebase.firestore();
+
+const auth=firebase.auth();
 
 
-/* GLOBAL */
+/* =====================================================
+   GLOBAL
+===================================================== */
 
 let allUsers=[];
+
 let filteredUsers=[];
+
 let currentEditToken=null;
+
 let currentCardUser=null;
 
 
-/* DOM */
+/* =====================================================
+   DOM
+===================================================== */
 
-const loginContainer=document.getElementById("loginContainer");
-const appContainer=document.getElementById("appContainer");
+const loginContainer=
+    document.getElementById("loginContainer");
 
-const usernameInput=document.getElementById("loginUsername");
-const passwordInput=document.getElementById("loginPassword");
+const appContainer=
+    document.getElementById("appContainer");
 
-const btnLogin=document.getElementById("btnLogin");
-const loginError=document.getElementById("loginError");
-const logoutBtn=document.getElementById("logoutBtn");
+const usernameInput=
+    document.getElementById("loginUsername");
 
-const formOverlay=document.getElementById("formOverlay");
-const openFormBtn=document.getElementById("openForm");
-const closeFormBtn=document.getElementById("closeForm");
+const passwordInput=
+    document.getElementById("loginPassword");
 
-const searchInput=document.getElementById("searchInput");
-const usersList=document.getElementById("usersList");
+const btnLogin=
+    document.getElementById("btnLogin");
 
-const notification=document.getElementById("notification");
+const loginError=
+    document.getElementById("loginError");
 
-const successOverlay=document.getElementById("successOverlay");
-const successModal=document.getElementById("successModal");
+const logoutBtn=
+    document.getElementById("logoutBtn");
 
-const themeToggle=document.getElementById("themeToggle");
-const backFromSearch=document.getElementById("backFromSearch");
+const formOverlay=
+    document.getElementById("formOverlay");
 
-const tokenInput=document.getElementById("token");
-const formUsernameInput=document.getElementById("formUsername");
-const expiryInput=document.getElementById("expiry");
-const isActiveInput=document.getElementById("isActive");
+const openFormBtn=
+    document.getElementById("openForm");
 
-const btnAdd=document.getElementById("btnAdd");
-const btnUpdate=document.getElementById("btnUpdate");
-const btnBack=document.getElementById("btnBack");
-const btnExtend=document.getElementById("btnExtend");
-const extendBox=document.getElementById("extendBox");
+const closeFormBtn=
+    document.getElementById("closeForm");
 
-const successId=document.getElementById("successId");
-const successUsername=document.getElementById("successUsername");
-const successExpiry=document.getElementById("successExpiry");
-const successStatus=document.getElementById("successStatus");
-const successDayLeft=document.getElementById("successDayLeft");
+const searchInput=
+    document.getElementById("searchInput");
 
-const successTitle=document.getElementById("successTitle");
-const successMessage=document.getElementById("successMessage");
+const usersList=
+    document.getElementById("usersList");
 
-const btnOk=document.getElementById("btnOk");
-const btnSaveImage=document.getElementById("btnSaveImage");
+const notification=
+    document.getElementById("notification");
 
-const totalUsersEl=document.getElementById("totalUsers");
-const activeUsersEl=document.getElementById("activeUsers");
-const inactiveUsersEl=document.getElementById("inactiveUsers");
-const offlineUsersEl=document.getElementById("offlineUsers");
+const successOverlay=
+    document.getElementById("successOverlay");
 
-const cardUsername=document.getElementById("cardUsername");
-const cardId=document.getElementById("cardId");
-const cardExpiry=document.getElementById("cardExpiry");
-const cardDays=document.getElementById("cardDays");
-const vipCard=document.getElementById("vipCard");
+const themeToggle=
+    document.getElementById("themeToggle");
+
+const backFromSearch=
+    document.getElementById("backFromSearch");
+
+const tokenInput=
+    document.getElementById("token");
+
+const formUsernameInput=
+    document.getElementById("formUsername");
+
+const expiryInput=
+    document.getElementById("expiry");
+
+const isActiveInput=
+    document.getElementById("isActive");
+
+const btnAdd=
+    document.getElementById("btnAdd");
+
+const btnUpdate=
+    document.getElementById("btnUpdate");
+
+const btnBack=
+    document.getElementById("btnBack");
+
+const btnExtend=
+    document.getElementById("btnExtend");
+
+const extendBox=
+    document.getElementById("extendBox");
+
+const successId=
+    document.getElementById("successId");
+
+const successUsername=
+    document.getElementById("successUsername");
+
+const successExpiry=
+    document.getElementById("successExpiry");
+
+const successStatus=
+    document.getElementById("successStatus");
+
+const successDayLeft=
+    document.getElementById("successDayLeft");
+
+const successTitle=
+    document.getElementById("successTitle");
+
+const successMessage=
+    document.getElementById("successMessage");
+
+const btnOk=
+    document.getElementById("btnOk");
+
+const btnSaveImage=
+    document.getElementById("btnSaveImage");
+
+const totalUsersEl=
+    document.getElementById("totalUsers");
+
+const activeUsersEl=
+    document.getElementById("activeUsers");
+
+const inactiveUsersEl=
+    document.getElementById("inactiveUsers");
+
+const offlineUsersEl=
+    document.getElementById("offlineUsers");
 
 
-/* AUTH */
+/* CARD DOM */
 
-document.addEventListener("DOMContentLoaded",()=>{
+const cardUsername=
+    document.getElementById("cardUsername");
 
-    auth.onAuthStateChanged(user=>{
+const cardId=
+    document.getElementById("cardId");
 
-        if(user){
+const cardExpiry=
+    document.getElementById("cardExpiry");
 
-            showApp();
+const cardDays=
+    document.getElementById("cardDays");
 
-        }else{
+const vipCard=
+    document.getElementById("vipCard");
 
-            appContainer.style.display="none";
-            loginContainer.style.display="flex";
 
-        }
+/* =====================================================
+   AUTH
+===================================================== */
 
-    });
+document.addEventListener(
+    "DOMContentLoaded",
+    ()=>{
 
-    btnLogin.addEventListener("click",handleLogin);
+        auth.onAuthStateChanged(
+            user=>{
 
-    usernameInput.addEventListener("keypress",e=>{
-        if(e.key==="Enter") handleLogin();
-    });
+                if(user){
 
-    passwordInput.addEventListener("keypress",e=>{
-        if(e.key==="Enter") handleLogin();
-    });
+                    showApp();
 
-    logoutBtn.addEventListener("click",handleLogout);
+                }else{
 
-});
+                    appContainer.style.display="none";
 
+                    loginContainer.style.display="flex";
+
+                }
+
+            }
+        );
+
+
+        btnLogin.addEventListener(
+            "click",
+            handleLogin
+        );
+
+
+        usernameInput.addEventListener(
+            "keypress",
+            e=>{
+
+                if(e.key==="Enter")
+                    handleLogin();
+
+            }
+        );
+
+
+        passwordInput.addEventListener(
+            "keypress",
+            e=>{
+
+                if(e.key==="Enter")
+                    handleLogin();
+
+            }
+        );
+
+
+        logoutBtn.addEventListener(
+            "click",
+            handleLogout
+        );
+
+    }
+);
+
+
+/* LOGIN */
 
 async function handleLogin(){
 
-    const email=usernameInput.value.trim();
-    const password=passwordInput.value.trim();
+    const email=
+        usernameInput.value.trim();
+
+    const password=
+        passwordInput.value.trim();
 
     loginError.style.display="none";
 
+
     if(!email || !password){
 
-        loginError.textContent="Enter your email and password";
+        loginError.textContent=
+            "Enter your email and password";
+
         loginError.style.display="block";
+
         return;
 
     }
 
+
     btnLogin.disabled=true;
+
 
     try{
 
@@ -1701,7 +2432,9 @@ async function handleLogin(){
 
         console.error(error);
 
-        loginError.textContent="Invalid email or password";
+        loginError.textContent=
+            "Invalid email or password";
+
         loginError.style.display="block";
 
         passwordInput.value="";
@@ -1715,24 +2448,35 @@ async function handleLogin(){
 }
 
 
+/* LOGOUT */
+
 async function handleLogout(){
 
-    if(!confirm("Are you sure you want to logout?"))
+    if(
+        !confirm(
+            "Are you sure you want to logout?"
+        )
+    )
         return;
+
 
     await auth.signOut();
 
     appContainer.style.display="none";
+
     loginContainer.style.display="flex";
 
 }
 
 
-/* APP */
+/* =====================================================
+   APP
+===================================================== */
 
 function showApp(){
 
     loginContainer.style.display="none";
+
     appContainer.style.display="block";
 
     initApp();
@@ -1743,10 +2487,13 @@ function showApp(){
 function initApp(){
 
     openFormBtn.onclick=openForm;
+
     closeFormBtn.onclick=closeForm;
 
     btnAdd.onclick=addUser;
+
     btnUpdate.onclick=updateUser;
+
     btnBack.onclick=closeForm;
 
     btnExtend.onclick=extend30Days;
@@ -1754,33 +2501,51 @@ function initApp(){
     searchInput.oninput=filterUsers;
 
     themeToggle.onclick=toggleTheme;
+
     backFromSearch.onclick=clearSearch;
 
     btnOk.onclick=closeSuccessModal;
+
     btnSaveImage.onclick=saveAsImage;
 
     loadTheme();
+
     loadUsers();
 
 }
 
 
-/* THEME */
+/* =====================================================
+   THEME
+===================================================== */
 
 function toggleTheme(){
 
-    document.body.classList.toggle("light-mode");
+    document.body.classList.toggle(
+        "light-mode"
+    );
 
     const light=
-        document.body.classList.contains("light-mode");
+        document.body.classList.contains(
+            "light-mode"
+        );
 
-    themeToggle.innerHTML=light
-        ? '<i class="fas fa-sun"></i>'
-        : '<i class="fas fa-moon"></i>';
+
+    themeToggle.innerHTML=
+        light
+        ?
+        '<i class="fas fa-sun"></i>'
+        :
+        '<i class="fas fa-moon"></i>';
+
 
     localStorage.setItem(
         "theme",
-        light ? "light" : "dark"
+        light
+        ?
+        "light"
+        :
+        "dark"
     );
 
 }
@@ -1788,11 +2553,15 @@ function toggleTheme(){
 
 function loadTheme(){
 
-    const theme=localStorage.getItem("theme");
+    const theme=
+        localStorage.getItem("theme");
+
 
     if(theme==="light"){
 
-        document.body.classList.add("light-mode");
+        document.body.classList.add(
+            "light-mode"
+        );
 
         themeToggle.innerHTML=
             '<i class="fas fa-sun"></i>';
@@ -1802,111 +2571,197 @@ function loadTheme(){
 }
 
 
-/* FIRESTORE */
+/* =====================================================
+   FIRESTORE
+===================================================== */
 
 function loadUsers(){
 
-    db.collection("users").onSnapshot(snapshot=>{
+    db.collection("users")
+    .onSnapshot(
 
-        allUsers=[];
+        snapshot=>{
 
-        let active=0;
-        let inactive=0;
-        let expired=0;
+            allUsers=[];
 
-        snapshot.forEach(doc=>{
+            let active=0;
 
-            const user={
-                token:doc.id,
-                ...doc.data()
-            };
+            let inactive=0;
 
-            allUsers.push(user);
+            let expired=0;
 
-            const isExpired=user.expiryDate
-                ? isDateExpired(user.expiryDate)
-                : true;
 
-            if(isExpired){
+            snapshot.forEach(
+                doc=>{
 
-                expired++;
+                    const user={
+                        token:doc.id,
+                        ...doc.data()
+                    };
 
-            }else if(user.isActive){
 
-                active++;
+                    allUsers.push(user);
 
-            }else{
 
-                inactive++;
+                    const isExpired=
+                        user.expiryDate
+                        ?
+                        isDateExpired(
+                            user.expiryDate
+                        )
+                        :
+                        true;
 
-            }
 
-        });
+                    if(isExpired){
 
-        totalUsersEl.textContent=allUsers.length;
-        activeUsersEl.textContent=active;
-        inactiveUsersEl.textContent=inactive;
-        offlineUsersEl.textContent=expired;
+                        expired++;
 
-        filteredUsers=[...allUsers];
+                    }else if(user.isActive){
 
-        renderUsers();
+                        active++;
 
-    },error=>{
+                    }else{
 
-        console.error(error);
+                        inactive++;
 
-        usersList.innerHTML=`
-            <div class="empty-state-small">
-                <i class="fas fa-triangle-exclamation"></i>
-                <h3>Database Error</h3>
-                <p>${escapeHtml(error.message)}</p>
-            </div>
-        `;
+                    }
 
-    });
+                }
+            );
+
+
+            totalUsersEl.textContent=
+                allUsers.length;
+
+            activeUsersEl.textContent=
+                active;
+
+            inactiveUsersEl.textContent=
+                inactive;
+
+            offlineUsersEl.textContent=
+                expired;
+
+
+            filteredUsers=[
+                ...allUsers
+            ];
+
+
+            renderUsers();
+
+        },
+
+        error=>{
+
+            console.error(error);
+
+            usersList.innerHTML=`
+
+                <div class="empty-state-small">
+
+                    <i class="fas fa-triangle-exclamation"></i>
+
+                    <h3>
+                        Database Error
+                    </h3>
+
+                    <p>
+                        ${escapeHtml(
+                            error.message
+                        )}
+                    </p>
+
+                </div>
+
+            `;
+
+        }
+
+    );
 
 }
 
 
-/* DATE */
+/* =====================================================
+   DATE
+===================================================== */
 
 function parseDate(value){
 
-    if(!value) return null;
+    if(!value)
+        return null;
+
 
     if(value instanceof Date)
         return new Date(value);
 
-    if(typeof value==="object" && value.toDate)
+
+    if(
+        typeof value==="object"
+        &&
+        value.toDate
+    )
         return value.toDate();
 
-    let str=String(value).trim();
 
-    str=str.replace(/\./g,"-").replace(/\//g,"-");
+    let str=
+        String(value).trim();
 
-    const parts=str.split("-");
+
+    str=
+        str
+        .replace(/\./g,"-")
+        .replace(/\//g,"-");
+
+
+    const parts=
+        str.split("-");
+
 
     if(parts.length!==3)
         return null;
 
-    const y=parseInt(parts[0]);
-    const m=parseInt(parts[1]);
-    const d=parseInt(parts[2]);
+
+    const y=
+        parseInt(parts[0]);
+
+    const m=
+        parseInt(parts[1]);
+
+    const d=
+        parseInt(parts[2]);
+
 
     if(!y || !m || !d)
         return null;
 
-    return new Date(y,m-1,d);
+
+    return new Date(
+        y,
+        m-1,
+        d
+    );
 
 }
 
 
 function formatDate(date){
 
-    const y=date.getFullYear();
-    const m=String(date.getMonth()+1).padStart(2,"0");
-    const d=String(date.getDate()).padStart(2,"0");
+    const y=
+        date.getFullYear();
+
+    const m=
+        String(
+            date.getMonth()+1
+        ).padStart(2,"0");
+
+    const d=
+        String(
+            date.getDate()
+        ).padStart(2,"0");
+
 
     return `${y}-${m}-${d}`;
 
@@ -1915,15 +2770,26 @@ function formatDate(date){
 
 function isDateExpired(value){
 
-    const date=parseDate(value);
+    const date=
+        parseDate(value);
+
 
     if(!date)
         return true;
 
-    const today=new Date();
 
-    today.setHours(0,0,0,0);
-    date.setHours(0,0,0,0);
+    const today=
+        new Date();
+
+
+    today.setHours(
+        0,0,0,0
+    );
+
+    date.setHours(
+        0,0,0,0
+    );
+
 
     return date<today;
 
@@ -1932,38 +2798,65 @@ function isDateExpired(value){
 
 function calculateDaysRemaining(value){
 
-    const date=parseDate(value);
+    const date=
+        parseDate(value);
 
-    if(!date)
-        return {
+
+    if(!date){
+
+        return{
             days:0,
             text:"No date"
         };
 
-    const today=new Date();
+    }
 
-    today.setHours(0,0,0,0);
-    date.setHours(0,0,0,0);
 
-    const diff=Math.ceil(
-        (date-today)/86400000
+    const today=
+        new Date();
+
+
+    today.setHours(
+        0,0,0,0
     );
 
-    if(diff<0)
-        return {
+    date.setHours(
+        0,0,0,0
+    );
+
+
+    const diff=
+        Math.ceil(
+            (date-today)/86400000
+        );
+
+
+    if(diff<0){
+
+        return{
             days:0,
             text:"Expired"
         };
 
-    if(diff===0)
-        return {
+    }
+
+
+    if(diff===0){
+
+        return{
             days:0,
             text:"Today"
         };
 
-    return {
+    }
+
+
+    return{
+
         days:diff,
+
         text:`${diff} days`
+
     };
 
 }
@@ -1974,34 +2867,50 @@ function calculateProgressPercentage(value){
     const result=
         calculateDaysRemaining(value);
 
+
     if(result.days<=0){
 
-        return {
+        return{
+
             percentage:0,
+
             color:"red",
+
             text:"Expired"
+
         };
 
     }
 
+
     let percentage=
         Math.min(
             100,
-            Math.round((result.days/30)*100)
+            Math.round(
+                (result.days/30)*100
+            )
         );
 
+
     let color="green";
+
 
     if(result.days<=10)
         color="yellow";
 
+
     if(result.days<=5)
         color="red";
 
-    return {
+
+    return{
+
         percentage,
+
         color,
+
         text:`${percentage}%`
+
     };
 
 }
@@ -2009,8 +2918,11 @@ function calculateProgressPercentage(value){
 
 function getDayLeftColor(days){
 
-    if(days<=5) return "red";
-    if(days<=10) return "yellow";
+    if(days<=5)
+        return "red";
+
+    if(days<=10)
+        return "yellow";
 
     return "green";
 
@@ -2021,39 +2933,63 @@ function getUserStatus(user){
 
     const expired=
         user.expiryDate
-        ? isDateExpired(user.expiryDate)
-        : true;
+        ?
+        isDateExpired(
+            user.expiryDate
+        )
+        :
+        true;
+
 
     if(expired){
 
-        return {
+        return{
+
             statusClass:"expired",
+
             statusText:"Expired",
-            statusTextClass:"status-text-expired"
+
+            statusTextClass:
+                "status-text-expired"
+
         };
 
     }
+
 
     if(user.isActive){
 
-        return {
+        return{
+
             statusClass:"active",
+
             statusText:"Online",
-            statusTextClass:"status-text-online"
+
+            statusTextClass:
+                "status-text-online"
+
         };
 
     }
 
-    return {
+
+    return{
+
         statusClass:"inactive",
+
         statusText:"Offline",
-        statusTextClass:"status-text-offline"
+
+        statusTextClass:
+            "status-text-offline"
+
     };
 
 }
 
 
-/* USER CARD */
+/* =====================================================
+   USER CARD
+===================================================== */
 
 function createUserCard(user){
 
@@ -2062,28 +2998,41 @@ function createUserCard(user){
             user.expiryDate
         );
 
+
     const progress=
         calculateProgressPercentage(
             user.expiryDate
         );
 
+
     const dayColor=
-        getDayLeftColor(days.days);
+        getDayLeftColor(
+            days.days
+        );
+
 
     const status=
         getUserStatus(user);
 
-    const safeToken=
-        encodeURIComponent(user.token);
 
-    return `
+    const safeToken=
+        encodeURIComponent(
+            user.token
+        );
+
+
+    return`
 
 <div class="user-item ${status.statusClass}">
 
     <div class="vip-badge">
+
         <i class="fas fa-crown"></i>
+
         VIP
+
     </div>
+
 
     <div class="status-display-row">
 
@@ -2097,6 +3046,7 @@ function createUserCard(user){
 
     </div>
 
+
     <div class="user-header-small">
 
         <div class="user-name-container">
@@ -2104,26 +3054,33 @@ function createUserCard(user){
             <div class="status-light ${status.statusClass}"></div>
 
             <div class="user-name">
-                ${escapeHtml(user.username || user.token)}
+                ${escapeHtml(
+                    user.username ||
+                    user.token
+                )}
             </div>
 
         </div>
+
 
         <div class="user-actions">
 
             <button
                 class="btn-action btn-edit"
                 data-edit="${safeToken}"
-                title="Edit">
+                title="Edit"
+            >
 
                 <i class="fas fa-pen"></i>
 
             </button>
 
+
             <button
                 class="btn-action btn-delete"
                 data-delete="${safeToken}"
-                title="Delete">
+                title="Delete"
+            >
 
                 <i class="fas fa-trash"></i>
 
@@ -2133,41 +3090,81 @@ function createUserCard(user){
 
     </div>
 
+
     <div class="user-details-small">
 
+
         <div class="detail-row">
+
             <i class="fas fa-fingerprint"></i>
-            <span class="detail-label">ID</span>
-            <span class="detail-value">
-                ${escapeHtml(user.token)}
+
+            <span class="detail-label">
+                ID
             </span>
+
+            <span class="detail-value">
+                ${escapeHtml(
+                    user.token
+                )}
+            </span>
+
         </div>
 
+
         <div class="detail-row">
+
             <i class="fas fa-user"></i>
-            <span class="detail-label">User</span>
-            <span class="detail-value">
-                ${escapeHtml(user.username || user.token)}
+
+            <span class="detail-label">
+                User
             </span>
+
+            <span class="detail-value">
+                ${escapeHtml(
+                    user.username ||
+                    user.token
+                )}
+            </span>
+
         </div>
 
+
         <div class="detail-row">
+
             <i class="fas fa-calendar"></i>
-            <span class="detail-label">Expiry</span>
-            <span class="detail-value">
-                ${escapeHtml(String(user.expiryDate || "No date"))}
+
+            <span class="detail-label">
+                Expiry
             </span>
+
+            <span class="detail-value">
+                ${escapeHtml(
+                    String(
+                        user.expiryDate ||
+                        "No date"
+                    )
+                )}
+            </span>
+
         </div>
 
+
         <div class="detail-row">
+
             <i class="fas fa-hourglass-half"></i>
-            <span class="detail-label">Left</span>
+
+            <span class="detail-label">
+                Left
+            </span>
+
             <span class="detail-value day-left ${dayColor}">
                 ${days.text}
             </span>
+
         </div>
 
     </div>
+
 
     <div class="progress-container">
 
@@ -2183,12 +3180,13 @@ function createUserCard(user){
 
         </div>
 
+
         <div class="progress-bar">
 
             <div
                 class="progress-fill ${progress.color}"
-                style="width:${progress.percentage}%">
-            </div>
+                style="width:${progress.percentage}%"
+            ></div>
 
         </div>
 
@@ -2201,28 +3199,42 @@ function createUserCard(user){
 }
 
 
-/* RENDER */
+/* =====================================================
+   RENDER
+===================================================== */
 
 function renderUsers(){
 
     if(filteredUsers.length===0){
 
         usersList.innerHTML=`
+
             <div class="empty-state-small">
+
                 <i class="fas fa-user-slash"></i>
-                <h3>No Users Found</h3>
-                <p>Try another search</p>
+
+                <h3>
+                    No Users Found
+                </h3>
+
+                <p>
+                    Try another search
+                </p>
+
             </div>
+
         `;
 
         return;
 
     }
 
+
     usersList.innerHTML=
         filteredUsers
         .map(createUserCard)
         .join("");
+
 
     attachUserButtons();
 
@@ -2235,40 +3247,49 @@ function attachUserButtons(){
     .querySelectorAll("[data-edit]")
     .forEach(button=>{
 
-        button.addEventListener("click",()=>{
+        button.addEventListener(
+            "click",
+            ()=>{
 
-            const token=
-                decodeURIComponent(
-                    button.dataset.edit
-                );
+                const token=
+                    decodeURIComponent(
+                        button.dataset.edit
+                    );
 
-            fillForm(token);
+                fillForm(token);
 
-        });
+            }
+        );
 
     });
+
 
     document
     .querySelectorAll("[data-delete]")
     .forEach(button=>{
 
-        button.addEventListener("click",()=>{
+        button.addEventListener(
+            "click",
+            ()=>{
 
-            const token=
-                decodeURIComponent(
-                    button.dataset.delete
-                );
+                const token=
+                    decodeURIComponent(
+                        button.dataset.delete
+                    );
 
-            deleteUserByToken(token);
+                deleteUserByToken(token);
 
-        });
+            }
+        );
 
     });
 
 }
 
 
-/* SEARCH */
+/* =====================================================
+   SEARCH
+===================================================== */
 
 function filterUsers(){
 
@@ -2277,31 +3298,48 @@ function filterUsers(){
         .toLowerCase()
         .trim();
 
+
     backFromSearch.style.display=
-        keyword ? "flex" : "none";
+        keyword
+        ?
+        "flex"
+        :
+        "none";
+
 
     if(!keyword){
 
-        filteredUsers=[...allUsers];
+        filteredUsers=[
+            ...allUsers
+        ];
+
         renderUsers();
+
         return;
 
     }
 
+
     filteredUsers=
-        allUsers.filter(user=>
+        allUsers.filter(
+            user=>
 
-            String(user.token || "")
-            .toLowerCase()
-            .includes(keyword)
+                String(
+                    user.token || ""
+                )
+                .toLowerCase()
+                .includes(keyword)
 
-            ||
+                ||
 
-            String(user.username || "")
-            .toLowerCase()
-            .includes(keyword)
+                String(
+                    user.username || ""
+                )
+                .toLowerCase()
+                .includes(keyword)
 
         );
+
 
     renderUsers();
 
@@ -2311,29 +3349,37 @@ function filterUsers(){
 function clearSearch(){
 
     searchInput.value="";
-    backFromSearch.style.display="none";
 
-    filteredUsers=[...allUsers];
+    backFromSearch.style.display=
+        "none";
+
+    filteredUsers=[
+        ...allUsers
+    ];
 
     renderUsers();
 
 }
 
 
-/* FORM */
+/* =====================================================
+   FORM
+===================================================== */
 
 function openForm(){
 
     clearForm();
 
-    formOverlay.style.display="flex";
+    formOverlay.style.display=
+        "flex";
 
 }
 
 
 function closeForm(){
 
-    formOverlay.style.display="none";
+    formOverlay.style.display=
+        "none";
 
     clearForm();
 
@@ -2343,20 +3389,30 @@ function closeForm(){
 function clearForm(){
 
     tokenInput.value="";
+
     tokenInput.disabled=false;
 
     formUsernameInput.value="";
 
-    const today=new Date();
+
+    const today=
+        new Date();
+
 
     expiryInput.value=
         formatDate(today);
 
-    isActiveInput.checked=true;
 
-    currentEditToken=null;
+    isActiveInput.checked=
+        true;
 
-    extendBox.style.display="none";
+
+    currentEditToken=
+        null;
+
+
+    extendBox.style.display=
+        "none";
 
 }
 
@@ -2367,6 +3423,7 @@ function fillForm(token){
         allUsers.find(
             u=>u.token===token
         );
+
 
     if(!user){
 
@@ -2379,36 +3436,59 @@ function fillForm(token){
 
     }
 
-    tokenInput.value=user.token;
-    tokenInput.disabled=true;
+
+    tokenInput.value=
+        user.token;
+
+    tokenInput.disabled=
+        true;
+
 
     formUsernameInput.value=
         user.username || "";
 
-    const parsed=parseDate(user.expiryDate);
+
+    const parsed=
+        parseDate(
+            user.expiryDate
+        );
+
 
     expiryInput.value=
         parsed
-        ? formatDate(parsed)
-        : formatDate(new Date());
+        ?
+        formatDate(parsed)
+        :
+        formatDate(new Date());
+
 
     isActiveInput.checked=
-        user.isActive === true;
+        user.isActive===true;
 
-    currentEditToken=user.token;
 
-    extendBox.style.display="block";
+    currentEditToken=
+        user.token;
 
-    formOverlay.style.display="flex";
+
+    extendBox.style.display=
+        "block";
+
+
+    formOverlay.style.display=
+        "flex";
 
 }
 
 
-/* EXTEND 30 DAYS */
+/* =====================================================
+   EXTEND 30 DAYS
+===================================================== */
 
 async function extend30Days(){
 
-    const token=currentEditToken;
+    const token=
+        currentEditToken;
+
 
     if(!token){
 
@@ -2421,10 +3501,12 @@ async function extend30Days(){
 
     }
 
+
     const user=
         allUsers.find(
             u=>u.token===token
         );
+
 
     if(!user){
 
@@ -2437,54 +3519,82 @@ async function extend30Days(){
 
     }
 
-    let baseDate=parseDate(
-        user.expiryDate
+
+    let baseDate=
+        parseDate(
+            user.expiryDate
+        );
+
+
+    const today=
+        new Date();
+
+
+    today.setHours(
+        0,0,0,0
     );
 
-    const today=new Date();
 
-    today.setHours(0,0,0,0);
+    if(
+        !baseDate ||
+        baseDate<today
+    ){
 
-    if(!baseDate || baseDate<today){
-
-        baseDate=new Date(today);
+        baseDate=
+            new Date(today);
 
     }
+
 
     baseDate.setDate(
         baseDate.getDate()+30
     );
 
+
     const newExpiry=
-        formatDate(baseDate);
+        formatDate(
+            baseDate
+        );
+
 
     try{
 
-        await db.collection("users")
+        await db
+        .collection("users")
         .doc(token)
         .set({
 
             expiryDate:newExpiry,
+
             isActive:true
 
         },{
             merge:true
         });
 
-        expiryInput.value=newExpiry;
-        isActiveInput.checked=true;
+
+        expiryInput.value=
+            newExpiry;
+
+
+        isActiveInput.checked=
+            true;
+
 
         showNotification(
             `Extended 30 days • ${newExpiry}`,
             "success"
         );
 
+
     }catch(error){
 
         console.error(error);
 
+
         showNotification(
-            "Extend failed: "+error.message,
+            "Extend failed: "+
+            error.message,
             "error"
         );
 
@@ -2493,21 +3603,27 @@ async function extend30Days(){
 }
 
 
-/* ADD */
+/* =====================================================
+   ADD
+===================================================== */
 
 async function addUser(){
 
     const token=
         tokenInput.value.trim();
 
+
     const username=
         formUsernameInput.value.trim();
+
 
     const expiryDate=
         expiryInput.value;
 
+
     const isActive=
         isActiveInput.checked;
+
 
     if(!token){
 
@@ -2520,6 +3636,7 @@ async function addUser(){
 
     }
 
+
     if(!expiryDate){
 
         showNotification(
@@ -2531,9 +3648,11 @@ async function addUser(){
 
     }
 
+
     try{
 
-        await db.collection("users")
+        await db
+        .collection("users")
         .doc(token)
         .set({
 
@@ -2541,26 +3660,34 @@ async function addUser(){
                 username || token,
 
             expiryDate,
+
             isActive
 
         });
 
+
         closeForm();
 
-        showSuccessMessage({
 
-            token,
-            username:
-                username || token,
+        showSuccessMessage(
+            {
+                token,
 
-            expiryDate,
-            isActive
+                username:
+                    username || token,
 
-        },"added");
+                expiryDate,
+
+                isActive
+            },
+            "added"
+        );
+
 
     }catch(error){
 
         console.error(error);
+
 
         showNotification(
             "Error adding user: "+
@@ -2573,13 +3700,16 @@ async function addUser(){
 }
 
 
-/* UPDATE */
+/* =====================================================
+   UPDATE
+===================================================== */
 
 async function updateUser(){
 
     const token=
         currentEditToken ||
         tokenInput.value.trim();
+
 
     if(!token){
 
@@ -2592,18 +3722,23 @@ async function updateUser(){
 
     }
 
+
     const username=
         formUsernameInput.value.trim();
+
 
     const expiryDate=
         expiryInput.value;
 
+
     const isActive=
         isActiveInput.checked;
 
+
     try{
 
-        await db.collection("users")
+        await db
+        .collection("users")
         .doc(token)
         .set({
 
@@ -2611,28 +3746,37 @@ async function updateUser(){
                 username || token,
 
             expiryDate,
+
             isActive
 
         },{
             merge:true
         });
 
+
         closeForm();
 
-        showSuccessMessage({
 
-            token,
-            username:
-                username || token,
+        showSuccessMessage(
+            {
+                token,
 
-            expiryDate,
-            isActive
+                username:
+                    username || token,
 
-        },"updated");
+                expiryDate,
+
+                isActive
+
+            },
+            "updated"
+        );
+
 
     }catch(error){
 
         console.error(error);
+
 
         showNotification(
             "Error updating user: "+
@@ -2645,42 +3789,56 @@ async function updateUser(){
 }
 
 
-/* DELETE */
+/* =====================================================
+   DELETE
+===================================================== */
 
 async function deleteUserByToken(token){
 
     if(!token)
         return;
 
+
     const user=
         allUsers.find(
             u=>u.token===token
         );
 
+
     const name=
         user
-        ? user.username || token
-        : token;
+        ?
+        user.username || token
+        :
+        token;
 
-    if(!confirm(
-        `Delete user "${name}"?\n\nThis action cannot be undone.`
-    ))
+
+    if(
+        !confirm(
+            `Delete user "${name}"?\n\nThis action cannot be undone.`
+        )
+    )
         return;
+
 
     try{
 
-        await db.collection("users")
+        await db
+        .collection("users")
         .doc(token)
         .delete();
+
 
         showNotification(
             "User deleted successfully",
             "success"
         );
 
+
     }catch(error){
 
         console.error(error);
+
 
         showNotification(
             "Error deleting user: "+
@@ -2693,38 +3851,56 @@ async function deleteUserByToken(token){
 }
 
 
-/* SUCCESS */
+/* =====================================================
+   SUCCESS
+===================================================== */
 
-function showSuccessMessage(user,type){
+function showSuccessMessage(
+    user,
+    type
+){
 
     const status=
         getUserStatus(user);
+
 
     const days=
         calculateDaysRemaining(
             user.expiryDate
         );
 
-    currentCardUser=user;
 
-    successId.textContent=user.token;
+    currentCardUser=
+        user;
+
+
+    successId.textContent=
+        user.token;
+
 
     successUsername.textContent=
-        user.username || user.token;
+        user.username ||
+        user.token;
+
 
     successExpiry.textContent=
-        user.expiryDate || "No date";
+        user.expiryDate ||
+        "No date";
+
 
     successStatus.textContent=
         status.statusText;
 
+
     successDayLeft.textContent=
         days.text;
+
 
     if(type==="added"){
 
         successTitle.textContent=
             "User Added Successfully";
+
 
         successMessage.textContent=
             "VIP account has been added.";
@@ -2734,17 +3910,22 @@ function showSuccessMessage(user,type){
         successTitle.textContent=
             "User Updated Successfully";
 
+
         successMessage.textContent=
             "VIP account has been updated.";
 
     }
 
-    successOverlay.style.display="flex";
+
+    successOverlay.style.display=
+        "flex";
 
 }
 
 
-/* VISITING CARD */
+/* =====================================================
+   PREPARE CARD
+===================================================== */
 
 function prepareVipCard(user){
 
@@ -2753,20 +3934,30 @@ function prepareVipCard(user){
             user.expiryDate
         );
 
+
     cardUsername.textContent=
-        user.username || user.token;
+        user.username ||
+        user.token;
+
 
     cardId.textContent=
         user.token;
 
+
     cardExpiry.textContent=
-        user.expiryDate || "No date";
+        user.expiryDate ||
+        "No date";
+
 
     cardDays.textContent=
         days.text;
 
 }
 
+
+/* =====================================================
+   SAVE HIGH QUALITY CARD
+===================================================== */
 
 async function saveAsImage(){
 
@@ -2781,45 +3972,154 @@ async function saveAsImage(){
 
     }
 
-    prepareVipCard(currentCardUser);
+
+    prepareVipCard(
+        currentCardUser
+    );
+
 
     try{
+
+        vipCard.style.display=
+            "block";
+
+
+        /*
+         * Wait for logo
+         */
+
+        const images=
+            vipCard.querySelectorAll(
+                "img"
+            );
+
+
+        await Promise.all(
+
+            Array.from(images)
+            .map(
+                img=>{
+
+                    if(img.complete)
+                        return Promise.resolve();
+
+
+                    return new Promise(
+                        resolve=>{
+
+                            img.onload=
+                                resolve;
+
+                            img.onerror=
+                                resolve;
+
+                        }
+                    );
+
+                }
+            )
+
+        );
+
+
+        /*
+         * Wait for browser fonts
+         */
+
+        if(document.fonts){
+
+            await document.fonts.ready;
+
+        }
+
+
+        /*
+         * Small delay to make sure
+         * everything has been painted.
+         */
+
+        await new Promise(
+            resolve=>
+                setTimeout(
+                    resolve,
+                    250
+                )
+        );
+
+
+        /*
+         * High quality canvas
+         */
 
         const canvas=
             await html2canvas(
                 vipCard,
                 {
-                    scale:2,
-                    backgroundColor:"#0b1020",
-                    useCORS:true
+
+                    scale:3,
+
+                    backgroundColor:
+                        "#0b1020",
+
+                    useCORS:true,
+
+                    allowTaint:false,
+
+                    logging:false,
+
+                    imageTimeout:
+                        15000,
+
+                    removeContainer:true
+
                 }
             );
 
+
+        /*
+         * Download PNG
+         */
+
         const link=
-            document.createElement("a");
+            document.createElement(
+                "a"
+            );
+
 
         link.download=
             `VIRGO_VPN_${safeFileName(
                 currentCardUser.token
             )}.png`;
 
-        link.href=
-            canvas.toDataURL("image/png");
 
-        document.body.appendChild(link);
+        link.href=
+            canvas.toDataURL(
+                "image/png",
+                1.0
+            );
+
+
+        document.body.appendChild(
+            link
+        );
+
 
         link.click();
 
+
         link.remove();
+
 
         showNotification(
             "VIP visiting card saved",
             "success"
         );
 
+
     }catch(error){
 
         console.error(error);
+
 
         showNotification(
             "Could not save card",
@@ -2831,16 +4131,21 @@ async function saveAsImage(){
 }
 
 
-/* SUCCESS CLOSE */
+/* =====================================================
+   CLOSE SUCCESS
+===================================================== */
 
 function closeSuccessModal(){
 
-    successOverlay.style.display="none";
+    successOverlay.style.display=
+        "none";
 
 }
 
 
-/* NOTIFICATION */
+/* =====================================================
+   NOTIFICATION
+===================================================== */
 
 function showNotification(
     message,
@@ -2849,43 +4154,83 @@ function showNotification(
 
     const icon=
         type==="success"
-        ? "fas fa-check-circle"
-        : type==="error"
-        ? "fas fa-circle-exclamation"
-        : "fas fa-circle-info";
+        ?
+        "fas fa-check-circle"
+        :
+        type==="error"
+        ?
+        "fas fa-circle-exclamation"
+        :
+        "fas fa-circle-info";
+
 
     notification.innerHTML=`
+
         <i class="${icon}"></i>
-        <span>${escapeHtml(message)}</span>
+
+        <span>
+            ${escapeHtml(message)}
+        </span>
+
     `;
+
 
     notification.className=
         `notification-small ${type} show`;
+
 
     clearTimeout(
         notification._timer
     );
 
+
     notification._timer=
-        setTimeout(()=>{
+        setTimeout(
+            ()=>{
 
-            notification.classList.remove("show");
+                notification.classList.remove(
+                    "show"
+                );
 
-        },3000);
+            },
+            3000
+        );
 
 }
 
 
-/* HELPERS */
+/* =====================================================
+   HELPERS
+===================================================== */
 
 function escapeHtml(value){
 
     return String(value)
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;")
-        .replace(/'/g,"&#039;");
+
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&#039;"
+        );
 
 }
 
@@ -2893,29 +4238,44 @@ function escapeHtml(value){
 function safeFileName(value){
 
     return String(value)
-        .replace(/[^a-z0-9_-]/gi,"_")
-        .slice(0,60);
+
+        .replace(
+            /[^a-z0-9_-]/gi,
+            "_"
+        )
+
+        .slice(
+            0,
+            60
+        );
 
 }
 
 
-/* CLOSE MODALS WHEN CLICK OUTSIDE */
+/* =====================================================
+   CLOSE MODAL OUTSIDE
+===================================================== */
 
-formOverlay.addEventListener("click",e=>{
+formOverlay.addEventListener(
+    "click",
+    e=>{
 
-    if(e.target===formOverlay)
-        closeForm();
+        if(e.target===formOverlay)
+            closeForm();
 
-});
+    }
+);
 
-successOverlay.addEventListener("click",e=>{
 
-    if(e.target===successOverlay)
-        closeSuccessModal();
+successOverlay.addEventListener(
+    "click",
+    e=>{
 
-});
+        if(e.target===successOverlay)
+            closeSuccessModal();
 
-</script>
+    }
+);
 
-</body>
+</script></body>
 </html>
