@@ -1,9 +1,23 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>VIRGO VPN PANEL</title><meta name="theme-color" content="#080b14"><link rel="icon" href="https://raw.githubusercontent.com/kyawkolatt2026-alt/virgovpn/main/file_00000000db78821181d9b896c0f7b588.png"><link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"><script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script><script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script><script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script><script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script><style>
+<title>VIRGO VPN PANEL</title>
+
+<meta name="theme-color" content="#080b14">
+
+<link rel="icon" href="https://raw.githubusercontent.com/kyawkolatt2026-alt/virgovpn/main/file_00000000db78821181d9b896c0f7b588.png">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+<style>
 
 *{
     margin:0;
@@ -52,10 +66,7 @@ body.light-mode{
         var(--bg);
 }
 
-
-/* =========================
-   LOGIN
-========================= */
+/* LOGIN */
 
 .login-container{
     min-height:100vh;
@@ -155,10 +166,7 @@ body.light-mode{
     margin-bottom:14px;
 }
 
-
-/* =========================
-   APP
-========================= */
+/* APP */
 
 .app-container{
     display:none;
@@ -215,10 +223,7 @@ body.light-mode{
     margin:12px 0 18px 67px;
 }
 
-
-/* =========================
-   STATS
-========================= */
+/* STATS */
 
 .compact-stats{
     display:grid;
@@ -272,10 +277,7 @@ body.light-mode{
     font-weight:800;
 }
 
-
-/* =========================
-   CONTENT
-========================= */
+/* CONTENT */
 
 .compact-content{
     padding:10px 18px 30px;
@@ -333,10 +335,7 @@ body.light-mode{
     cursor:pointer;
 }
 
-
-/* =========================
-   USER
-========================= */
+/* USER */
 
 .user-item{
     position:relative;
@@ -559,10 +558,7 @@ body.light-mode{
 .progress-fill.yellow{background:#f59e0b}
 .progress-fill.red{background:#ef4444}
 
-
-/* =========================
-   FLOAT BUTTONS
-========================= */
+/* FLOAT */
 
 .theme-toggle,
 .logout-btn{
@@ -590,10 +586,7 @@ body.light-mode{
     background:linear-gradient(135deg,#ef4444,#b91c1c);
 }
 
-
-/* =========================
-   MODAL
-========================= */
+/* MODAL */
 
 .form-overlay,
 .success-overlay{
@@ -724,10 +717,7 @@ body.light-mode{
     transform:translateX(22px);
 }
 
-
-/* =========================
-   EXTEND
-========================= */
+/* EXTEND */
 
 .extend-box{
     display:none;
@@ -767,75 +757,70 @@ body.light-mode{
 .btn-update-form{background:#6366f1}
 
 
-/* =====================================================
-   PREMIUM VISITING CARD
-===================================================== */
+/* =================================================
+   PREMIUM VIRGO VPN VISITING CARD
+================================================= */
 
 .card-capture-area{
     position:fixed;
-    left:-10000px;
+    left:-12000px;
     top:0;
-    width:1000px;
-    pointer-events:none;
+    width:1200px;
+    overflow:visible;
 }
 
 .vip-card{
-    width:900px;
-    height:520px;
-
-    padding:52px 58px;
+    width:1200px;
+    height:700px;
+    padding:55px 65px;
 
     position:relative;
     overflow:hidden;
 
-    background:
-        linear-gradient(
-            135deg,
-            #0b1020 0%,
-            #11182a 55%,
-            #17142d 100%
-        );
+    border-radius:38px;
 
     color:#ffffff;
 
-    border-radius:32px;
+    background:
+        radial-gradient(
+            circle at 92% 8%,
+            rgba(139,92,246,.38),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 5% 95%,
+            rgba(6,182,212,.22),
+            transparent 32%
+        ),
+        linear-gradient(
+            135deg,
+            #080b16 0%,
+            #0d1222 48%,
+            #11162b 100%
+        );
 
-    border:1px solid rgba(255,255,255,.10);
+    border:1px solid rgba(255,255,255,.13);
 
     box-shadow:
-        0 25px 70px rgba(0,0,0,.45);
-
-    font-family:
-        Inter,
-        "Segoe UI",
-        Arial,
-        sans-serif;
+        0 35px 100px rgba(0,0,0,.55);
 }
 
-
-/* GLOW */
+/* Decorative */
 
 .vip-card:before{
     content:"";
 
     position:absolute;
 
-    width:360px;
-    height:360px;
+    width:430px;
+    height:430px;
 
-    right:-150px;
-    top:-150px;
+    right:-190px;
+    bottom:-220px;
 
     border-radius:50%;
 
-    background:
-        radial-gradient(
-            circle,
-            rgba(139,92,246,.28),
-            rgba(139,92,246,0) 70%
-        );
-
-    pointer-events:none;
+    border:70px solid rgba(139,92,246,.07);
 }
 
 .vip-card:after{
@@ -843,26 +828,18 @@ body.light-mode{
 
     position:absolute;
 
-    width:300px;
-    height:300px;
+    width:280px;
+    height:280px;
 
     left:-170px;
-    bottom:-180px;
+    top:-170px;
 
     border-radius:50%;
 
-    background:
-        radial-gradient(
-            circle,
-            rgba(6,182,212,.16),
-            rgba(6,182,212,0) 70%
-        );
-
-    pointer-events:none;
+    background:rgba(99,102,241,.08);
 }
 
-
-/* CARD TOP */
+/* TOP */
 
 .vip-card-top{
     position:relative;
@@ -873,22 +850,19 @@ body.light-mode{
     justify-content:space-between;
 }
 
-
-/* BRAND */
-
 .vip-card-brand{
     display:flex;
     align-items:center;
-    gap:18px;
+    gap:22px;
 }
 
 .vip-card-logo{
-    width:82px;
-    height:82px;
+    width:88px;
+    height:88px;
 
     padding:3px;
 
-    border-radius:23px;
+    border-radius:25px;
 
     background:
         linear-gradient(
@@ -898,51 +872,42 @@ body.light-mode{
             #06b6d4
         );
 
-    flex-shrink:0;
+    box-shadow:
+        0 12px 35px rgba(99,102,241,.28);
 }
 
 .vip-card-logo img{
     width:100%;
     height:100%;
-
     object-fit:cover;
-
-    border-radius:20px;
-
-    display:block;
+    border-radius:22px;
 }
 
 .vip-card-title{
-    font-size:34px;
-    line-height:1.05;
-
-    font-weight:900;
-
-    letter-spacing:.3px;
-
-    color:#ffffff;
+    font-size:36px;
+    line-height:1;
+    font-weight:950;
+    letter-spacing:.5px;
 }
 
 .vip-card-subtitle{
-    margin-top:8px;
+    margin-top:10px;
 
-    font-size:12px;
-
-    color:#94a3b8;
-
+    font-size:13px;
     font-weight:700;
 
-    letter-spacing:2px;
-}
+    color:#9ca8bd;
 
+    letter-spacing:3px;
+}
 
 /* CROWN */
 
 .vip-card-crown{
-    width:62px;
-    height:62px;
+    width:82px;
+    height:82px;
 
-    border-radius:19px;
+    border-radius:25px;
 
     display:flex;
     align-items:center;
@@ -957,30 +922,30 @@ body.light-mode{
 
     color:#422006;
 
-    font-size:25px;
+    font-size:34px;
 
     box-shadow:
-        0 10px 30px rgba(245,158,11,.18);
-
-    flex-shrink:0;
+        0 15px 35px rgba(245,158,11,.22);
 }
 
-
-/* LINE */
+/* DIVIDER */
 
 .vip-card-line{
     position:relative;
     z-index:2;
 
-    width:100%;
     height:1px;
 
-    margin:38px 0 30px;
+    margin:42px 0 35px;
 
     background:
-        rgba(255,255,255,.10);
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.16),
+            rgba(139,92,246,.45),
+            rgba(255,255,255,.03)
+        );
 }
-
 
 /* USER */
 
@@ -988,23 +953,37 @@ body.light-mode{
     position:relative;
     z-index:2;
 
-    font-size:42px;
+    font-size:48px;
+    line-height:1.1;
 
-    line-height:1.15;
+    font-weight:950;
 
-    font-weight:900;
+    margin-bottom:32px;
 
-    color:#ffffff;
-
-    margin-bottom:30px;
-
-    max-width:780px;
+    max-width:1000px;
 
     overflow:hidden;
     text-overflow:ellipsis;
     white-space:nowrap;
+
+    letter-spacing:.3px;
 }
 
+.vip-card-user:before{
+    content:"VIP MEMBER";
+
+    display:block;
+
+    margin-bottom:10px;
+
+    font-size:12px;
+
+    font-weight:800;
+
+    letter-spacing:3px;
+
+    color:#a78bfa;
+}
 
 /* INFO */
 
@@ -1015,72 +994,76 @@ body.light-mode{
     display:grid;
 
     grid-template-columns:
-        1fr
-        1fr
-        1fr;
+        1fr 1fr 1fr;
 
     gap:18px;
 }
 
 .vip-info{
-    min-height:105px;
+    min-height:115px;
 
-    padding:20px 21px;
+    padding:20px 22px;
 
-    border-radius:18px;
+    border-radius:20px;
 
     background:
-        rgba(255,255,255,.055);
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.075),
+            rgba(255,255,255,.025)
+        );
 
-    border:
-        1px solid rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.08);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.035);
 }
 
 .vip-info-label{
-    color:#7f8ba3;
+    margin-bottom:12px;
+
+    color:#7f8ba2;
 
     font-size:11px;
 
     font-weight:800;
 
-    letter-spacing:1.5px;
+    text-transform:uppercase;
 
-    margin-bottom:11px;
+    letter-spacing:2px;
 }
 
 .vip-info-value{
     color:#ffffff;
 
-    font-size:18px;
+    font-size:22px;
 
-    line-height:1.3;
+    line-height:1.2;
 
     font-weight:900;
 
     word-break:break-word;
 }
 
-
 /* FOOTER */
 
 .vip-card-footer{
     position:absolute;
 
-    left:58px;
-    right:58px;
-    bottom:34px;
+    left:65px;
+    right:65px;
+    bottom:38px;
 
     z-index:2;
 
     display:flex;
 
+    justify-content:space-between;
     align-items:center;
 
-    justify-content:space-between;
+    color:#69758c;
 
-    color:#64748b;
-
-    font-size:11px;
+    font-size:12px;
 
     font-weight:700;
 
@@ -1089,14 +1072,26 @@ body.light-mode{
 
 .vip-card-footer strong{
     color:#a78bfa;
-
     font-weight:900;
 }
 
+.vip-card-footer:before{
+    content:"";
 
-/* =========================
-   SUCCESS MODAL
-========================= */
+    position:absolute;
+
+    left:0;
+    right:0;
+
+    top:-20px;
+
+    height:1px;
+
+    background:rgba(255,255,255,.08);
+}
+
+
+/* SUCCESS */
 
 .success-overlay{
     z-index:4000;
@@ -1181,18 +1176,11 @@ body.light-mode{
     cursor:pointer;
 }
 
-.btn-ok{
-    background:#475569;
-}
-
-.btn-save{
-    background:#22c55e;
-}
+.btn-ok{background:#475569}
+.btn-save{background:#22c55e}
 
 
-/* =========================
-   NOTIFICATION
-========================= */
+/* NOTIFICATION */
 
 .notification-small{
     position:fixed;
@@ -1215,6 +1203,7 @@ body.light-mode{
     color:white;
 
     font-size:12px;
+
     font-weight:800;
 
     display:flex;
@@ -1244,9 +1233,7 @@ body.light-mode{
 }
 
 
-/* =========================
-   EMPTY
-========================= */
+/* EMPTY */
 
 .loading-small,
 .empty-state-small{
@@ -1284,9 +1271,7 @@ body.light-mode{
 }
 
 
-/* =====================================================
-   MOBILE
-===================================================== */
+/* MOBILE */
 
 @media(max-width:600px){
 
@@ -1330,129 +1315,90 @@ body.light-mode{
         grid-template-columns:1fr;
     }
 
-    /*
-       Keep the saved card large even on mobile.
-       This makes the final PNG readable.
-    */
-
+    /* Export card stays large */
     .card-capture-area{
-        width:900px;
+        width:1200px;
+        left:-12000px;
     }
 
-    .vip-card{
-        width:900px;
-        height:520px;
-
-        padding:52px 58px;
-
-        border-radius:32px;
+    .card-capture-area .vip-card{
+        width:1200px;
+        height:700px;
+        padding:55px 65px;
     }
 
-    .vip-card-logo{
-        width:82px;
-        height:82px;
-    }
-
-    .vip-card-title{
-        font-size:34px;
-    }
-
-    .vip-card-subtitle{
-        font-size:12px;
-    }
-
-    .vip-card-user{
-        font-size:42px;
-    }
-
-    .vip-info{
-        min-height:105px;
-        padding:20px 21px;
-    }
-
-    .vip-info-label{
-        font-size:11px;
-    }
-
-    .vip-info-value{
-        font-size:18px;
-    }
-
-    .vip-card-footer{
-        left:58px;
-        right:58px;
-        bottom:34px;
-
-        font-size:11px;
-    }
 }
 
-</style></head><body><!-- =====================================================
-     LOGIN
-===================================================== --><div class="login-container" id="loginContainer"><div class="login-box">
+</style>
+</head>
 
-    <div class="login-logo">
+<body>
 
-        <img
-            src="https://raw.githubusercontent.com/kyawkolatt2026-alt/virgovpn/main/file_00000000db78821181d9b896c0f7b588.png"
-            crossorigin="anonymous"
-        >
+
+<!-- LOGIN -->
+
+<div class="login-container" id="loginContainer">
+
+    <div class="login-box">
+
+        <div class="login-logo">
+
+            <img src="https://raw.githubusercontent.com/kyawkolatt2026-alt/virgovpn/main/file_00000000db78821181d9b896c0f7b588.png">
+
+        </div>
+
+        <h1 class="login-title">
+            VIRGO VPN
+        </h1>
+
+        <p class="login-subtitle">
+            Secure Admin Control Panel
+        </p>
+
+        <div class="login-error" id="loginError">
+            Invalid email or password
+        </div>
+
+        <div class="form-group">
+
+            <label>Email</label>
+
+            <input
+                type="email"
+                id="loginUsername"
+                placeholder="Enter admin email">
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Password</label>
+
+            <input
+                type="password"
+                id="loginPassword"
+                placeholder="Enter password">
+
+        </div>
+
+        <button class="btn-login" id="btnLogin">
+
+            <i class="fas fa-arrow-right-to-bracket"></i>
+
+            LOGIN TO PANEL
+
+        </button>
 
     </div>
-
-    <h1 class="login-title">
-        VIRGO VPN
-    </h1>
-
-    <p class="login-subtitle">
-        Secure Admin Control Panel
-    </p>
-
-    <div class="login-error" id="loginError">
-        Invalid email or password
-    </div>
-
-    <div class="form-group">
-
-        <label>
-            Email
-        </label>
-
-        <input
-            type="email"
-            id="loginUsername"
-            placeholder="Enter admin email"
-        >
-
-    </div>
-
-    <div class="form-group">
-
-        <label>
-            Password
-        </label>
-
-        <input
-            type="password"
-            id="loginPassword"
-            placeholder="Enter password"
-        >
-
-    </div>
-
-    <button class="btn-login" id="btnLogin">
-
-        <i class="fas fa-arrow-right-to-bracket"></i>
-
-        LOGIN TO PANEL
-
-    </button>
 
 </div>
 
-</div><!-- =====================================================
-     APP
-===================================================== --><div class="app-container" id="appContainer"><button class="theme-toggle" id="themeToggle">
+
+<!-- APP -->
+
+<div class="app-container" id="appContainer">
+
+<button class="theme-toggle" id="themeToggle">
     <i class="fas fa-moon"></i>
 </button>
 
@@ -1464,692 +1410,647 @@ body.light-mode{
 <div class="container">
 
 
-    <!-- HEADER -->
+<!-- HEADER -->
 
-    <div class="compact-header">
+<div class="compact-header">
 
-        <div class="title-row">
+    <div class="title-row">
 
-            <div class="logo-small">
+        <div class="logo-small">
 
-                <img
-                    src="https://raw.githubusercontent.com/kyawkolatt2026-alt/virgovpn/main/file_00000000db78821181d9b896c0f7b588.png"
-                    crossorigin="anonymous"
-                >
+            <img src="https://raw.githubusercontent.com/kyawkolatt2026-alt/virgovpn/main/file_00000000db78821181d9b896c0f7b588.png">
 
+        </div>
+
+        <div>
+
+            <div class="compact-title">
+                VIRGO VPN PANEL
             </div>
 
-            <div>
-
-                <div class="compact-title">
-                    VIRGO VPN PANEL
-                </div>
-
-                <div class="title-line">
-                    VIP USER MANAGEMENT
-                </div>
-
+            <div class="title-line">
+                VIP USER MANAGEMENT
             </div>
 
         </div>
 
-        <p class="subtitle-small">
-            Real-time VPN subscription management
-        </p>
+    </div>
+
+    <p class="subtitle-small">
+        Real-time VPN subscription management
+    </p>
 
 
-        <div class="compact-stats">
+    <div class="compact-stats">
 
-            <div class="stat-item total-stat">
+        <div class="stat-item total-stat">
 
-                <div class="stat-value-small">
+            <div class="stat-value-small">
 
-                    <i class="fas fa-users stat-icon"></i>
+                <i class="fas fa-users stat-icon"></i>
 
-                    <span id="totalUsers">
-                        0
-                    </span>
-
-                </div>
-
-                <div class="stat-label-small">
-                    Total
-                </div>
+                <span id="totalUsers">0</span>
 
             </div>
 
-
-            <div class="stat-item active-stat">
-
-                <div class="stat-value-small">
-
-                    <i class="fas fa-circle stat-icon"></i>
-
-                    <span id="activeUsers">
-                        0
-                    </span>
-
-                </div>
-
-                <div class="stat-label-small">
-                    Online
-                </div>
-
-            </div>
-
-
-            <div class="stat-item inactive-stat">
-
-                <div class="stat-value-small">
-
-                    <i class="fas fa-circle stat-icon"></i>
-
-                    <span id="inactiveUsers">
-                        0
-                    </span>
-
-                </div>
-
-                <div class="stat-label-small">
-                    Offline
-                </div>
-
-            </div>
-
-
-            <div class="stat-item offline-stat">
-
-                <div class="stat-value-small">
-
-                    <i class="fas fa-circle stat-icon"></i>
-
-                    <span id="offlineUsers">
-                        0
-                    </span>
-
-                </div>
-
-                <div class="stat-label-small">
-                    Expired
-                </div>
-
+            <div class="stat-label-small">
+                Total
             </div>
 
         </div>
 
 
-        <div class="demo-badge">
+        <div class="stat-item active-stat">
 
-            <i class="fas fa-crown"></i>
+            <div class="stat-value-small">
 
-            OWNER : KKL
+                <i class="fas fa-circle stat-icon"></i>
+
+                <span id="activeUsers">0</span>
+
+            </div>
+
+            <div class="stat-label-small">
+                Online
+            </div>
+
+        </div>
+
+
+        <div class="stat-item inactive-stat">
+
+            <div class="stat-value-small">
+
+                <i class="fas fa-circle stat-icon"></i>
+
+                <span id="inactiveUsers">0</span>
+
+            </div>
+
+            <div class="stat-label-small">
+                Offline
+            </div>
+
+        </div>
+
+
+        <div class="stat-item offline-stat">
+
+            <div class="stat-value-small">
+
+                <i class="fas fa-circle stat-icon"></i>
+
+                <span id="offlineUsers">0</span>
+
+            </div>
+
+            <div class="stat-label-small">
+                Expired
+            </div>
 
         </div>
 
     </div>
 
 
-    <!-- CONTENT -->
+    <div class="demo-badge">
 
-    <div class="compact-content">
+        <i class="fas fa-crown"></i>
 
-        <div class="search-container-small">
+        OWNER : KKL
 
-            <div class="search-box-small">
+    </div>
 
-                <i class="fas fa-search"></i>
+</div>
 
-                <input
-                    type="text"
-                    id="searchInput"
-                    placeholder="Search ID or username..."
-                >
 
-            </div>
+<!-- CONTENT -->
+
+<div class="compact-content">
+
+    <div class="search-container-small">
+
+        <div class="search-box-small">
+
+            <i class="fas fa-search"></i>
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search ID or username...">
+
+        </div>
+
+        <button
+            class="btn-back-search"
+            id="backFromSearch">
+
+            <i class="fas fa-arrow-left"></i>
+
+            Back
+
+        </button>
+
+    </div>
+
+
+    <button
+        class="btn-add-small"
+        id="openForm">
+
+        <i class="fas fa-user-plus"></i>
+
+        ADD NEW VIP USER
+
+    </button>
+
+
+    <div
+        class="compact-users-list"
+        id="usersList">
+
+        <div class="loading-small">
+
+            <div class="loading-spinner-small"></div>
+
+            <p>
+                Loading users...
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="footer-small">
+
+    <i class="fas fa-shield-halved"></i>
+
+    VIRGO VPN • VIP MANAGEMENT SYSTEM
+
+</div>
+
+
+<!-- FORM -->
+
+<div class="form-overlay" id="formOverlay">
+
+    <div class="form-modal">
+
+        <div class="form-header-small">
+
+            <h3>
+
+                <i class="fas fa-user-pen"></i>
+
+                Manage VIP User
+
+            </h3>
 
             <button
-                class="btn-back-search"
-                id="backFromSearch"
-            >
+                class="btn-close"
+                id="closeForm">
 
-                <i class="fas fa-arrow-left"></i>
-
-                Back
+                <i class="fas fa-xmark"></i>
 
             </button>
 
         </div>
 
 
-        <button
-            class="btn-add-small"
-            id="openForm"
-        >
-
-            <i class="fas fa-user-plus"></i>
-
-            ADD NEW VIP USER
-
-        </button>
+        <div class="form-body">
 
 
-        <div
-            class="compact-users-list"
-            id="usersList"
-        >
+            <div class="form-group-small">
 
-            <div class="loading-small">
+                <label>ID *</label>
 
-                <div class="loading-spinner-small"></div>
-
-                <p>
-                    Loading users...
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <div class="footer-small">
-
-        <i class="fas fa-shield-halved"></i>
-
-        VIRGO VPN • VIP MANAGEMENT SYSTEM
-
-    </div>
-
-
-    <!-- =================================================
-         FORM MODAL
-    ================================================= -->
-
-    <div
-        class="form-overlay"
-        id="formOverlay"
-    >
-
-        <div class="form-modal">
-
-            <div class="form-header-small">
-
-                <h3>
-
-                    <i class="fas fa-user-pen"></i>
-
-                    Manage VIP User
-
-                </h3>
-
-                <button
-                    class="btn-close"
-                    id="closeForm"
-                >
-
-                    <i class="fas fa-xmark"></i>
-
-                </button>
+                <input
+                    type="text"
+                    id="token"
+                    class="form-input-small"
+                    placeholder="Enter user ID">
 
             </div>
 
 
-            <div class="form-body">
+            <div class="form-group-small">
+
+                <label>Username</label>
+
+                <input
+                    type="text"
+                    id="formUsername"
+                    class="form-input-small"
+                    placeholder="Enter username">
+
+            </div>
 
 
-                <div class="form-group-small">
+            <div class="form-group-small">
 
-                    <label>
-                        ID *
+                <label>Expiry Date</label>
+
+                <input
+                    type="date"
+                    id="expiry"
+                    class="form-input-small">
+
+            </div>
+
+
+            <div class="form-group-small">
+
+                <div class="switch-group-small">
+
+                    <span>
+
+                        <i class="fas fa-toggle-on"></i>
+
+                        Active Status
+
+                    </span>
+
+
+                    <label class="switch-small">
+
+                        <input
+                            type="checkbox"
+                            id="isActive"
+                            checked>
+
+                        <span class="slider-small"></span>
+
                     </label>
 
-                    <input
-                        type="text"
-                        id="token"
-                        class="form-input-small"
-                        placeholder="Enter user ID"
-                    >
-
-                </div>
-
-
-                <div class="form-group-small">
-
-                    <label>
-                        Username
-                    </label>
-
-                    <input
-                        type="text"
-                        id="formUsername"
-                        class="form-input-small"
-                        placeholder="Enter username"
-                    >
-
-                </div>
-
-
-                <div class="form-group-small">
-
-                    <label>
-                        Expiry Date
-                    </label>
-
-                    <input
-                        type="date"
-                        id="expiry"
-                        class="form-input-small"
-                    >
-
-                </div>
-
-
-                <div class="form-group-small">
-
-                    <div class="switch-group-small">
-
-                        <span>
-
-                            <i class="fas fa-toggle-on"></i>
-
-                            Active Status
-
-                        </span>
-
-
-                        <label class="switch-small">
-
-                            <input
-                                type="checkbox"
-                                id="isActive"
-                                checked
-                            >
-
-                            <span class="slider-small"></span>
-
-                        </label>
-
-                    </div>
-
-                </div>
-
-
-                <!-- EXTEND 30 DAYS -->
-
-                <div
-                    class="extend-box"
-                    id="extendBox"
-                >
-
-                    <button
-                        class="btn-extend"
-                        id="btnExtend"
-                    >
-
-                        <i class="fas fa-calendar-plus"></i>
-
-                        EXTEND 30 DAYS
-
-                    </button>
-
-                </div>
-
-
-                <div class="form-actions-small">
-
-                    <button
-                        class="btn-form-small btn-back-form"
-                        id="btnBack"
-                    >
-
-                        <i class="fas fa-arrow-left"></i>
-
-                        Back
-
-                    </button>
-
-
-                    <button
-                        class="btn-form-small btn-add-form"
-                        id="btnAdd"
-                    >
-
-                        <i class="fas fa-plus"></i>
-
-                        Add
-
-                    </button>
-
-
-                    <button
-                        class="btn-form-small btn-update-form"
-                        id="btnUpdate"
-                    >
-
-                        <i class="fas fa-save"></i>
-
-                        Update
-
-                    </button>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- =================================================
-         SUCCESS MODAL
-    ================================================= -->
-
-    <div
-        class="success-overlay"
-        id="successOverlay"
-    >
-
-        <div
-            class="success-modal"
-            id="successModal"
-        >
-
-            <div class="success-icon">
-
-                <i class="fas fa-check"></i>
-
-            </div>
-
-
-            <h3
-                class="success-title"
-                id="successTitle"
-            >
-                User Saved Successfully
-            </h3>
-
-
-            <p
-                class="success-message"
-                id="successMessage"
-            >
-                VIP account information has been updated.
-            </p>
-
-
-            <div class="user-details-box">
-
-                <div class="detail-item">
-
-                    <span class="detail-label">
-                        ID
-                    </span>
-
-                    <span
-                        class="detail-value"
-                        id="successId"
-                    >
-                        -
-                    </span>
-
-                </div>
-
-
-                <div class="detail-item">
-
-                    <span class="detail-label">
-                        Username
-                    </span>
-
-                    <span
-                        class="detail-value"
-                        id="successUsername"
-                    >
-                        -
-                    </span>
-
-                </div>
-
-
-                <div class="detail-item">
-
-                    <span class="detail-label">
-                        Expiry
-                    </span>
-
-                    <span
-                        class="detail-value"
-                        id="successExpiry"
-                    >
-                        -
-                    </span>
-
-                </div>
-
-
-                <div class="detail-item">
-
-                    <span class="detail-label">
-                        Status
-                    </span>
-
-                    <span
-                        class="detail-value"
-                        id="successStatus"
-                    >
-                        -
-                    </span>
-
-                </div>
-
-
-                <div class="detail-item">
-
-                    <span class="detail-label">
-                        Day Left
-                    </span>
-
-                    <span
-                        class="detail-value"
-                        id="successDayLeft"
-                    >
-                        -
-                    </span>
-
                 </div>
 
             </div>
 
 
-            <div class="success-actions">
-
-                <button
-                    class="btn-success btn-ok"
-                    id="btnOk"
-                >
-
-                    <i class="fas fa-check"></i>
-
-                    OK
-
-                </button>
-
-
-                <button
-                    class="btn-success btn-save"
-                    id="btnSaveImage"
-                >
-
-                    <i class="fas fa-id-card"></i>
-
-                    Save Card
-
-                </button>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- =================================================
-         HIDDEN VISITING CARD
-    ================================================= -->
-
-    <div class="card-capture-area">
-
-        <div
-            class="vip-card"
-            id="vipCard"
-        >
-
-
-            <div class="vip-card-top">
-
-
-                <div class="vip-card-brand">
-
-
-                    <div class="vip-card-logo">
-
-                        <img
-                            src="https://raw.githubusercontent.com/kyawkolatt2026-alt/virgovpn/main/file_00000000db78821181d9b896c0f7b588.png"
-                            crossorigin="anonymous"
-                        >
-
-                    </div>
-
-
-                    <div>
-
-                        <div class="vip-card-title">
-                            VIRGO VPN
-                        </div>
-
-                        <div class="vip-card-subtitle">
-                            PREMIUM VIP MEMBERSHIP
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <div class="vip-card-crown">
-
-                    <i class="fas fa-crown"></i>
-
-                </div>
-
-            </div>
-
-
-            <div class="vip-card-line"></div>
-
+            <!-- EXTEND -->
 
             <div
-                class="vip-card-user"
-                id="cardUsername"
-            >
-                VIP USER
-            </div>
+                class="extend-box"
+                id="extendBox">
 
+                <button
+                    class="btn-extend"
+                    id="btnExtend">
 
-            <div class="vip-card-info">
+                    <i class="fas fa-calendar-plus"></i>
 
+                    EXTEND 30 DAYS
 
-                <div class="vip-info">
-
-                    <div class="vip-info-label">
-                        USER ID
-                    </div>
-
-                    <div
-                        class="vip-info-value"
-                        id="cardId"
-                    >
-                        -
-                    </div>
-
-                </div>
-
-
-                <div class="vip-info">
-
-                    <div class="vip-info-label">
-                        EXPIRY DATE
-                    </div>
-
-                    <div
-                        class="vip-info-value"
-                        id="cardExpiry"
-                    >
-                        -
-                    </div>
-
-                </div>
-
-
-                <div class="vip-info">
-
-                    <div class="vip-info-label">
-                        REMAINING
-                    </div>
-
-                    <div
-                        class="vip-info-value"
-                        id="cardDays"
-                    >
-                        -
-                    </div>
-
-                </div>
-
+                </button>
 
             </div>
 
 
-            <div class="vip-card-footer">
+            <div class="form-actions-small">
 
-                <span>
+                <button
+                    class="btn-form-small btn-back-form"
+                    id="btnBack">
 
-                    <strong>
-                        VIRGO VPN
-                    </strong>
+                    <i class="fas fa-arrow-left"></i>
 
-                    • VIP ACCESS
+                    Back
 
-                </span>
+                </button>
 
 
-                <span>
-                    OWNER : KKL
-                </span>
+                <button
+                    class="btn-form-small btn-add-form"
+                    id="btnAdd">
+
+                    <i class="fas fa-plus"></i>
+
+                    Add
+
+                </button>
+
+
+                <button
+                    class="btn-form-small btn-update-form"
+                    id="btnUpdate">
+
+                    <i class="fas fa-save"></i>
+
+                    Update
+
+                </button>
 
             </div>
 
         </div>
 
     </div>
-
-
-    <div
-        class="notification-small"
-        id="notification"
-    ></div>
 
 </div>
 
-</div><script>
 
-/* =====================================================
-   FIREBASE
-===================================================== */
+<!-- SUCCESS -->
 
-const firebaseConfig={
+<div
+    class="success-overlay"
+    id="successOverlay">
+
+    <div
+        class="success-modal"
+        id="successModal">
+
+        <div class="success-icon">
+
+            <i class="fas fa-check"></i>
+
+        </div>
+
+
+        <h3
+            class="success-title"
+            id="successTitle">
+
+            User Saved Successfully
+
+        </h3>
+
+
+        <p
+            class="success-message"
+            id="successMessage">
+
+            VIP account information has been updated.
+
+        </p>
+
+
+        <div class="user-details-box">
+
+
+            <div class="detail-item">
+
+                <span class="detail-label">
+                    ID
+                </span>
+
+                <span
+                    class="detail-value"
+                    id="successId">
+                    -
+                </span>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <span class="detail-label">
+                    Username
+                </span>
+
+                <span
+                    class="detail-value"
+                    id="successUsername">
+                    -
+                </span>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <span class="detail-label">
+                    Expiry
+                </span>
+
+                <span
+                    class="detail-value"
+                    id="successExpiry">
+                    -
+                </span>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <span class="detail-label">
+                    Status
+                </span>
+
+                <span
+                    class="detail-value"
+                    id="successStatus">
+                    -
+                </span>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <span class="detail-label">
+                    Day Left
+                </span>
+
+                <span
+                    class="detail-value"
+                    id="successDayLeft">
+                    -
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="success-actions">
+
+            <button
+                class="btn-success btn-ok"
+                id="btnOk">
+
+                <i class="fas fa-check"></i>
+
+                OK
+
+            </button>
+
+
+            <button
+                class="btn-success btn-save"
+                id="btnSaveImage">
+
+                <i class="fas fa-id-card"></i>
+
+                Save Card
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =================================================
+     HIDDEN PREMIUM VISITING CARD
+================================================= -->
+
+<div class="card-capture-area">
+
+    <div
+        class="vip-card"
+        id="vipCard">
+
+
+        <div class="vip-card-top">
+
+
+            <div class="vip-card-brand">
+
+
+                <div class="vip-card-logo">
+
+                    <img
+                        src="https://raw.githubusercontent.com/kyawkolatt2026-alt/virgovpn/main/file_00000000db78821181d9b896c0f7b588.png">
+
+                </div>
+
+
+                <div>
+
+                    <div class="vip-card-title">
+                        VIRGO VPN
+                    </div>
+
+                    <div class="vip-card-subtitle">
+                        PREMIUM VIP MEMBERSHIP
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="vip-card-crown">
+
+                <i class="fas fa-crown"></i>
+
+            </div>
+
+        </div>
+
+
+        <div class="vip-card-line"></div>
+
+
+        <div
+            class="vip-card-user"
+            id="cardUsername">
+
+            VIP USER
+
+        </div>
+
+
+        <div class="vip-card-info">
+
+
+            <div class="vip-info">
+
+                <div class="vip-info-label">
+                    USER ID
+                </div>
+
+                <div
+                    class="vip-info-value"
+                    id="cardId">
+                    -
+                </div>
+
+            </div>
+
+
+            <div class="vip-info">
+
+                <div class="vip-info-label">
+                    EXPIRY DATE
+                </div>
+
+                <div
+                    class="vip-info-value"
+                    id="cardExpiry">
+                    -
+                </div>
+
+            </div>
+
+
+            <div class="vip-info">
+
+                <div class="vip-info-label">
+                    REMAINING
+                </div>
+
+                <div
+                    class="vip-info-value"
+                    id="cardDays">
+                    -
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="vip-card-footer">
+
+            <span>
+
+                <strong>
+                    VIRGO VPN
+                </strong>
+
+                &nbsp;•&nbsp;
+
+                SECURE • FAST • PRIVATE
+
+            </span>
+
+
+            <span>
+                OWNER : KKL
+            </span>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<div
+    class="notification-small"
+    id="notification">
+</div>
+
+
+</div>
+</div>
+
+
+<script>
+
+/* FIREBASE */
+
+const firebaseConfig = {
 
     apiKey:
         "AIzaSyCFYW9uE4vn_0KqhoDC1hKaM0_uFx8w9rg",
@@ -2171,17 +2072,16 @@ const firebaseConfig={
 
 };
 
-
 firebase.initializeApp(firebaseConfig);
 
-const db=firebase.firestore();
+const db =
+    firebase.firestore();
 
-const auth=firebase.auth();
+const auth =
+    firebase.auth();
 
 
-/* =====================================================
-   GLOBAL
-===================================================== */
+/* GLOBAL */
 
 let allUsers=[];
 
@@ -2192,9 +2092,7 @@ let currentEditToken=null;
 let currentCardUser=null;
 
 
-/* =====================================================
-   DOM
-===================================================== */
+/* DOM */
 
 const loginContainer=
     document.getElementById("loginContainer");
@@ -2237,6 +2135,9 @@ const notification=
 
 const successOverlay=
     document.getElementById("successOverlay");
+
+const successModal=
+    document.getElementById("successModal");
 
 const themeToggle=
     document.getElementById("themeToggle");
@@ -2310,9 +2211,6 @@ const inactiveUsersEl=
 const offlineUsersEl=
     document.getElementById("offlineUsers");
 
-
-/* CARD DOM */
-
 const cardUsername=
     document.getElementById("cardUsername");
 
@@ -2329,9 +2227,7 @@ const vipCard=
     document.getElementById("vipCard");
 
 
-/* =====================================================
-   AUTH
-===================================================== */
+/* AUTH */
 
 document.addEventListener(
     "DOMContentLoaded",
@@ -2469,9 +2365,7 @@ async function handleLogout(){
 }
 
 
-/* =====================================================
-   APP
-===================================================== */
+/* APP */
 
 function showApp(){
 
@@ -2486,27 +2380,38 @@ function showApp(){
 
 function initApp(){
 
-    openFormBtn.onclick=openForm;
+    openFormBtn.onclick=
+        openForm;
 
-    closeFormBtn.onclick=closeForm;
+    closeFormBtn.onclick=
+        closeForm;
 
-    btnAdd.onclick=addUser;
+    btnAdd.onclick=
+        addUser;
 
-    btnUpdate.onclick=updateUser;
+    btnUpdate.onclick=
+        updateUser;
 
-    btnBack.onclick=closeForm;
+    btnBack.onclick=
+        closeForm;
 
-    btnExtend.onclick=extend30Days;
+    btnExtend.onclick=
+        extend30Days;
 
-    searchInput.oninput=filterUsers;
+    searchInput.oninput=
+        filterUsers;
 
-    themeToggle.onclick=toggleTheme;
+    themeToggle.onclick=
+        toggleTheme;
 
-    backFromSearch.onclick=clearSearch;
+    backFromSearch.onclick=
+        clearSearch;
 
-    btnOk.onclick=closeSuccessModal;
+    btnOk.onclick=
+        closeSuccessModal;
 
-    btnSaveImage.onclick=saveAsImage;
+    btnSaveImage.onclick=
+        saveAsImage;
 
     loadTheme();
 
@@ -2515,9 +2420,7 @@ function initApp(){
 }
 
 
-/* =====================================================
-   THEME
-===================================================== */
+/* THEME */
 
 function toggleTheme(){
 
@@ -2533,19 +2436,15 @@ function toggleTheme(){
 
     themeToggle.innerHTML=
         light
-        ?
-        '<i class="fas fa-sun"></i>'
-        :
-        '<i class="fas fa-moon"></i>';
+        ? '<i class="fas fa-sun"></i>'
+        : '<i class="fas fa-moon"></i>';
 
 
     localStorage.setItem(
         "theme",
         light
-        ?
-        "light"
-        :
-        "dark"
+        ? "light"
+        : "dark"
     );
 
 }
@@ -2571,15 +2470,12 @@ function loadTheme(){
 }
 
 
-/* =====================================================
-   FIRESTORE
-===================================================== */
+/* FIRESTORE */
 
 function loadUsers(){
 
     db.collection("users")
     .onSnapshot(
-
         snapshot=>{
 
             allUsers=[];
@@ -2591,44 +2487,43 @@ function loadUsers(){
             let expired=0;
 
 
-            snapshot.forEach(
-                doc=>{
+            snapshot.forEach(doc=>{
 
-                    const user={
-                        token:doc.id,
-                        ...doc.data()
-                    };
+                const user={
+
+                    token:doc.id,
+
+                    ...doc.data()
+
+                };
 
 
-                    allUsers.push(user);
+                allUsers.push(user);
 
 
-                    const isExpired=
+                const isExpired=
+                    user.expiryDate
+                    ? isDateExpired(
                         user.expiryDate
-                        ?
-                        isDateExpired(
-                            user.expiryDate
-                        )
-                        :
-                        true;
+                    )
+                    : true;
 
 
-                    if(isExpired){
+                if(isExpired){
 
-                        expired++;
+                    expired++;
 
-                    }else if(user.isActive){
+                }else if(user.isActive){
 
-                        active++;
+                    active++;
 
-                    }else{
+                }else{
 
-                        inactive++;
-
-                    }
+                    inactive++;
 
                 }
-            );
+
+            });
 
 
             totalUsersEl.textContent=
@@ -2644,15 +2539,13 @@ function loadUsers(){
                 expired;
 
 
-            filteredUsers=[
-                ...allUsers
-            ];
+            filteredUsers=
+                [...allUsers];
 
 
             renderUsers();
 
         },
-
         error=>{
 
             console.error(error);
@@ -2668,9 +2561,7 @@ function loadUsers(){
                     </h3>
 
                     <p>
-                        ${escapeHtml(
-                            error.message
-                        )}
+                        ${escapeHtml(error.message)}
                     </p>
 
                 </div>
@@ -2678,15 +2569,12 @@ function loadUsers(){
             `;
 
         }
-
     );
 
 }
 
 
-/* =====================================================
-   DATE
-===================================================== */
+/* DATE */
 
 function parseDate(value){
 
@@ -2804,9 +2692,12 @@ function calculateDaysRemaining(value){
 
     if(!date){
 
-        return{
+        return {
+
             days:0,
+
             text:"No date"
+
         };
 
     }
@@ -2827,15 +2718,19 @@ function calculateDaysRemaining(value){
 
     const diff=
         Math.ceil(
-            (date-today)/86400000
+            (date-today)
+            /86400000
         );
 
 
     if(diff<0){
 
-        return{
+        return {
+
             days:0,
+
             text:"Expired"
+
         };
 
     }
@@ -2843,15 +2738,18 @@ function calculateDaysRemaining(value){
 
     if(diff===0){
 
-        return{
+        return {
+
             days:0,
+
             text:"Today"
+
         };
 
     }
 
 
-    return{
+    return {
 
         days:diff,
 
@@ -2870,7 +2768,7 @@ function calculateProgressPercentage(value){
 
     if(result.days<=0){
 
-        return{
+        return {
 
             percentage:0,
 
@@ -2903,7 +2801,7 @@ function calculateProgressPercentage(value){
         color="red";
 
 
-    return{
+    return {
 
         percentage,
 
@@ -2933,17 +2831,15 @@ function getUserStatus(user){
 
     const expired=
         user.expiryDate
-        ?
-        isDateExpired(
+        ? isDateExpired(
             user.expiryDate
         )
-        :
-        true;
+        : true;
 
 
     if(expired){
 
-        return{
+        return {
 
             statusClass:"expired",
 
@@ -2959,7 +2855,7 @@ function getUserStatus(user){
 
     if(user.isActive){
 
-        return{
+        return {
 
             statusClass:"active",
 
@@ -2973,7 +2869,7 @@ function getUserStatus(user){
     }
 
 
-    return{
+    return {
 
         statusClass:"inactive",
 
@@ -2987,9 +2883,7 @@ function getUserStatus(user){
 }
 
 
-/* =====================================================
-   USER CARD
-===================================================== */
+/* USER CARD */
 
 function createUserCard(user){
 
@@ -3021,7 +2915,7 @@ function createUserCard(user){
         );
 
 
-    return`
+    return `
 
 <div class="user-item ${status.statusClass}">
 
@@ -3040,8 +2934,12 @@ function createUserCard(user){
             Account Status
         </span>
 
-        <span class="status-text-value ${status.statusTextClass}">
+
+        <span
+            class="status-text-value ${status.statusTextClass}">
+
             ${status.statusText}
+
         </span>
 
     </div>
@@ -3049,15 +2947,20 @@ function createUserCard(user){
 
     <div class="user-header-small">
 
+
         <div class="user-name-container">
 
-            <div class="status-light ${status.statusClass}"></div>
+            <div
+                class="status-light ${status.statusClass}">
+            </div>
+
 
             <div class="user-name">
+
                 ${escapeHtml(
-                    user.username ||
-                    user.token
+                    user.username || user.token
                 )}
+
             </div>
 
         </div>
@@ -3065,11 +2968,11 @@ function createUserCard(user){
 
         <div class="user-actions">
 
+
             <button
                 class="btn-action btn-edit"
                 data-edit="${safeToken}"
-                title="Edit"
-            >
+                title="Edit">
 
                 <i class="fas fa-pen"></i>
 
@@ -3079,12 +2982,12 @@ function createUserCard(user){
             <button
                 class="btn-action btn-delete"
                 data-delete="${safeToken}"
-                title="Delete"
-            >
+                title="Delete">
 
                 <i class="fas fa-trash"></i>
 
             </button>
+
 
         </div>
 
@@ -3103,9 +3006,11 @@ function createUserCard(user){
             </span>
 
             <span class="detail-value">
+
                 ${escapeHtml(
                     user.token
                 )}
+
             </span>
 
         </div>
@@ -3120,10 +3025,12 @@ function createUserCard(user){
             </span>
 
             <span class="detail-value">
+
                 ${escapeHtml(
                     user.username ||
                     user.token
                 )}
+
             </span>
 
         </div>
@@ -3138,12 +3045,14 @@ function createUserCard(user){
             </span>
 
             <span class="detail-value">
+
                 ${escapeHtml(
                     String(
                         user.expiryDate ||
                         "No date"
                     )
                 )}
+
             </span>
 
         </div>
@@ -3157,16 +3066,21 @@ function createUserCard(user){
                 Left
             </span>
 
-            <span class="detail-value day-left ${dayColor}">
+            <span
+                class="detail-value day-left ${dayColor}">
+
                 ${days.text}
+
             </span>
 
         </div>
+
 
     </div>
 
 
     <div class="progress-container">
+
 
         <div class="progress-header">
 
@@ -3174,8 +3088,11 @@ function createUserCard(user){
                 SUBSCRIPTION
             </span>
 
-            <span class="progress-percent ${progress.color}">
+            <span
+                class="progress-percent ${progress.color}">
+
                 ${progress.text}
+
             </span>
 
         </div>
@@ -3185,8 +3102,8 @@ function createUserCard(user){
 
             <div
                 class="progress-fill ${progress.color}"
-                style="width:${progress.percentage}%"
-            ></div>
+                style="width:${progress.percentage}%">
+            </div>
 
         </div>
 
@@ -3199,9 +3116,7 @@ function createUserCard(user){
 }
 
 
-/* =====================================================
-   RENDER
-===================================================== */
+/* RENDER */
 
 function renderUsers(){
 
@@ -3240,6 +3155,8 @@ function renderUsers(){
 
 }
 
+
+/* BUTTONS */
 
 function attachUserButtons(){
 
@@ -3287,9 +3204,7 @@ function attachUserButtons(){
 }
 
 
-/* =====================================================
-   SEARCH
-===================================================== */
+/* SEARCH */
 
 function filterUsers(){
 
@@ -3301,17 +3216,14 @@ function filterUsers(){
 
     backFromSearch.style.display=
         keyword
-        ?
-        "flex"
-        :
-        "none";
+        ? "flex"
+        : "none";
 
 
     if(!keyword){
 
-        filteredUsers=[
-            ...allUsers
-        ];
+        filteredUsers=
+            [...allUsers];
 
         renderUsers();
 
@@ -3353,18 +3265,15 @@ function clearSearch(){
     backFromSearch.style.display=
         "none";
 
-    filteredUsers=[
-        ...allUsers
-    ];
+    filteredUsers=
+        [...allUsers];
 
     renderUsers();
 
 }
 
 
-/* =====================================================
-   FORM
-===================================================== */
+/* FORM */
 
 function openForm(){
 
@@ -3393,7 +3302,6 @@ function clearForm(){
     tokenInput.disabled=false;
 
     formUsernameInput.value="";
-
 
     const today=
         new Date();
@@ -3456,14 +3364,14 @@ function fillForm(token){
 
     expiryInput.value=
         parsed
-        ?
-        formatDate(parsed)
-        :
-        formatDate(new Date());
+        ? formatDate(parsed)
+        : formatDate(
+            new Date()
+        );
 
 
     isActiveInput.checked=
-        user.isActive===true;
+        user.isActive === true;
 
 
     currentEditToken=
@@ -3480,9 +3388,7 @@ function fillForm(token){
 }
 
 
-/* =====================================================
-   EXTEND 30 DAYS
-===================================================== */
+/* EXTEND 30 DAYS */
 
 async function extend30Days(){
 
@@ -3562,20 +3468,27 @@ async function extend30Days(){
         await db
         .collection("users")
         .doc(token)
-        .set({
+        .set(
 
-            expiryDate:newExpiry,
+            {
 
-            isActive:true
+                expiryDate:
+                    newExpiry,
 
-        },{
-            merge:true
-        });
+                isActive:
+                    true
+
+            },
+
+            {
+                merge:true
+            }
+
+        );
 
 
         expiryInput.value=
             newExpiry;
-
 
         isActiveInput.checked=
             true;
@@ -3586,11 +3499,9 @@ async function extend30Days(){
             "success"
         );
 
-
     }catch(error){
 
         console.error(error);
-
 
         showNotification(
             "Extend failed: "+
@@ -3603,23 +3514,18 @@ async function extend30Days(){
 }
 
 
-/* =====================================================
-   ADD
-===================================================== */
+/* ADD */
 
 async function addUser(){
 
     const token=
         tokenInput.value.trim();
 
-
     const username=
         formUsernameInput.value.trim();
 
-
     const expiryDate=
         expiryInput.value;
-
 
     const isActive=
         isActiveInput.checked;
@@ -3670,7 +3576,9 @@ async function addUser(){
 
 
         showSuccessMessage(
+
             {
+
                 token,
 
                 username:
@@ -3679,15 +3587,16 @@ async function addUser(){
                 expiryDate,
 
                 isActive
-            },
-            "added"
-        );
 
+            },
+
+            "added"
+
+        );
 
     }catch(error){
 
         console.error(error);
-
 
         showNotification(
             "Error adding user: "+
@@ -3700,9 +3609,7 @@ async function addUser(){
 }
 
 
-/* =====================================================
-   UPDATE
-===================================================== */
+/* UPDATE */
 
 async function updateUser(){
 
@@ -3726,10 +3633,8 @@ async function updateUser(){
     const username=
         formUsernameInput.value.trim();
 
-
     const expiryDate=
         expiryInput.value;
-
 
     const isActive=
         isActiveInput.checked;
@@ -3740,25 +3645,33 @@ async function updateUser(){
         await db
         .collection("users")
         .doc(token)
-        .set({
+        .set(
 
-            username:
-                username || token,
+            {
 
-            expiryDate,
+                username:
+                    username || token,
 
-            isActive
+                expiryDate,
 
-        },{
-            merge:true
-        });
+                isActive
+
+            },
+
+            {
+                merge:true
+            }
+
+        );
 
 
         closeForm();
 
 
         showSuccessMessage(
+
             {
+
                 token,
 
                 username:
@@ -3769,14 +3682,14 @@ async function updateUser(){
                 isActive
 
             },
-            "updated"
-        );
 
+            "updated"
+
+        );
 
     }catch(error){
 
         console.error(error);
-
 
         showNotification(
             "Error updating user: "+
@@ -3789,9 +3702,7 @@ async function updateUser(){
 }
 
 
-/* =====================================================
-   DELETE
-===================================================== */
+/* DELETE */
 
 async function deleteUserByToken(token){
 
@@ -3807,10 +3718,8 @@ async function deleteUserByToken(token){
 
     const name=
         user
-        ?
-        user.username || token
-        :
-        token;
+        ? user.username || token
+        : token;
 
 
     if(
@@ -3834,11 +3743,9 @@ async function deleteUserByToken(token){
             "success"
         );
 
-
     }catch(error){
 
         console.error(error);
-
 
         showNotification(
             "Error deleting user: "+
@@ -3851,9 +3758,7 @@ async function deleteUserByToken(token){
 }
 
 
-/* =====================================================
-   SUCCESS
-===================================================== */
+/* SUCCESS */
 
 function showSuccessMessage(
     user,
@@ -3901,7 +3806,6 @@ function showSuccessMessage(
         successTitle.textContent=
             "User Added Successfully";
 
-
         successMessage.textContent=
             "VIP account has been added.";
 
@@ -3909,7 +3813,6 @@ function showSuccessMessage(
 
         successTitle.textContent=
             "User Updated Successfully";
-
 
         successMessage.textContent=
             "VIP account has been updated.";
@@ -3923,9 +3826,7 @@ function showSuccessMessage(
 }
 
 
-/* =====================================================
-   PREPARE CARD
-===================================================== */
+/* VISITING CARD */
 
 function prepareVipCard(user){
 
@@ -3955,9 +3856,7 @@ function prepareVipCard(user){
 }
 
 
-/* =====================================================
-   SAVE HIGH QUALITY CARD
-===================================================== */
+/* SAVE IMAGE */
 
 async function saveAsImage(){
 
@@ -3980,76 +3879,56 @@ async function saveAsImage(){
 
     try{
 
-        vipCard.style.display=
-            "block";
+        /* Wait for fonts */
 
-
-        /*
-         * Wait for logo
-         */
-
-        const images=
-            vipCard.querySelectorAll(
-                "img"
-            );
-
-
-        await Promise.all(
-
-            Array.from(images)
-            .map(
-                img=>{
-
-                    if(img.complete)
-                        return Promise.resolve();
-
-
-                    return new Promise(
-                        resolve=>{
-
-                            img.onload=
-                                resolve;
-
-                            img.onerror=
-                                resolve;
-
-                        }
-                    );
-
-                }
-            )
-
-        );
-
-
-        /*
-         * Wait for browser fonts
-         */
-
-        if(document.fonts){
+        if(
+            document.fonts &&
+            document.fonts.ready
+        ){
 
             await document.fonts.ready;
 
         }
 
 
-        /*
-         * Small delay to make sure
-         * everything has been painted.
-         */
+        /* Wait for logo */
+
+        const img=
+            vipCard.querySelector("img");
+
+
+        if(
+            img &&
+            !img.complete
+        ){
+
+            await new Promise(
+                resolve=>{
+
+                    img.onload=
+                        resolve;
+
+                    img.onerror=
+                        resolve;
+
+                }
+            );
+
+        }
+
+
+        /* Rendering delay */
 
         await new Promise(
             resolve=>
                 setTimeout(
                     resolve,
-                    250
+                    200
                 )
         );
 
 
-        /*
-         * High quality canvas
-         */
+        /* High resolution capture */
 
         const canvas=
             await html2canvas(
@@ -4068,22 +3947,24 @@ async function saveAsImage(){
                     logging:false,
 
                     imageTimeout:
-                        15000,
+                        10000,
 
-                    removeContainer:true
+                    width:1200,
+
+                    height:700,
+
+                    windowWidth:1200,
+
+                    windowHeight:700
 
                 }
             );
 
 
-        /*
-         * Download PNG
-         */
+        /* Download */
 
         const link=
-            document.createElement(
-                "a"
-            );
+            document.createElement("a");
 
 
         link.download=
@@ -4120,7 +4001,6 @@ async function saveAsImage(){
 
         console.error(error);
 
-
         showNotification(
             "Could not save card",
             "error"
@@ -4131,9 +4011,7 @@ async function saveAsImage(){
 }
 
 
-/* =====================================================
-   CLOSE SUCCESS
-===================================================== */
+/* SUCCESS CLOSE */
 
 function closeSuccessModal(){
 
@@ -4143,9 +4021,7 @@ function closeSuccessModal(){
 }
 
 
-/* =====================================================
-   NOTIFICATION
-===================================================== */
+/* NOTIFICATION */
 
 function showNotification(
     message,
@@ -4154,14 +4030,14 @@ function showNotification(
 
     const icon=
         type==="success"
-        ?
-        "fas fa-check-circle"
-        :
-        type==="error"
-        ?
-        "fas fa-circle-exclamation"
-        :
-        "fas fa-circle-info";
+
+        ? "fas fa-check-circle"
+
+        : type==="error"
+
+        ? "fas fa-circle-exclamation"
+
+        : "fas fa-circle-info";
 
 
     notification.innerHTML=`
@@ -4199,9 +4075,7 @@ function showNotification(
 }
 
 
-/* =====================================================
-   HELPERS
-===================================================== */
+/* HELPERS */
 
 function escapeHtml(value){
 
@@ -4252,15 +4126,15 @@ function safeFileName(value){
 }
 
 
-/* =====================================================
-   CLOSE MODAL OUTSIDE
-===================================================== */
+/* CLOSE MODALS OUTSIDE */
 
 formOverlay.addEventListener(
     "click",
     e=>{
 
-        if(e.target===formOverlay)
+        if(
+            e.target===formOverlay
+        )
             closeForm();
 
     }
@@ -4271,11 +4145,15 @@ successOverlay.addEventListener(
     "click",
     e=>{
 
-        if(e.target===successOverlay)
+        if(
+            e.target===successOverlay
+        )
             closeSuccessModal();
 
     }
 );
 
-</script></body>
+</script>
+
+</body>
 </html>
