@@ -66,7 +66,9 @@ body.light-mode{
         var(--bg);
 }
 
-/* LOGIN */
+/* =================================================
+   LOGIN
+================================================= */
 
 .login-container{
     min-height:100vh;
@@ -166,7 +168,9 @@ body.light-mode{
     margin-bottom:14px;
 }
 
-/* APP */
+/* =================================================
+   APP
+================================================= */
 
 .app-container{
     display:none;
@@ -223,7 +227,9 @@ body.light-mode{
     margin:12px 0 18px 67px;
 }
 
-/* STATS */
+/* =================================================
+   STATS
+================================================= */
 
 .compact-stats{
     display:grid;
@@ -277,7 +283,9 @@ body.light-mode{
     font-weight:800;
 }
 
-/* CONTENT */
+/* =================================================
+   CONTENT
+================================================= */
 
 .compact-content{
     padding:10px 18px 30px;
@@ -335,7 +343,9 @@ body.light-mode{
     cursor:pointer;
 }
 
-/* USER */
+/* =================================================
+   USER
+================================================= */
 
 .user-item{
     position:relative;
@@ -558,7 +568,9 @@ body.light-mode{
 .progress-fill.yellow{background:#f59e0b}
 .progress-fill.red{background:#ef4444}
 
-/* FLOAT */
+/* =================================================
+   FLOAT
+================================================= */
 
 .theme-toggle,
 .logout-btn{
@@ -586,7 +598,9 @@ body.light-mode{
     background:linear-gradient(135deg,#ef4444,#b91c1c);
 }
 
-/* MODAL */
+/* =================================================
+   MODAL
+================================================= */
 
 .form-overlay,
 .success-overlay{
@@ -717,7 +731,9 @@ body.light-mode{
     transform:translateX(22px);
 }
 
-/* EXTEND */
+/* =================================================
+   EXTEND
+================================================= */
 
 .extend-box{
     display:none;
@@ -758,7 +774,7 @@ body.light-mode{
 
 
 /* =================================================
-   PREMIUM VIRGO VPN VISITING CARD
+   🎫 PREMIUM VIRGO VPN TICKET
 ================================================= */
 
 .card-capture-area{
@@ -769,58 +785,64 @@ body.light-mode{
     overflow:visible;
 }
 
+/* Main Ticket */
+
 .vip-card{
     width:1200px;
     height:700px;
-    padding:55px 65px;
 
     position:relative;
     overflow:hidden;
 
-    border-radius:38px;
+    display:flex;
 
     color:#ffffff;
 
     background:
         radial-gradient(
-            circle at 92% 8%,
-            rgba(139,92,246,.38),
+            circle at 85% 10%,
+            rgba(139,92,246,.35),
             transparent 30%
         ),
         radial-gradient(
-            circle at 5% 95%,
-            rgba(6,182,212,.22),
-            transparent 32%
+            circle at 10% 90%,
+            rgba(6,182,212,.20),
+            transparent 30%
         ),
         linear-gradient(
             135deg,
             #080b16 0%,
-            #0d1222 48%,
-            #11162b 100%
+            #10162a 52%,
+            #11182f 100%
         );
 
-    border:1px solid rgba(255,255,255,.13);
+    border-radius:32px;
+
+    border:1px solid rgba(255,255,255,.14);
 
     box-shadow:
         0 35px 100px rgba(0,0,0,.55);
 }
 
-/* Decorative */
+
+/* Decorative circles */
 
 .vip-card:before{
     content:"";
 
     position:absolute;
 
-    width:430px;
-    height:430px;
+    width:500px;
+    height:500px;
 
-    right:-190px;
-    bottom:-220px;
+    right:-260px;
+    top:-240px;
 
     border-radius:50%;
 
-    border:70px solid rgba(139,92,246,.07);
+    border:80px solid rgba(139,92,246,.07);
+
+    pointer-events:none;
 }
 
 .vip-card:after{
@@ -828,41 +850,61 @@ body.light-mode{
 
     position:absolute;
 
-    width:280px;
-    height:280px;
+    width:350px;
+    height:350px;
 
-    left:-170px;
-    top:-170px;
+    left:-220px;
+    bottom:-230px;
 
     border-radius:50%;
 
-    background:rgba(99,102,241,.08);
+    border:60px solid rgba(6,182,212,.055);
+
+    pointer-events:none;
 }
 
-/* TOP */
+
+/* =================================================
+   TICKET LEFT
+================================================= */
+
+.ticket-main{
+    width:850px;
+    height:100%;
+
+    position:relative;
+
+    padding:55px 60px;
+
+    z-index:2;
+}
+
+
+/* Top */
 
 .vip-card-top{
-    position:relative;
-    z-index:2;
-
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
 }
 
 .vip-card-brand{
     display:flex;
+
     align-items:center;
+
     gap:22px;
 }
 
 .vip-card-logo{
-    width:88px;
-    height:88px;
+    width:86px;
+    height:86px;
 
     padding:3px;
 
-    border-radius:25px;
+    border-radius:24px;
 
     background:
         linear-gradient(
@@ -879,38 +921,47 @@ body.light-mode{
 .vip-card-logo img{
     width:100%;
     height:100%;
+
     object-fit:cover;
-    border-radius:22px;
+
+    border-radius:21px;
 }
 
 .vip-card-title{
     font-size:36px;
+
     line-height:1;
+
     font-weight:950;
+
     letter-spacing:.5px;
 }
 
 .vip-card-subtitle{
     margin-top:10px;
 
-    font-size:13px;
-    font-weight:700;
-
     color:#9ca8bd;
+
+    font-size:13px;
+
+    font-weight:700;
 
     letter-spacing:3px;
 }
 
-/* CROWN */
+
+/* VIP Crown */
 
 .vip-card-crown{
-    width:82px;
-    height:82px;
+    width:72px;
+    height:72px;
 
-    border-radius:25px;
+    border-radius:22px;
 
     display:flex;
+
     align-items:center;
+
     justify-content:center;
 
     background:
@@ -922,48 +973,49 @@ body.light-mode{
 
     color:#422006;
 
-    font-size:34px;
+    font-size:30px;
 
     box-shadow:
         0 15px 35px rgba(245,158,11,.22);
 }
 
-/* DIVIDER */
+
+/* Divider */
 
 .vip-card-line{
-    position:relative;
-    z-index:2;
-
     height:1px;
 
-    margin:42px 0 35px;
+    margin:38px 0 35px;
 
     background:
         linear-gradient(
             90deg,
-            rgba(255,255,255,.16),
+            rgba(255,255,255,.18),
             rgba(139,92,246,.45),
-            rgba(255,255,255,.03)
+            transparent
         );
 }
 
-/* USER */
+
+/* =================================================
+   USER
+================================================= */
 
 .vip-card-user{
-    position:relative;
-    z-index:2;
+    font-size:47px;
 
-    font-size:48px;
     line-height:1.1;
 
     font-weight:950;
 
     margin-bottom:32px;
 
-    max-width:1000px;
+    max-width:700px;
 
     overflow:hidden;
+
     text-overflow:ellipsis;
+
     white-space:nowrap;
 
     letter-spacing:.3px;
@@ -985,26 +1037,26 @@ body.light-mode{
     color:#a78bfa;
 }
 
-/* INFO */
+
+/* =================================================
+   INFO
+================================================= */
 
 .vip-card-info{
-    position:relative;
-    z-index:2;
-
     display:grid;
 
     grid-template-columns:
         1fr 1fr 1fr;
 
-    gap:18px;
+    gap:14px;
 }
 
 .vip-info{
-    min-height:115px;
+    min-height:112px;
 
-    padding:20px 22px;
+    padding:19px;
 
-    border-radius:20px;
+    border-radius:19px;
 
     background:
         linear-gradient(
@@ -1014,17 +1066,14 @@ body.light-mode{
         );
 
     border:1px solid rgba(255,255,255,.08);
-
-    box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.035);
 }
 
 .vip-info-label{
-    margin-bottom:12px;
+    margin-bottom:11px;
 
     color:#7f8ba2;
 
-    font-size:11px;
+    font-size:10px;
 
     font-weight:800;
 
@@ -1036,7 +1085,7 @@ body.light-mode{
 .vip-info-value{
     color:#ffffff;
 
-    font-size:22px;
+    font-size:21px;
 
     line-height:1.2;
 
@@ -1045,25 +1094,239 @@ body.light-mode{
     word-break:break-word;
 }
 
-/* FOOTER */
+
+/* =================================================
+   TICKET PERFORATION
+================================================= */
+
+.ticket-perforation{
+    position:absolute;
+
+    top:30px;
+    bottom:30px;
+
+    right:0;
+
+    width:2px;
+
+    border-right:
+        3px dashed rgba(255,255,255,.18);
+
+    z-index:5;
+}
+
+
+/* Ticket holes */
+
+.ticket-hole{
+    position:absolute;
+
+    right:-15px;
+
+    width:30px;
+    height:30px;
+
+    background:#080b16;
+
+    border-radius:50%;
+
+    z-index:8;
+}
+
+.ticket-hole.top{
+    top:-1px;
+}
+
+.ticket-hole.bottom{
+    bottom:-1px;
+}
+
+
+/* =================================================
+   TICKET RIGHT SIDE
+================================================= */
+
+.ticket-side{
+    width:350px;
+
+    height:100%;
+
+    position:relative;
+
+    z-index:3;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    flex-direction:column;
+
+    padding:40px 35px;
+}
+
+
+/* Side VIP */
+
+.ticket-side-badge{
+    width:92px;
+    height:92px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    flex-direction:column;
+
+    background:
+        linear-gradient(
+            135deg,
+            #8b5cf6,
+            #6366f1
+        );
+
+    border:
+        4px solid rgba(255,255,255,.08);
+
+    box-shadow:
+        0 15px 40px rgba(99,102,241,.25);
+
+    margin-bottom:25px;
+}
+
+.ticket-side-badge i{
+    font-size:28px;
+
+    color:#fbbf24;
+
+    margin-bottom:5px;
+}
+
+.ticket-side-badge span{
+    font-size:9px;
+
+    font-weight:900;
+
+    letter-spacing:1px;
+}
+
+
+/* Side title */
+
+.ticket-side-title{
+    font-size:20px;
+
+    font-weight:950;
+
+    text-align:center;
+
+    letter-spacing:1px;
+}
+
+.ticket-side-subtitle{
+    color:#7f8ba2;
+
+    font-size:10px;
+
+    font-weight:700;
+
+    text-align:center;
+
+    margin-top:7px;
+
+    letter-spacing:1.5px;
+}
+
+
+/* QR style */
+
+.fake-qr{
+    width:125px;
+    height:125px;
+
+    margin:27px 0;
+
+    padding:8px;
+
+    border-radius:13px;
+
+    background:#ffffff;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(9,1fr);
+
+    grid-template-rows:
+        repeat(9,1fr);
+
+    gap:3px;
+}
+
+.fake-qr span{
+    background:#111827;
+
+    border-radius:1px;
+}
+
+.fake-qr span:nth-child(2n){
+    background:transparent;
+}
+
+.fake-qr span:nth-child(5n){
+    background:#111827;
+}
+
+
+/* Side footer */
+
+.ticket-side-owner{
+    color:#69758c;
+
+    font-size:10px;
+
+    font-weight:800;
+
+    text-align:center;
+
+    letter-spacing:1px;
+}
+
+.ticket-side-owner strong{
+    color:#a78bfa;
+
+    font-weight:950;
+}
+
+
+/* =================================================
+   CARD FOOTER
+================================================= */
 
 .vip-card-footer{
     position:absolute;
 
-    left:65px;
-    right:65px;
-    bottom:38px;
+    left:60px;
+    right:410px;
 
-    z-index:2;
+    bottom:35px;
+
+    z-index:4;
 
     display:flex;
 
     justify-content:space-between;
+
     align-items:center;
 
     color:#69758c;
 
-    font-size:12px;
+    font-size:11px;
 
     font-weight:700;
 
@@ -1072,26 +1335,14 @@ body.light-mode{
 
 .vip-card-footer strong{
     color:#a78bfa;
+
     font-weight:900;
 }
 
-.vip-card-footer:before{
-    content:"";
 
-    position:absolute;
-
-    left:0;
-    right:0;
-
-    top:-20px;
-
-    height:1px;
-
-    background:rgba(255,255,255,.08);
-}
-
-
-/* SUCCESS */
+/* =================================================
+   SUCCESS
+================================================= */
 
 .success-overlay{
     z-index:4000;
@@ -1180,11 +1431,15 @@ body.light-mode{
 .btn-save{background:#22c55e}
 
 
-/* NOTIFICATION */
+/* =================================================
+   NOTIFICATION
+================================================= */
 
 .notification-small{
     position:fixed;
+
     bottom:20px;
+
     left:50%;
 
     transform:translate(-50%,100px);
@@ -1194,6 +1449,7 @@ body.light-mode{
     z-index:5000;
 
     min-width:250px;
+
     max-width:90%;
 
     padding:13px 17px;
@@ -1217,6 +1473,7 @@ body.light-mode{
 
 .notification-small.show{
     transform:translate(-50%,0);
+
     opacity:1;
 }
 
@@ -1233,12 +1490,16 @@ body.light-mode{
 }
 
 
-/* EMPTY */
+/* =================================================
+   EMPTY
+================================================= */
 
 .loading-small,
 .empty-state-small{
     text-align:center;
+
     padding:50px 20px;
+
     color:#69758c;
 }
 
@@ -1265,13 +1526,18 @@ body.light-mode{
 
 .footer-small{
     text-align:center;
+
     padding:20px;
+
     color:#69758c;
+
     font-size:10px;
 }
 
 
-/* MOBILE */
+/* =================================================
+   MOBILE
+================================================= */
 
 @media(max-width:600px){
 
@@ -1315,7 +1581,7 @@ body.light-mode{
         grid-template-columns:1fr;
     }
 
-    /* Export card stays large */
+    /* Ticket export stays large */
     .card-capture-area{
         width:1200px;
         left:-12000px;
@@ -1324,9 +1590,7 @@ body.light-mode{
     .card-capture-area .vip-card{
         width:1200px;
         height:700px;
-        padding:55px 65px;
     }
-
 }
 
 </style>
@@ -1335,7 +1599,9 @@ body.light-mode{
 <body>
 
 
-<!-- LOGIN -->
+<!-- =================================================
+     LOGIN
+================================================= -->
 
 <div class="login-container" id="loginContainer">
 
@@ -1394,7 +1660,9 @@ body.light-mode{
 </div>
 
 
-<!-- APP -->
+<!-- =================================================
+     APP
+================================================= -->
 
 <div class="app-container" id="appContainer">
 
@@ -1593,7 +1861,9 @@ body.light-mode{
 </div>
 
 
-<!-- FORM -->
+<!-- =================================================
+     FORM
+================================================= -->
 
 <div class="form-overlay" id="formOverlay">
 
@@ -1621,7 +1891,6 @@ body.light-mode{
 
 
         <div class="form-body">
-
 
             <div class="form-group-small">
 
@@ -1690,8 +1959,6 @@ body.light-mode{
             </div>
 
 
-            <!-- EXTEND -->
-
             <div
                 class="extend-box"
                 id="extendBox">
@@ -1752,7 +2019,9 @@ body.light-mode{
 </div>
 
 
-<!-- SUCCESS -->
+<!-- =================================================
+     SUCCESS
+================================================= -->
 
 <div
     class="success-overlay"
@@ -1788,7 +2057,6 @@ body.light-mode{
 
 
         <div class="user-details-box">
-
 
             <div class="detail-item">
 
@@ -1884,9 +2152,9 @@ body.light-mode{
                 class="btn-success btn-save"
                 id="btnSaveImage">
 
-                <i class="fas fa-id-card"></i>
+                <i class="fas fa-ticket"></i>
 
-                Save Card
+                Save Ticket
 
             </button>
 
@@ -1898,7 +2166,7 @@ body.light-mode{
 
 
 <!-- =================================================
-     HIDDEN PREMIUM VISITING CARD
+     🎫 HIDDEN TICKET
 ================================================= -->
 
 <div class="card-capture-area">
@@ -1908,106 +2176,265 @@ body.light-mode{
         id="vipCard">
 
 
-        <div class="vip-card-top">
+        <!-- LEFT MAIN -->
+
+        <div class="ticket-main">
 
 
-            <div class="vip-card-brand">
+            <div class="vip-card-top">
 
 
-                <div class="vip-card-logo">
+                <div class="vip-card-brand">
 
-                    <img
-                        src="https://raw.githubusercontent.com/kyawkolatt2026-alt/virgovpn/main/file_00000000db78821181d9b896c0f7b588.png">
+                    <div class="vip-card-logo">
+
+                        <img
+                            src="https://raw.githubusercontent.com/kyawkolatt2026-alt/virgovpn/main/file_00000000db78821181d9b896c0f7b588.png">
+
+                    </div>
+
+
+                    <div>
+
+                        <div class="vip-card-title">
+                            VIRGO VPN
+                        </div>
+
+                        <div class="vip-card-subtitle">
+                            PREMIUM VIP MEMBERSHIP
+                        </div>
+
+                    </div>
 
                 </div>
 
 
-                <div>
+                <div class="vip-card-crown">
 
-                    <div class="vip-card-title">
-                        VIRGO VPN
-                    </div>
-
-                    <div class="vip-card-subtitle">
-                        PREMIUM VIP MEMBERSHIP
-                    </div>
+                    <i class="fas fa-crown"></i>
 
                 </div>
 
             </div>
 
 
-            <div class="vip-card-crown">
+            <div class="vip-card-line"></div>
+
+
+            <div
+                class="vip-card-user"
+                id="cardUsername">
+
+                VIP USER
+
+            </div>
+
+
+            <div class="vip-card-info">
+
+
+                <div class="vip-info">
+
+                    <div class="vip-info-label">
+                        USER ID
+                    </div>
+
+                    <div
+                        class="vip-info-value"
+                        id="cardId">
+                        -
+                    </div>
+
+                </div>
+
+
+                <div class="vip-info">
+
+                    <div class="vip-info-label">
+                        EXPIRY DATE
+                    </div>
+
+                    <div
+                        class="vip-info-value"
+                        id="cardExpiry">
+                        -
+                    </div>
+
+                </div>
+
+
+                <div class="vip-info">
+
+                    <div class="vip-info-label">
+                        REMAINING
+                    </div>
+
+                    <div
+                        class="vip-info-value"
+                        id="cardDays">
+                        -
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="ticket-perforation">
+
+                <div class="ticket-hole top"></div>
+
+                <div class="ticket-hole bottom"></div>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- RIGHT SIDE -->
+
+        <div class="ticket-side">
+
+
+            <div class="ticket-side-badge">
 
                 <i class="fas fa-crown"></i>
 
+                <span>
+                    VIP PASS
+                </span>
+
             </div>
+
+
+            <div class="ticket-side-title">
+
+                VIRGO VPN
+
+            </div>
+
+
+            <div class="ticket-side-subtitle">
+
+                PREMIUM ACCESS TICKET
+
+            </div>
+
+
+            <div class="fake-qr">
+
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </div>
+
+
+            <div class="ticket-side-owner">
+
+                <strong>
+                    OWNER : KKL
+                </strong>
+
+                <br><br>
+
+                SECURE • FAST • PRIVATE
+
+            </div>
+
 
         </div>
 
 
-        <div class="vip-card-line"></div>
-
-
-        <div
-            class="vip-card-user"
-            id="cardUsername">
-
-            VIP USER
-
-        </div>
-
-
-        <div class="vip-card-info">
-
-
-            <div class="vip-info">
-
-                <div class="vip-info-label">
-                    USER ID
-                </div>
-
-                <div
-                    class="vip-info-value"
-                    id="cardId">
-                    -
-                </div>
-
-            </div>
-
-
-            <div class="vip-info">
-
-                <div class="vip-info-label">
-                    EXPIRY DATE
-                </div>
-
-                <div
-                    class="vip-info-value"
-                    id="cardExpiry">
-                    -
-                </div>
-
-            </div>
-
-
-            <div class="vip-info">
-
-                <div class="vip-info-label">
-                    REMAINING
-                </div>
-
-                <div
-                    class="vip-info-value"
-                    id="cardDays">
-                    -
-                </div>
-
-            </div>
-
-
-        </div>
-
+        <!-- FOOTER -->
 
         <div class="vip-card-footer">
 
@@ -2019,13 +2446,15 @@ body.light-mode{
 
                 &nbsp;•&nbsp;
 
-                SECURE • FAST • PRIVATE
+                PREMIUM VIP ACCESS
 
             </span>
 
 
             <span>
-                OWNER : KKL
+
+                VIP MEMBERSHIP TICKET
+
             </span>
 
         </div>
@@ -2048,7 +2477,9 @@ body.light-mode{
 
 <script>
 
-/* FIREBASE */
+/* =================================================
+   FIREBASE
+================================================= */
 
 const firebaseConfig = {
 
@@ -2081,7 +2512,9 @@ const auth =
     firebase.auth();
 
 
-/* GLOBAL */
+/* =================================================
+   GLOBAL
+================================================= */
 
 let allUsers=[];
 
@@ -2092,7 +2525,9 @@ let currentEditToken=null;
 let currentCardUser=null;
 
 
-/* DOM */
+/* =================================================
+   DOM
+================================================= */
 
 const loginContainer=
     document.getElementById("loginContainer");
@@ -2227,7 +2662,9 @@ const vipCard=
     document.getElementById("vipCard");
 
 
-/* AUTH */
+/* =================================================
+   AUTH
+================================================= */
 
 document.addEventListener(
     "DOMContentLoaded",
@@ -2289,7 +2726,9 @@ document.addEventListener(
 );
 
 
-/* LOGIN */
+/* =================================================
+   LOGIN
+================================================= */
 
 async function handleLogin(){
 
@@ -2344,7 +2783,9 @@ async function handleLogin(){
 }
 
 
-/* LOGOUT */
+/* =================================================
+   LOGOUT
+================================================= */
 
 async function handleLogout(){
 
@@ -2365,7 +2806,9 @@ async function handleLogout(){
 }
 
 
-/* APP */
+/* =================================================
+   APP
+================================================= */
 
 function showApp(){
 
@@ -2420,7 +2863,9 @@ function initApp(){
 }
 
 
-/* THEME */
+/* =================================================
+   THEME
+================================================= */
 
 function toggleTheme(){
 
@@ -2470,7 +2915,9 @@ function loadTheme(){
 }
 
 
-/* FIRESTORE */
+/* =================================================
+   FIRESTORE
+================================================= */
 
 function loadUsers(){
 
@@ -2574,7 +3021,9 @@ function loadUsers(){
 }
 
 
-/* DATE */
+/* =================================================
+   DATE
+================================================= */
 
 function parseDate(value){
 
@@ -2883,7 +3332,9 @@ function getUserStatus(user){
 }
 
 
-/* USER CARD */
+/* =================================================
+   USER CARD
+================================================= */
 
 function createUserCard(user){
 
@@ -3116,7 +3567,9 @@ function createUserCard(user){
 }
 
 
-/* RENDER */
+/* =================================================
+   RENDER
+================================================= */
 
 function renderUsers(){
 
@@ -3156,7 +3609,9 @@ function renderUsers(){
 }
 
 
-/* BUTTONS */
+/* =================================================
+   BUTTONS
+================================================= */
 
 function attachUserButtons(){
 
@@ -3204,7 +3659,9 @@ function attachUserButtons(){
 }
 
 
-/* SEARCH */
+/* =================================================
+   SEARCH
+================================================= */
 
 function filterUsers(){
 
@@ -3273,7 +3730,9 @@ function clearSearch(){
 }
 
 
-/* FORM */
+/* =================================================
+   FORM
+================================================= */
 
 function openForm(){
 
@@ -3388,7 +3847,9 @@ function fillForm(token){
 }
 
 
-/* EXTEND 30 DAYS */
+/* =================================================
+   EXTEND 30 DAYS
+================================================= */
 
 async function extend30Days(){
 
@@ -3514,7 +3975,9 @@ async function extend30Days(){
 }
 
 
-/* ADD */
+/* =================================================
+   ADD
+================================================= */
 
 async function addUser(){
 
@@ -3609,7 +4072,9 @@ async function addUser(){
 }
 
 
-/* UPDATE */
+/* =================================================
+   UPDATE
+================================================= */
 
 async function updateUser(){
 
@@ -3702,7 +4167,9 @@ async function updateUser(){
 }
 
 
-/* DELETE */
+/* =================================================
+   DELETE
+================================================= */
 
 async function deleteUserByToken(token){
 
@@ -3758,7 +4225,9 @@ async function deleteUserByToken(token){
 }
 
 
-/* SUCCESS */
+/* =================================================
+   SUCCESS
+================================================= */
 
 function showSuccessMessage(
     user,
@@ -3826,7 +4295,9 @@ function showSuccessMessage(
 }
 
 
-/* VISITING CARD */
+/* =================================================
+   PREPARE TICKET
+================================================= */
 
 function prepareVipCard(user){
 
@@ -3856,7 +4327,9 @@ function prepareVipCard(user){
 }
 
 
-/* SAVE IMAGE */
+/* =================================================
+   SAVE TICKET IMAGE
+================================================= */
 
 async function saveAsImage(){
 
@@ -3879,8 +4352,6 @@ async function saveAsImage(){
 
     try{
 
-        /* Wait for fonts */
-
         if(
             document.fonts &&
             document.fonts.ready
@@ -3890,8 +4361,6 @@ async function saveAsImage(){
 
         }
 
-
-        /* Wait for logo */
 
         const img=
             vipCard.querySelector("img");
@@ -3917,8 +4386,6 @@ async function saveAsImage(){
         }
 
 
-        /* Rendering delay */
-
         await new Promise(
             resolve=>
                 setTimeout(
@@ -3927,8 +4394,6 @@ async function saveAsImage(){
                 )
         );
 
-
-        /* High resolution capture */
 
         const canvas=
             await html2canvas(
@@ -3961,14 +4426,12 @@ async function saveAsImage(){
             );
 
 
-        /* Download */
-
         const link=
             document.createElement("a");
 
 
         link.download=
-            `VIRGO_VPN_${safeFileName(
+            `VIRGO_VPN_TICKET_${safeFileName(
                 currentCardUser.token
             )}.png`;
 
@@ -3992,7 +4455,7 @@ async function saveAsImage(){
 
 
         showNotification(
-            "VIP visiting card saved",
+            "VIP ticket saved successfully",
             "success"
         );
 
@@ -4002,7 +4465,7 @@ async function saveAsImage(){
         console.error(error);
 
         showNotification(
-            "Could not save card",
+            "Could not save ticket",
             "error"
         );
 
@@ -4011,7 +4474,9 @@ async function saveAsImage(){
 }
 
 
-/* SUCCESS CLOSE */
+/* =================================================
+   CLOSE SUCCESS
+================================================= */
 
 function closeSuccessModal(){
 
@@ -4021,7 +4486,9 @@ function closeSuccessModal(){
 }
 
 
-/* NOTIFICATION */
+/* =================================================
+   NOTIFICATION
+================================================= */
 
 function showNotification(
     message,
@@ -4075,7 +4542,9 @@ function showNotification(
 }
 
 
-/* HELPERS */
+/* =================================================
+   HELPERS
+================================================= */
 
 function escapeHtml(value){
 
@@ -4126,7 +4595,9 @@ function safeFileName(value){
 }
 
 
-/* CLOSE MODALS OUTSIDE */
+/* =================================================
+   CLOSE MODALS OUTSIDE
+================================================= */
 
 formOverlay.addEventListener(
     "click",
