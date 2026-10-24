@@ -754,7 +754,7 @@ body.light-mode{
 
 .form-actions-small{
     display:grid;
-    grid-template-columns:1fr 1fr 1fr;
+    grid-template-columns:1fr 1fr;
     gap:8px;
     margin-top:15px;
 }
@@ -1665,6 +1665,51 @@ body.light-mode{
 .ticket-side-owner strong,.vip-card-footer strong{color:#c4b5fd;}
 .vip-card-footer{color:#8792aa;}
 
+
+/* BUSINESS CARD REDESIGN — horizontal, clean two-column identity card */
+.card-capture-area{width:1000px;}
+.vip-card{
+  width:1000px;height:560px;display:grid;grid-template-columns:350px 1fr;
+  color:#14213a;background:#fff;border:0;border-radius:30px;overflow:hidden;
+  box-shadow:0 28px 70px rgba(0,0,0,.28);font-family:Inter,"Segoe UI",Arial,sans-serif;
+}
+.biz-brand-panel{position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;padding:46px 42px;color:white;background:linear-gradient(145deg,#162342,#172d55 58%,#245978);}
+.biz-brand-panel:before{content:"";position:absolute;width:510px;height:510px;border:1px solid rgba(255,255,255,.13);border-radius:50%;right:-290px;top:-190px;box-shadow:0 0 0 36px rgba(255,255,255,.035),0 0 0 80px rgba(255,255,255,.025);}
+.biz-logo-frame{position:relative;z-index:2;width:88px;height:88px;padding:5px;border-radius:28px;background:white;box-shadow:0 16px 35px rgba(0,0,0,.22);}
+.biz-logo-frame img{width:100%;height:100%;object-fit:cover;border-radius:23px;}
+.biz-brand-copy{position:relative;z-index:2;margin-top:auto;}
+.biz-kicker{font-size:15px;letter-spacing:4px;font-weight:800;color:#a9dff0;margin-bottom:15px;}
+.biz-name{font-size:62px;line-height:1;font-weight:950;letter-spacing:2px;}
+.biz-name span{font-weight:300;color:#6ed3e3;}
+.biz-rule{height:3px;width:72px;background:#69d1de;border-radius:3px;margin:23px 0 18px;}
+.biz-tagline{font-size:15px;letter-spacing:2px;font-weight:750;color:rgba(255,255,255,.78);}
+.biz-orbit{position:absolute;border:1px solid rgba(116,220,235,.18);border-radius:50%;pointer-events:none;}
+.biz-orbit-one{width:300px;height:300px;right:-175px;bottom:25px;}
+.biz-orbit-two{width:205px;height:205px;right:-127px;bottom:73px;}
+.biz-details-panel{position:relative;display:flex;flex-direction:column;padding:48px 52px 36px;background:linear-gradient(135deg,#fff 0%,#f7f9fc 100%);}
+.biz-member-label{display:flex;align-items:center;gap:11px;color:#65728a;font-size:15px;font-weight:850;letter-spacing:2px;}
+.biz-status-dot{width:10px;height:10px;border-radius:50%;background:#13b981;box-shadow:0 0 0 5px rgba(19,185,129,.12);}
+.biz-member-name{margin-top:20px;color:#15233d;font-size:54px;line-height:1.08;font-weight:900;letter-spacing:-1px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.biz-member-caption{margin-top:12px;color:#8b96a8;font-size:14px;font-weight:700;letter-spacing:1.5px;}
+.biz-divider{height:1px;margin:28px 0 25px;background:linear-gradient(90deg,#d5dce7,transparent);}
+.biz-data-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px 30px;}
+.biz-data{display:flex;flex-direction:column;gap:9px;min-width:0;}
+.biz-data-label{color:#8995a8;font-size:14px;font-weight:850;letter-spacing:1.5px;}
+.biz-data strong{color:#22324e;font-size:25px;line-height:1.25;font-weight:850;overflow-wrap:anywhere;}
+.biz-data-wide{grid-column:1/-1;}
+.biz-card-footer{margin-top:auto;padding-top:18px;border-top:1px solid #e5e9f0;display:flex;align-items:center;justify-content:space-between;gap:12px;color:#8995a8;font-size:12px;font-weight:800;letter-spacing:1px;}
+.biz-chip{display:inline-flex;align-items:center;gap:7px;padding:9px 12px;border-radius:20px;background:#e9f8f5;color:#159475;font-size:10px;letter-spacing:1px;}
+.biz-chip i{font-size:12px;}
+
+
+/* Center the complete brand lockup and keep VIRGOVPN within the panel */
+.biz-brand-panel{align-items:center;text-align:center;}
+.biz-logo-frame{flex:0 0 auto;}
+.biz-brand-copy{width:100%;text-align:center;}
+.biz-kicker,.biz-tagline{white-space:nowrap;}
+.biz-name{font-size:49px;letter-spacing:0;white-space:nowrap;line-height:1.08;}
+.biz-rule{margin-left:auto;margin-right:auto;}
+
 </style>
 </head>
 
@@ -2062,17 +2107,6 @@ body.light-mode{
 
 
                 <button
-                    class="btn-form-small btn-add-form"
-                    id="btnAdd">
-
-                    <i class="fas fa-plus"></i>
-
-                    Add
-
-                </button>
-
-
-                <button
                     class="btn-form-small btn-update-form"
                     id="btnUpdate">
 
@@ -2242,300 +2276,32 @@ body.light-mode{
 ================================================= -->
 
 <div class="card-capture-area">
-
-    <div
-        class="vip-card"
-        id="vipCard">
-
-
-        <!-- LEFT MAIN -->
-
-        <div class="ticket-main">
-
-
-            <div class="vip-card-top">
-
-
-                <div class="vip-card-brand">
-
-                    <div class="vip-card-logo">
-
-                        <img
-                            src="https://raw.githubusercontent.com/kyawkolatt2026-alt/virgovpn/main/file_00000000db78821181d9b896c0f7b588.png">
-
-                    </div>
-
-
-                    <div>
-
-                        <div class="vip-card-title">
-                            VIRGO VPN
-                        </div>
-
-                        <div class="vip-card-subtitle">
-                            PREMIUM VIP MEMBERSHIP
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <div class="vip-card-crown">
-
-                    <i class="fas fa-crown"></i>
-
-                </div>
-
+    <div class="vip-card" id="vipCard">
+        <section class="biz-brand-panel">
+            <div class="biz-logo-frame"><img src="https://raw.githubusercontent.com/kyawkolatt2026-alt/virgovpn/main/file_00000000db78821181d9b896c0f7b588.png" alt="Virgo VPN logo"></div>
+            <div class="biz-brand-copy">
+                <div class="biz-kicker">SECURE CONNECTION</div>
+                <div class="biz-name">VIRGO<span>VPN</span></div>
+                <div class="biz-rule"></div>
+                <div class="biz-tagline">FAST · PRIVATE · RELIABLE</div>
             </div>
-
-
-            <div class="vip-card-line"></div>
-
-
-            <div
-                class="vip-card-user"
-                id="cardUsername">
-
-                VIP USER
-
+            <div class="biz-orbit biz-orbit-one"></div>
+            <div class="biz-orbit biz-orbit-two"></div>
+        </section>
+        <section class="biz-details-panel">
+            <div class="biz-member-label"><span class="biz-status-dot"></span> PREMIUM MEMBER</div>
+            <div class="biz-member-name" id="cardUsername">VIP USER</div>
+            <div class="biz-member-caption">YOUR DIGITAL MEMBERSHIP CARD</div>
+            <div class="biz-divider"></div>
+            <div class="biz-data-grid">
+                <div class="biz-data"><span class="biz-data-label">MEMBER ID</span><strong id="cardId">-</strong></div>
+                <div class="biz-data"><span class="biz-data-label">VALID THROUGH</span><strong id="cardExpiry">-</strong></div>
+                <div class="biz-data biz-data-wide"><span class="biz-data-label">SUBSCRIPTION</span><strong id="cardDays">-</strong></div>
             </div>
-
-
-            <div class="vip-card-info">
-
-
-                <div class="vip-info">
-
-                    <div class="vip-info-label">
-                        USER ID
-                    </div>
-
-                    <div
-                        class="vip-info-value"
-                        id="cardId">
-                        -
-                    </div>
-
-                </div>
-
-
-                <div class="vip-info">
-
-                    <div class="vip-info-label">
-                        EXPIRY DATE
-                    </div>
-
-                    <div
-                        class="vip-info-value"
-                        id="cardExpiry">
-                        -
-                    </div>
-
-                </div>
-
-
-                <div class="vip-info">
-
-                    <div class="vip-info-label">
-                        REMAINING
-                    </div>
-
-                    <div
-                        class="vip-info-value"
-                        id="cardDays">
-                        -
-                    </div>
-
-                </div>
-
-
-            </div>
-
-
-            <div class="ticket-perforation">
-
-                <div class="ticket-hole top"></div>
-
-                <div class="ticket-hole bottom"></div>
-
-            </div>
-
-
-        </div>
-
-
-        <!-- RIGHT SIDE -->
-
-        <div class="ticket-side">
-
-
-            <div class="ticket-side-badge">
-
-                <i class="fas fa-crown"></i>
-
-                <span>
-                    VIP PASS
-                </span>
-
-            </div>
-
-
-            <div class="ticket-side-title">
-
-                VIRGO VPN
-
-            </div>
-
-
-            <div class="ticket-side-subtitle">
-
-                PREMIUM ACCESS TICKET
-
-            </div>
-
-
-            <div class="fake-qr">
-
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-
-            </div>
-
-
-            <div class="ticket-side-owner">
-
-                <strong>
-                    OWNER : KKL
-                </strong>
-
-                <br><br>
-
-                SECURE • FAST • PRIVATE
-
-            </div>
-
-
-        </div>
-
-
-        <!-- FOOTER -->
-
-        <div class="vip-card-footer">
-
-            <span>
-
-                <strong>
-                    VIRGO VPN
-                </strong>
-
-                &nbsp;•&nbsp;
-
-                PREMIUM VIP ACCESS
-
-            </span>
-
-
-            <span>
-
-                VIP MEMBERSHIP TICKET
-
-            </span>
-
-        </div>
-
-
+            <div class="biz-card-footer"><span>VIRGO VPN · VIP ACCESS</span><span class="biz-chip"><i class="fas fa-shield-alt"></i> VERIFIED</span></div>
+        </section>
     </div>
-
 </div>
-
 
 <div
     class="notification-small"
@@ -2663,9 +2429,6 @@ const expiryInput=
 
 const isActiveInput=
     document.getElementById("isActive");
-
-const btnAdd=
-    document.getElementById("btnAdd");
 
 const btnUpdate=
     document.getElementById("btnUpdate");
@@ -2901,8 +2664,6 @@ function initApp(){
     closeFormBtn.onclick=
         closeForm;
 
-    btnAdd.onclick=
-        addUser;
 
     btnUpdate.onclick=
         updateUser;
@@ -4150,6 +3911,8 @@ async function addUser(){
 
 async function updateUser(){
 
+    const isEditing=Boolean(currentEditToken);
+
     const token=
         currentEditToken ||
         tokenInput.value.trim();
@@ -4220,7 +3983,7 @@ async function updateUser(){
 
             },
 
-            "updated"
+            isEditing ? "updated" : "added"
 
         );
 
@@ -4229,7 +3992,7 @@ async function updateUser(){
         console.error(error);
 
         showNotification(
-            "Error updating user: "+
+            "Error saving user: "+
             error.message,
             "error"
         );
@@ -4486,13 +4249,13 @@ async function saveAsImage(){
                     imageTimeout:
                         10000,
 
-                    width:1200,
+                    width:1000,
 
-                    height:700,
+                    height:560,
 
-                    windowWidth:1200,
+                    windowWidth:1000,
 
-                    windowHeight:700
+                    windowHeight:560
 
                 }
             );
