@@ -4,4462 +4,942 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>VIRGO VPN PANEL</title>
-
 <meta name="theme-color" content="#080b14">
-
 <link rel="icon" href="https://raw.githubusercontent.com/kyawkolatt2026-alt/virgovpn/main/file_00000000db78821181d9b896c0f7b588.png">
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
 <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 
 <style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Inter,"Segoe UI",Arial,sans-serif;
-}
-
-:root{
-    --bg:#070a12;
-    --card:#101522;
-    --card2:#151b2b;
-    --input:#0b0f19;
-    --border:rgba(255,255,255,.09);
-    --text:#f8fafc;
-    --muted:#8791a8;
-    --primary:#8b5cf6;
-    --primary2:#6366f1;
-    --green:#22c55e;
-    --yellow:#f59e0b;
-    --red:#ef4444;
-}
-
-body{
-    min-height:100vh;
-    background:
-        radial-gradient(circle at 10% 0%,rgba(99,102,241,.16),transparent 30%),
-        radial-gradient(circle at 90% 10%,rgba(139,92,246,.13),transparent 28%),
-        var(--bg);
-    color:var(--text);
-    transition:.25s;
-}
-
-body.light-mode{
-    --bg:#f1f5f9;
-    --card:#ffffff;
-    --card2:#f8fafc;
-    --input:#f8fafc;
-    --border:rgba(15,23,42,.12);
-    --text:#172033;
-    --muted:#64748b;
-
-    background:
-        radial-gradient(circle at 10% 0%,rgba(99,102,241,.10),transparent 30%),
-        radial-gradient(circle at 90% 10%,rgba(139,92,246,.08),transparent 28%),
-        var(--bg);
-}
-
-/* =================================================
-   LOGIN
-================================================= */
-
-.login-container{
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:20px;
-}
-
-.login-box{
-    width:100%;
-    max-width:410px;
-    padding:38px 30px;
-    background:rgba(16,21,34,.88);
-    border:1px solid rgba(255,255,255,.1);
-    border-radius:28px;
-    box-shadow:0 30px 80px rgba(0,0,0,.45);
-    backdrop-filter:blur(25px);
-    text-align:center;
-}
-
-.login-logo{
-    width:88px;
-    height:88px;
-    margin:auto auto 18px;
-    border-radius:25px;
-    padding:3px;
-    background:linear-gradient(135deg,#8b5cf6,#6366f1,#06b6d4);
-}
-
-.login-logo img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    border-radius:22px;
-}
-
-.login-title{
-    font-size:25px;
-    font-weight:900;
-}
-
-.login-subtitle{
-    color:#8f9ab0;
-    font-size:13px;
-    margin:7px 0 28px;
-}
-
-.form-group{
-    text-align:left;
-    margin-bottom:16px;
-}
-
-.form-group label{
-    display:block;
-    color:#aab3c7;
-    font-size:11px;
-    font-weight:800;
-    margin-bottom:7px;
-    text-transform:uppercase;
-}
-
-.form-group input{
-    width:100%;
-    height:52px;
-    padding:0 15px;
-    border:1px solid rgba(255,255,255,.08);
-    border-radius:14px;
-    background:#0b0f1a;
-    color:white;
-    outline:none;
-}
-
-.form-group input:focus{
-    border-color:#8b5cf6;
-}
-
-.btn-login{
-    width:100%;
-    height:52px;
-    border:0;
-    border-radius:14px;
-    color:white;
-    font-weight:900;
-    background:linear-gradient(135deg,#8b5cf6,#6366f1);
-    cursor:pointer;
-}
-
-.login-error{
-    display:none;
-    background:rgba(239,68,68,.12);
-    border:1px solid rgba(239,68,68,.2);
-    color:#fca5a5;
-    padding:11px;
-    border-radius:12px;
-    font-size:12px;
-    margin-bottom:14px;
-}
-
-/* =================================================
-   APP
-================================================= */
-
-.app-container{
-    display:none;
-    min-height:100vh;
-}
-
-.container{
-    width:100%;
-    max-width:760px;
-    margin:auto;
-    min-height:100vh;
-}
-
-.compact-header{
-    padding:25px 20px 20px;
-}
-
-.title-row{
-    display:flex;
-    align-items:center;
-    gap:13px;
-}
-
-.logo-small{
-    width:54px;
-    height:54px;
-    padding:2px;
-    border-radius:17px;
-    background:linear-gradient(135deg,#8b5cf6,#6366f1,#06b6d4);
-}
-
-.logo-small img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    border-radius:15px;
-}
-
-.compact-title{
-    font-size:21px;
-    font-weight:900;
-}
-
-.title-line{
-    color:#8d98ae;
-    font-size:11px;
-    font-weight:700;
-    margin-top:3px;
-}
-
-.subtitle-small{
-    color:var(--muted);
-    font-size:12px;
-    margin:12px 0 18px 67px;
-}
-
-/* =================================================
-   STATS
-================================================= */
-
-.compact-stats{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:9px;
-}
-
-.stat-item{
-    background:var(--card);
-    border:1px solid var(--border);
-    border-radius:16px;
-    padding:13px 5px;
-    text-align:center;
-}
-
-.stat-value-small{
-    font-size:20px;
-    font-weight:900;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:5px;
-}
-
-.stat-icon{
-    font-size:8px;
-}
-
-.total-stat .stat-icon{color:#818cf8}
-.active-stat .stat-icon{color:#22c55e}
-.inactive-stat .stat-icon{color:#f59e0b}
-.offline-stat .stat-icon{color:#ef4444}
-
-.stat-label-small{
-    margin-top:5px;
-    color:var(--muted);
-    font-size:9px;
-    text-transform:uppercase;
-}
-
-.demo-badge{
-    display:block;
-    width:max-content;
-    margin:13px auto 0;
-    color:#a78bfa;
-    background:rgba(139,92,246,.1);
-    border:1px solid rgba(139,92,246,.18);
-    padding:6px 12px;
-    border-radius:20px;
-    font-size:10px;
-    font-weight:800;
-}
-
-/* =================================================
-   CONTENT
-================================================= */
-
-.compact-content{
-    padding:10px 18px 30px;
-}
-
-.search-container-small{
-    display:flex;
-    gap:8px;
-    margin-bottom:12px;
-}
-
-.search-box-small{
-    position:relative;
-    flex:1;
-}
-
-.search-box-small i{
-    position:absolute;
-    left:15px;
-    top:50%;
-    transform:translateY(-50%);
-    color:#818cf8;
-}
-
-.search-box-small input{
-    width:100%;
-    height:48px;
-    border-radius:14px;
-    border:1px solid var(--border);
-    background:var(--card);
-    color:var(--text);
-    padding:0 15px 0 43px;
-    outline:none;
-}
-
-.btn-back-search{
-    display:none;
-    border:1px solid var(--border);
-    background:var(--card);
-    color:var(--text);
-    border-radius:14px;
-    padding:0 15px;
-    align-items:center;
-    gap:6px;
-}
-
-.btn-add-small{
-    width:100%;
-    height:50px;
-    border:0;
-    border-radius:15px;
-    color:white;
-    font-weight:900;
-    background:linear-gradient(135deg,#8b5cf6,#6366f1);
-    cursor:pointer;
-}
-
-/* =================================================
-   USER
-================================================= */
-
-.user-item{
-    position:relative;
-    padding:16px;
-    margin-bottom:13px;
-    border-radius:20px;
-    background:var(--card);
-    border:1px solid var(--border);
-    box-shadow:0 10px 30px rgba(0,0,0,.10);
-}
-
-.user-item.active{
-    border-left:3px solid #22c55e;
-}
-
-.user-item.inactive{
-    border-left:3px solid #f59e0b;
-}
-
-.user-item.expired{
-    border-left:3px solid #ef4444;
-}
-
-.vip-badge{
-    position:absolute;
-    top:-9px;
-    right:15px;
-    height:25px;
-    padding:0 10px;
-    border-radius:20px;
-    display:flex;
-    align-items:center;
-    gap:4px;
-    background:linear-gradient(135deg,#fbbf24,#f59e0b);
-    color:#422006;
-    border:2px solid var(--card);
-    font-size:8px;
-    font-weight:900;
-}
-
-.status-display-row{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:13px;
-}
-
-.status-text-label{
-    color:var(--muted);
-    font-size:9px;
-    text-transform:uppercase;
-    font-weight:800;
-}
-
-.status-text-value{
-    padding:5px 10px;
-    border-radius:20px;
-    font-size:9px;
-    font-weight:900;
-}
-
-.status-text-online{
-    background:rgba(34,197,94,.12);
-    color:#4ade80;
-}
-
-.status-text-offline{
-    background:rgba(239,68,68,.12);
-    color:#f87171;
-}
-
-.status-text-expired{
-    background:rgba(245,158,11,.12);
-    color:#fbbf24;
-}
-
-.user-header-small{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:10px;
-    margin-bottom:13px;
-}
-
-.user-name-container{
-    display:flex;
-    align-items:center;
-    gap:9px;
-    min-width:0;
-}
-
-.status-light{
-    width:9px;
-    height:9px;
-    min-width:9px;
-    border-radius:50%;
-}
-
-.status-light.active{
-    background:#22c55e;
-    box-shadow:0 0 9px #22c55e;
-}
-
-.status-light.inactive{
-    background:#f59e0b;
-}
-
-.status-light.expired{
-    background:#ef4444;
-}
-
-.user-name{
-    font-size:14px;
-    font-weight:900;
-    overflow:hidden;
-    text-overflow:ellipsis;
-    white-space:nowrap;
-}
-
-.user-actions{
-    display:flex;
-    gap:6px;
-    flex-shrink:0;
-}
-
-.btn-action{
-    width:34px;
-    height:34px;
-    border:0;
-    border-radius:10px;
-    color:white;
-    cursor:pointer;
-}
-
-.btn-edit{
-    background:#3b82f6;
-}
-
-.btn-delete{
-    background:#ef4444;
-}
-
-.user-details-small{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:8px;
-}
-
-.detail-row{
-    min-width:0;
-    display:flex;
-    align-items:center;
-    gap:6px;
-    padding:9px;
-    border-radius:11px;
-    background:rgba(127,127,127,.06);
-    color:var(--muted);
-    font-size:9px;
-}
-
-.detail-row i{
-    color:#818cf8;
-    width:12px;
-}
-
-.detail-label{
-    color:var(--muted);
-    font-size:8px;
-}
-
-.detail-value{
-    color:var(--text);
-    font-weight:800;
-    overflow:hidden;
-    text-overflow:ellipsis;
-    white-space:nowrap;
-}
-
-.day-left.green{color:#4ade80}
-.day-left.yellow{color:#fbbf24}
-.day-left.red{color:#f87171}
-
-.progress-container{
-    margin-top:13px;
-}
-
-.progress-header{
-    display:flex;
-    justify-content:space-between;
-    margin-bottom:6px;
-}
-
-.progress-label{
-    color:var(--muted);
-    font-size:9px;
-}
-
-.progress-percent{
-    font-size:9px;
-    font-weight:900;
-}
-
-.progress-percent.green{color:#4ade80}
-.progress-percent.yellow{color:#fbbf24}
-.progress-percent.red{color:#f87171}
-
-.progress-bar{
-    height:5px;
-    background:rgba(127,127,127,.12);
-    border-radius:10px;
-    overflow:hidden;
-}
-
-.progress-fill{
-    height:100%;
-    border-radius:10px;
-}
-
-.progress-fill.green{background:#22c55e}
-.progress-fill.yellow{background:#f59e0b}
-.progress-fill.red{background:#ef4444}
-
-/* =================================================
-   FLOAT
-================================================= */
-
-.theme-toggle,
-.logout-btn{
-    position:fixed;
-    right:18px;
-    width:42px;
-    height:42px;
-    border-radius:13px;
-    border:1px solid rgba(255,255,255,.12);
-    color:white;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    z-index:2000;
-    cursor:pointer;
-}
-
-.theme-toggle{
-    top:18px;
-    background:linear-gradient(135deg,#8b5cf6,#6366f1);
-}
-
-.logout-btn{
-    top:68px;
-    background:linear-gradient(135deg,#ef4444,#b91c1c);
-}
-
-/* =================================================
-   MODAL
-================================================= */
-
-.form-overlay,
-.success-overlay{
-    position:fixed;
-    inset:0;
-    background:rgba(2,6,23,.78);
-    backdrop-filter:blur(9px);
-    display:none;
-    align-items:center;
-    justify-content:center;
-    padding:18px;
-    z-index:3000;
-    overflow-y:auto;
-}
-
-.form-modal{
-    width:100%;
-    max-width:450px;
-    background:var(--card);
-    border:1px solid var(--border);
-    border-radius:24px;
-    overflow:hidden;
-    box-shadow:0 30px 80px rgba(0,0,0,.5);
-}
-
-.form-header-small{
-    padding:18px 20px;
-    background:linear-gradient(135deg,#8b5cf6,#6366f1);
-    color:white;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
-
-.form-header-small h3{
-    font-size:15px;
-}
-
-.btn-close{
-    width:34px;
-    height:34px;
-    border:0;
-    border-radius:50%;
-    color:white;
-    background:rgba(255,255,255,.15);
-    cursor:pointer;
-}
-
-.form-body{
-    padding:20px;
-}
-
-.form-group-small{
-    margin-bottom:15px;
-}
-
-.form-group-small label{
-    display:block;
-    color:var(--muted);
-    font-size:10px;
-    font-weight:900;
-    margin-bottom:7px;
-    text-transform:uppercase;
-}
-
-.form-input-small{
-    width:100%;
-    height:47px;
-    border-radius:12px;
-    border:1px solid var(--border);
-    background:var(--input);
-    color:var(--text);
-    padding:0 13px;
-    outline:none;
-}
-
-.form-input-small:focus{
-    border-color:#8b5cf6;
-}
-
-.switch-group-small{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:13px;
-    border-radius:13px;
-    background:var(--input);
-    color:var(--text);
-}
-
-.switch-small{
-    width:48px;
-    height:26px;
-    position:relative;
-}
-
-.switch-small input{
-    opacity:0;
-    width:0;
-    height:0;
-}
-
-.slider-small{
-    position:absolute;
-    inset:0;
-    background:#334155;
-    border-radius:20px;
-    cursor:pointer;
-}
-
-.slider-small:before{
-    content:"";
-    position:absolute;
-    width:20px;
-    height:20px;
-    left:3px;
-    top:3px;
-    background:white;
-    border-radius:50%;
-    transition:.25s;
-}
-
-.switch-small input:checked+.slider-small{
-    background:#22c55e;
-}
-
-.switch-small input:checked+.slider-small:before{
-    transform:translateX(22px);
-}
-
-/* =================================================
-   EXTEND
-================================================= */
-
-.extend-box{
-    display:none;
-    margin-top:12px;
-}
-
-.btn-extend{
-    width:100%;
-    height:48px;
-    border:0;
-    border-radius:13px;
-    background:linear-gradient(135deg,#f59e0b,#ea580c);
-    color:white;
-    font-weight:900;
-    cursor:pointer;
-    box-shadow:0 8px 20px rgba(245,158,11,.18);
-}
-
-.form-actions-small{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:8px;
-    margin-top:15px;
-}
-
-.btn-form-small{
-    height:45px;
-    border:0;
-    border-radius:12px;
-    color:white;
-    font-weight:900;
-    cursor:pointer;
-}
-
-.btn-back-form{background:#475569}
-.btn-add-form{background:#22c55e}
-.btn-update-form{background:#6366f1}
-
-
-/* =================================================
-   🎫 PREMIUM VIRGO VPN TICKET
-================================================= */
-
-.card-capture-area{
-    position:fixed;
-    left:-12000px;
-    top:0;
-    width:1200px;
-    overflow:visible;
-}
-
-/* Main Ticket */
-
-.vip-card{
-    width:1200px;
-    height:700px;
-
-    position:relative;
-    overflow:hidden;
-
-    display:flex;
-
-    color:#ffffff;
-
-    background:
-        radial-gradient(
-            circle at 85% 10%,
-            rgba(139,92,246,.35),
-            transparent 30%
-        ),
-        radial-gradient(
-            circle at 10% 90%,
-            rgba(6,182,212,.20),
-            transparent 30%
-        ),
-        linear-gradient(
-            135deg,
-            #080b16 0%,
-            #10162a 52%,
-            #11182f 100%
-        );
-
-    border-radius:32px;
-
-    border:1px solid rgba(255,255,255,.14);
-
-    box-shadow:
-        0 35px 100px rgba(0,0,0,.55);
-}
-
-
-/* Decorative circles */
-
-.vip-card:before{
-    content:"";
-
-    position:absolute;
-
-    width:500px;
-    height:500px;
-
-    right:-260px;
-    top:-240px;
-
-    border-radius:50%;
-
-    border:80px solid rgba(139,92,246,.07);
-
-    pointer-events:none;
-}
-
-.vip-card:after{
-    content:"";
-
-    position:absolute;
-
-    width:350px;
-    height:350px;
-
-    left:-220px;
-    bottom:-230px;
-
-    border-radius:50%;
-
-    border:60px solid rgba(6,182,212,.055);
-
-    pointer-events:none;
-}
-
-
-/* =================================================
-   TICKET LEFT
-================================================= */
-
-.ticket-main{
-    width:850px;
-    height:100%;
-
-    position:relative;
-
-    padding:55px 60px;
-
-    z-index:2;
-}
-
-
-/* Top */
-
-.vip-card-top{
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-}
-
-.vip-card-brand{
-    display:flex;
-
-    align-items:center;
-
-    gap:22px;
-}
-
-.vip-card-logo{
-    width:86px;
-    height:86px;
-
-    padding:3px;
-
-    border-radius:24px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #8b5cf6,
-            #6366f1,
-            #06b6d4
-        );
-
-    box-shadow:
-        0 12px 35px rgba(99,102,241,.28);
-}
-
-.vip-card-logo img{
-    width:100%;
-    height:100%;
-
-    object-fit:cover;
-
-    border-radius:21px;
-}
-
-.vip-card-title{
-    font-size:36px;
-
-    line-height:1;
-
-    font-weight:950;
-
-    letter-spacing:.5px;
-}
-
-.vip-card-subtitle{
-    margin-top:10px;
-
-    color:#9ca8bd;
-
-    font-size:13px;
-
-    font-weight:700;
-
-    letter-spacing:3px;
-}
-
-
-/* VIP Crown */
-
-.vip-card-crown{
-    width:72px;
-    height:72px;
-
-    border-radius:22px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    background:
-        linear-gradient(
-            135deg,
-            #fbbf24,
-            #f59e0b
-        );
-
-    color:#422006;
-
-    font-size:30px;
-
-    box-shadow:
-        0 15px 35px rgba(245,158,11,.22);
-}
-
-
-/* Divider */
-
-.vip-card-line{
-    height:1px;
-
-    margin:38px 0 35px;
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(255,255,255,.18),
-            rgba(139,92,246,.45),
-            transparent
-        );
-}
-
-
-/* =================================================
-   USER
-================================================= */
-
-.vip-card-user{
-    font-size:47px;
-
-    line-height:1.1;
-
-    font-weight:950;
-
-    margin-bottom:32px;
-
-    max-width:700px;
-
-    overflow:hidden;
-
-    text-overflow:ellipsis;
-
-    white-space:nowrap;
-
-    letter-spacing:.3px;
-}
-
-.vip-card-user:before{
-    content:"VIP MEMBER";
-
-    display:block;
-
-    margin-bottom:10px;
-
-    font-size:12px;
-
-    font-weight:800;
-
-    letter-spacing:3px;
-
-    color:#a78bfa;
-}
-
-
-/* =================================================
-   INFO
-================================================= */
-
-.vip-card-info{
-    display:grid;
-
-    grid-template-columns:
-        1fr 1fr 1fr;
-
-    gap:14px;
-}
-
-.vip-info{
-    min-height:112px;
-
-    padding:19px;
-
-    border-radius:19px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(255,255,255,.075),
-            rgba(255,255,255,.025)
-        );
-
-    border:1px solid rgba(255,255,255,.08);
-}
-
-.vip-info-label{
-    margin-bottom:11px;
-
-    color:#7f8ba2;
-
-    font-size:10px;
-
-    font-weight:800;
-
-    text-transform:uppercase;
-
-    letter-spacing:2px;
-}
-
-.vip-info-value{
-    color:#ffffff;
-
-    font-size:21px;
-
-    line-height:1.2;
-
-    font-weight:900;
-
-    word-break:break-word;
-}
-
-
-/* =================================================
-   TICKET PERFORATION
-================================================= */
-
-.ticket-perforation{
-    position:absolute;
-
-    top:30px;
-    bottom:30px;
-
-    right:0;
-
-    width:2px;
-
-    border-right:
-        3px dashed rgba(255,255,255,.18);
-
-    z-index:5;
-}
-
-
-/* Ticket holes */
-
-.ticket-hole{
-    position:absolute;
-
-    right:-15px;
-
-    width:30px;
-    height:30px;
-
-    background:#080b16;
-
-    border-radius:50%;
-
-    z-index:8;
-}
-
-.ticket-hole.top{
-    top:-1px;
-}
-
-.ticket-hole.bottom{
-    bottom:-1px;
-}
-
-
-/* =================================================
-   TICKET RIGHT SIDE
-================================================= */
-
-.ticket-side{
-    width:350px;
-
-    height:100%;
-
-    position:relative;
-
-    z-index:3;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    flex-direction:column;
-
-    padding:40px 35px;
-}
-
-
-/* Side VIP */
-
-.ticket-side-badge{
-    width:92px;
-    height:92px;
-
-    border-radius:50%;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    flex-direction:column;
-
-    background:
-        linear-gradient(
-            135deg,
-            #8b5cf6,
-            #6366f1
-        );
-
-    border:
-        4px solid rgba(255,255,255,.08);
-
-    box-shadow:
-        0 15px 40px rgba(99,102,241,.25);
-
-    margin-bottom:25px;
-}
-
-.ticket-side-badge i{
-    font-size:28px;
-
-    color:#fbbf24;
-
-    margin-bottom:5px;
-}
-
-.ticket-side-badge span{
-    font-size:9px;
-
-    font-weight:900;
-
-    letter-spacing:1px;
-}
-
-
-/* Side title */
-
-.ticket-side-title{
-    font-size:20px;
-
-    font-weight:950;
-
-    text-align:center;
-
-    letter-spacing:1px;
-}
-
-.ticket-side-subtitle{
-    color:#7f8ba2;
-
-    font-size:10px;
-
-    font-weight:700;
-
-    text-align:center;
-
-    margin-top:7px;
-
-    letter-spacing:1.5px;
-}
-
-
-/* QR style */
-
-.fake-qr{
-    width:125px;
-    height:125px;
-
-    margin:27px 0;
-
-    padding:8px;
-
-    border-radius:13px;
-
-    background:#ffffff;
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(9,1fr);
-
-    grid-template-rows:
-        repeat(9,1fr);
-
-    gap:3px;
-}
-
-.fake-qr span{
-    background:#111827;
-
-    border-radius:1px;
-}
-
-.fake-qr span:nth-child(2n){
-    background:transparent;
-}
-
-.fake-qr span:nth-child(5n){
-    background:#111827;
-}
-
-
-/* Side footer */
-
-.ticket-side-owner{
-    color:#69758c;
-
-    font-size:10px;
-
-    font-weight:800;
-
-    text-align:center;
-
-    letter-spacing:1px;
-}
-
-.ticket-side-owner strong{
-    color:#a78bfa;
-
-    font-weight:950;
-}
-
-
-/* =================================================
-   CARD FOOTER
-================================================= */
-
-.vip-card-footer{
-    position:absolute;
-
-    left:60px;
-    right:410px;
-
-    bottom:35px;
-
-    z-index:4;
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    color:#69758c;
-
-    font-size:11px;
-
-    font-weight:700;
-
-    letter-spacing:.5px;
-}
-
-.vip-card-footer strong{
-    color:#a78bfa;
-
-    font-weight:900;
-}
-
-
-/* =================================================
-   SUCCESS
-================================================= */
-
-.success-overlay{
-    z-index:4000;
-}
-
-.success-modal{
-    width:100%;
-    max-width:430px;
-    padding:20px;
-    background:var(--card);
-    border:1px solid var(--border);
-    border-radius:24px;
-    box-shadow:0 30px 80px rgba(0,0,0,.5);
-}
-
-.success-icon{
-    width:62px;
-    height:62px;
-    margin:0 auto 13px;
-    border-radius:20px;
-    background:linear-gradient(135deg,#8b5cf6,#6366f1);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:white;
-    font-size:25px;
-}
-
-.success-title{
-    text-align:center;
-    font-size:19px;
-    font-weight:900;
-}
-
-.success-message{
-    text-align:center;
-    color:var(--muted);
-    font-size:11px;
-    margin:6px 0 17px;
-}
-
-.user-details-box{
-    background:var(--input);
-    border-radius:15px;
-    padding:12px;
-}
-
-.detail-item{
-    display:flex;
-    justify-content:space-between;
-    gap:15px;
-    padding:9px 2px;
-    border-bottom:1px solid var(--border);
-    font-size:11px;
-}
-
-.detail-item:last-child{
-    border-bottom:0;
-}
-
-.detail-item .detail-label{
-    color:var(--muted);
-}
-
-.detail-item .detail-value{
-    color:var(--text);
-}
-
-.success-actions{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:8px;
-    margin-top:15px;
-}
-
-.btn-success{
-    height:45px;
-    border:0;
-    border-radius:12px;
-    color:white;
-    font-weight:900;
-    cursor:pointer;
-}
-
-.btn-ok{background:#475569}
-.btn-save{background:#22c55e}
-
-
-/* =================================================
-   NOTIFICATION
-================================================= */
-
-.notification-small{
-    position:fixed;
-
-    bottom:20px;
-
-    left:50%;
-
-    transform:translate(-50%,100px);
-
-    opacity:0;
-
-    z-index:5000;
-
-    min-width:250px;
-
-    max-width:90%;
-
-    padding:13px 17px;
-
-    border-radius:13px;
-
-    color:white;
-
-    font-size:12px;
-
-    font-weight:800;
-
-    display:flex;
-
-    gap:9px;
-
-    align-items:center;
-
-    transition:.3s;
-}
-
-.notification-small.show{
-    transform:translate(-50%,0);
-
-    opacity:1;
-}
-
-.notification-small.success{
-    background:#16a34a;
-}
-
-.notification-small.error{
-    background:#dc2626;
-}
-
-.notification-small.info{
-    background:#6366f1;
-}
-
-
-/* =================================================
-   EMPTY
-================================================= */
-
-.loading-small,
-.empty-state-small{
-    text-align:center;
-
-    padding:50px 20px;
-
-    color:#69758c;
-}
-
-.loading-spinner-small{
-    width:35px;
-    height:35px;
-
-    border:3px solid rgba(127,127,127,.15);
-
-    border-top-color:#8b5cf6;
-
-    border-radius:50%;
-
-    animation:spin 1s linear infinite;
-
-    margin:0 auto 13px;
-}
-
-@keyframes spin{
-    to{
-        transform:rotate(360deg);
-    }
-}
-
-.footer-small{
-    text-align:center;
-
-    padding:20px;
-
-    color:#69758c;
-
-    font-size:10px;
-}
-
-
-/* =================================================
-   MOBILE
-================================================= */
-
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,"Segoe UI",Arial,sans-serif}
+:root{--bg:#070a12;--card:#101522;--card2:#151b2b;--input:#0b0f19;--border:rgba(255,255,255,.09);--text:#f8fafc;--muted:#8791a8;--primary:#8b5cf6;--primary2:#6366f1;--green:#22c55e;--yellow:#f59e0b;--red:#ef4444}
+body{min-height:100vh;background:radial-gradient(circle at 10% 0%,rgba(99,102,241,.16),transparent 30%),radial-gradient(circle at 90% 10%,rgba(139,92,246,.13),transparent 28%),var(--bg);color:var(--text);transition:.25s}
+body.light-mode{--bg:#f1f5f9;--card:#fff;--card2:#f8fafc;--input:#f8fafc;--border:rgba(15,23,42,.12);--text:#172033;--muted:#64748b;background:radial-gradient(circle at 10% 0%,rgba(99,102,241,.10),transparent 30%),radial-gradient(circle at 90% 10%,rgba(139,92,246,.08),transparent 28%),var(--bg)}
+.login-container{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+.login-box{width:100%;max-width:410px;padding:38px 30px;background:rgba(16,21,34,.88);border:1px solid rgba(255,255,255,.1);border-radius:28px;box-shadow:0 30px 80px rgba(0,0,0,.45);backdrop-filter:blur(25px);text-align:center}
+.login-logo{width:88px;height:88px;margin:auto auto 18px;border-radius:25px;padding:3px;background:linear-gradient(135deg,#8b5cf6,#6366f1,#06b6d4)}
+.login-logo img{width:100%;height:100%;object-fit:cover;border-radius:22px}
+.login-title{font-size:25px;font-weight:900}
+.login-subtitle{color:#8f9ab0;font-size:13px;margin:7px 0 28px}
+.form-group{text-align:left;margin-bottom:16px}
+.form-group label{display:block;color:#aab3c7;font-size:11px;font-weight:800;margin-bottom:7px;text-transform:uppercase}
+.form-group input{width:100%;height:52px;padding:0 15px;border:1px solid rgba(255,255,255,.08);border-radius:14px;background:#0b0f1a;color:white;outline:none}
+.form-group input:focus{border-color:#8b5cf6}
+.btn-login{width:100%;height:52px;border:0;border-radius:14px;color:white;font-weight:900;background:linear-gradient(135deg,#8b5cf6,#6366f1);cursor:pointer}
+.login-error{display:none;background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.2);color:#fca5a5;padding:11px;border-radius:12px;font-size:12px;margin-bottom:14px}
+.app-container{display:none;min-height:100vh}
+.container{width:100%;max-width:760px;margin:auto;min-height:100vh}
+.compact-header{padding:25px 20px 20px}
+.title-row{display:flex;align-items:center;gap:13px}
+.logo-small{width:54px;height:54px;padding:2px;border-radius:17px;background:linear-gradient(135deg,#8b5cf6,#6366f1,#06b6d4)}
+.logo-small img{width:100%;height:100%;object-fit:cover;border-radius:15px}
+.compact-title{font-size:21px;font-weight:900}
+.title-line{color:#8d98ae;font-size:11px;font-weight:700;margin-top:3px}
+.subtitle-small{color:var(--muted);font-size:12px;margin:12px 0 18px 67px}
+.compact-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}
+.stat-item{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:13px 5px;text-align:center}
+.stat-value-small{font-size:20px;font-weight:900;display:flex;justify-content:center;align-items:center;gap:5px}
+.stat-icon{font-size:8px}
+.total-stat .stat-icon{color:#818cf8}.active-stat .stat-icon{color:#22c55e}.inactive-stat .stat-icon{color:#f59e0b}.offline-stat .stat-icon{color:#ef4444}
+.stat-label-small{margin-top:5px;color:var(--muted);font-size:9px;text-transform:uppercase}
+.demo-badge{display:block;width:max-content;margin:13px auto 0;color:#a78bfa;background:rgba(139,92,246,.1);border:1px solid rgba(139,92,246,.18);padding:6px 12px;border-radius:20px;font-size:10px;font-weight:800}
+.compact-content{padding:10px 18px 30px}
+.search-container-small{display:flex;gap:8px;margin-bottom:12px}
+.search-box-small{position:relative;flex:1}
+.search-box-small i{position:absolute;left:15px;top:50%;transform:translateY(-50%);color:#818cf8}
+.search-box-small input{width:100%;height:48px;border-radius:14px;border:1px solid var(--border);background:var(--card);color:var(--text);padding:0 15px 0 43px;outline:none}
+.btn-back-search{display:none;border:1px solid var(--border);background:var(--card);color:var(--text);border-radius:14px;padding:0 15px;align-items:center;gap:6px}
+.btn-add-small{width:100%;height:50px;border:0;border-radius:15px;color:white;font-weight:900;background:linear-gradient(135deg,#8b5cf6,#6366f1);cursor:pointer}
+.user-item{position:relative;padding:16px;margin-bottom:13px;border-radius:20px;background:var(--card);border:1px solid var(--border);box-shadow:0 10px 30px rgba(0,0,0,.10)}
+.user-item.active{border-left:3px solid #22c55e}.user-item.inactive{border-left:3px solid #f59e0b}.user-item.expired{border-left:3px solid #ef4444}
+.vip-badge{position:absolute;top:-9px;right:15px;height:25px;padding:0 10px;border-radius:20px;display:flex;align-items:center;gap:4px;background:linear-gradient(135deg,#fbbf24,#f59e0b);color:#422006;border:2px solid var(--card);font-size:8px;font-weight:900}
+.status-display-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:13px}
+.status-text-label{color:var(--muted);font-size:9px;text-transform:uppercase;font-weight:800}
+.status-text-value{padding:5px 10px;border-radius:20px;font-size:9px;font-weight:900}
+.status-text-online{background:rgba(34,197,94,.12);color:#4ade80}.status-text-offline{background:rgba(239,68,68,.12);color:#f87171}.status-text-expired{background:rgba(245,158,11,.12);color:#fbbf24}
+.user-header-small{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:13px}
+.user-name-container{display:flex;align-items:center;gap:9px;min-width:0}
+.status-light{width:9px;height:9px;min-width:9px;border-radius:50%}
+.status-light.active{background:#22c55e;box-shadow:0 0 9px #22c55e}.status-light.inactive{background:#f59e0b}.status-light.expired{background:#ef4444}
+.user-name{font-size:14px;font-weight:900;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.user-actions{display:flex;gap:6px;flex-shrink:0}
+.btn-action{width:34px;height:34px;border:0;border-radius:10px;color:white;cursor:pointer}
+.btn-edit{background:#3b82f6}.btn-delete{background:#ef4444}
+.user-details-small{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.detail-row{min-width:0;display:flex;align-items:center;gap:6px;padding:9px;border-radius:11px;background:rgba(127,127,127,.06);color:var(--muted);font-size:9px}
+.detail-row i{color:#818cf8;width:12px}
+.detail-label{color:var(--muted);font-size:8px}
+.detail-value{color:var(--text);font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.day-left.green{color:#4ade80}.day-left.yellow{color:#fbbf24}.day-left.red{color:#f87171}
+.progress-container{margin-top:13px}
+.progress-header{display:flex;justify-content:space-between;margin-bottom:6px}
+.progress-label{color:var(--muted);font-size:9px}
+.progress-percent{font-size:9px;font-weight:900}
+.progress-percent.green{color:#4ade80}.progress-percent.yellow{color:#fbbf24}.progress-percent.red{color:#f87171}
+.progress-bar{height:5px;background:rgba(127,127,127,.12);border-radius:10px;overflow:hidden}
+.progress-fill{height:100%;border-radius:10px}
+.progress-fill.green{background:#22c55e}.progress-fill.yellow{background:#f59e0b}.progress-fill.red{background:#ef4444}
+.theme-toggle,.logout-btn{position:fixed;right:18px;width:42px;height:42px;border-radius:13px;border:1px solid rgba(255,255,255,.12);color:white;display:flex;justify-content:center;align-items:center;z-index:2000;cursor:pointer}
+.theme-toggle{top:18px;background:linear-gradient(135deg,#8b5cf6,#6366f1)}
+.logout-btn{top:68px;background:linear-gradient(135deg,#ef4444,#b91c1c)}
+.form-overlay,.success-overlay{position:fixed;inset:0;background:rgba(2,6,23,.78);backdrop-filter:blur(9px);display:none;align-items:center;justify-content:center;padding:18px;z-index:3000;overflow-y:auto}
+.form-modal{width:100%;max-width:450px;background:var(--card);border:1px solid var(--border);border-radius:24px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.form-header-small{padding:18px 20px;background:linear-gradient(135deg,#8b5cf6,#6366f1);color:white;display:flex;justify-content:space-between;align-items:center}
+.form-header-small h3{font-size:15px}
+.btn-close{width:34px;height:34px;border:0;border-radius:50%;color:white;background:rgba(255,255,255,.15);cursor:pointer}
+.form-body{padding:20px}
+.form-group-small{margin-bottom:15px}
+.form-group-small label{display:block;color:var(--muted);font-size:10px;font-weight:900;margin-bottom:7px;text-transform:uppercase}
+.form-input-small{width:100%;height:47px;border-radius:12px;border:1px solid var(--border);background:var(--input);color:var(--text);padding:0 13px;outline:none}
+.form-input-small:focus{border-color:#8b5cf6}
+.duration-label{display:block;color:var(--muted);font-size:10px;font-weight:900;margin:10px 0 8px;text-transform:uppercase}
+.duration-buttons{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}
+.duration-btn{min-height:43px;padding:8px 4px;border:1px solid var(--border);border-radius:11px;background:var(--input);color:var(--text);font-size:10px;font-weight:900;cursor:pointer;transition:.2s}
+.duration-btn:hover{border-color:#8b5cf6;color:#a78bfa}
+.duration-btn.selected{background:linear-gradient(135deg,#8b5cf6,#6366f1);border-color:transparent;color:white;box-shadow:0 5px 15px rgba(99,102,241,.25)}
+.duration-hint{font-size:10px;color:var(--muted);margin-top:8px;line-height:1.5}
+.switch-group-small{display:flex;justify-content:space-between;align-items:center;padding:13px;border-radius:13px;background:var(--input);color:var(--text)}
+.switch-small{width:48px;height:26px;position:relative}
+.switch-small input{opacity:0;width:0;height:0}
+.slider-small{position:absolute;inset:0;background:#334155;border-radius:20px;cursor:pointer}
+.slider-small:before{content:"";position:absolute;width:20px;height:20px;left:3px;top:3px;background:white;border-radius:50%;transition:.25s}
+.switch-small input:checked+.slider-small{background:#22c55e}
+.switch-small input:checked+.slider-small:before{transform:translateX(22px)}
+.extend-box{display:none;margin-top:12px}
+.btn-extend{width:100%;height:48px;border:0;border-radius:13px;background:linear-gradient(135deg,#f59e0b,#ea580c);color:white;font-weight:900;cursor:pointer;box-shadow:0 8px 20px rgba(245,158,11,.18)}
+.form-actions-small{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:15px}
+.btn-form-small{height:45px;border:0;border-radius:12px;color:white;font-weight:900;cursor:pointer}
+.btn-back-form{background:#475569}.btn-update-form{background:#6366f1}
+.card-capture-area{position:fixed;left:-12000px;top:0;width:1000px;overflow:visible}
+.vip-card{width:1000px;height:560px;display:grid;grid-template-columns:350px 1fr;color:#14213a;background:#fff;border:0;border-radius:30px;overflow:hidden;box-shadow:0 28px 70px rgba(0,0,0,.28);font-family:Inter,"Segoe UI",Arial,sans-serif}
+.biz-brand-panel{position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;padding:46px 42px;color:white;background:linear-gradient(145deg,#162342,#172d55 58%,#245978);align-items:center;text-align:center}
+.biz-brand-panel:before{content:"";position:absolute;width:510px;height:510px;border:1px solid rgba(255,255,255,.13);border-radius:50%;right:-290px;top:-190px;box-shadow:0 0 0 36px rgba(255,255,255,.035),0 0 0 80px rgba(255,255,255,.025)}
+.biz-logo-frame{position:relative;z-index:2;width:88px;height:88px;padding:5px;border-radius:28px;background:white;box-shadow:0 16px 35px rgba(0,0,0,.22)}
+.biz-logo-frame img{width:100%;height:100%;object-fit:cover;border-radius:23px}
+.biz-brand-copy{position:relative;z-index:2;margin-top:auto;width:100%;text-align:center}
+.biz-kicker{font-size:15px;letter-spacing:4px;font-weight:800;color:#a9dff0;margin-bottom:15px;white-space:nowrap}
+.biz-name{font-size:49px;line-height:1.08;font-weight:950;letter-spacing:0;white-space:nowrap}
+.biz-name span{font-weight:300;color:#6ed3e3}
+.biz-rule{height:3px;width:72px;background:#69d1de;border-radius:3px;margin:23px auto 18px}
+.biz-tagline{font-size:15px;letter-spacing:2px;font-weight:750;color:rgba(255,255,255,.78);white-space:nowrap}
+.biz-orbit{position:absolute;border:1px solid rgba(116,220,235,.18);border-radius:50%;pointer-events:none}
+.biz-orbit-one{width:300px;height:300px;right:-175px;bottom:25px}
+.biz-orbit-two{width:205px;height:205px;right:-127px;bottom:73px}
+.biz-details-panel{position:relative;display:flex;flex-direction:column;padding:48px 52px 36px;background:linear-gradient(135deg,#fff 0%,#f7f9fc 100%)}
+.biz-member-label{display:flex;align-items:center;gap:11px;color:#65728a;font-size:15px;font-weight:850;letter-spacing:2px}
+.biz-status-dot{width:10px;height:10px;border-radius:50%;background:#13b981;box-shadow:0 0 0 5px rgba(19,185,129,.12)}
+.biz-member-name{margin-top:20px;color:#15233d;font-size:54px;line-height:1.08;font-weight:900;letter-spacing:-1px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.biz-member-caption{margin-top:12px;color:#8b96a8;font-size:14px;font-weight:700;letter-spacing:1.5px}
+.biz-divider{height:1px;margin:28px 0 25px;background:linear-gradient(90deg,#d5dce7,transparent)}
+.biz-data-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px 30px}
+.biz-data{display:flex;flex-direction:column;gap:9px;min-width:0}
+.biz-data-label{color:#8995a8;font-size:14px;font-weight:850;letter-spacing:1.5px}
+.biz-data strong{color:#22324e;font-size:25px;line-height:1.25;font-weight:850;overflow-wrap:anywhere}
+.biz-data-wide{grid-column:1/-1}
+.biz-card-footer{margin-top:auto;padding-top:18px;border-top:1px solid #e5e9f0;display:flex;align-items:center;justify-content:space-between;gap:12px;color:#8995a8;font-size:12px;font-weight:800;letter-spacing:1px}
+.biz-chip{display:inline-flex;align-items:center;gap:7px;padding:9px 12px;border-radius:20px;background:#e9f8f5;color:#159475;font-size:10px;letter-spacing:1px}
+.biz-chip i{font-size:12px}
+.success-overlay{z-index:4000}
+.success-modal{width:100%;max-width:430px;padding:20px;background:var(--card);border:1px solid var(--border);border-radius:24px;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.success-icon{width:62px;height:62px;margin:0 auto 13px;border-radius:20px;background:linear-gradient(135deg,#8b5cf6,#6366f1);display:flex;align-items:center;justify-content:center;color:white;font-size:25px}
+.success-title{text-align:center;font-size:19px;font-weight:900}
+.success-message{text-align:center;color:var(--muted);font-size:11px;margin:6px 0 17px}
+.user-details-box{background:var(--input);border-radius:15px;padding:12px}
+.detail-item{display:flex;justify-content:space-between;gap:15px;padding:9px 2px;border-bottom:1px solid var(--border);font-size:11px}
+.detail-item:last-child{border-bottom:0}
+.detail-item .detail-label{color:var(--muted)}
+.detail-item .detail-value{color:var(--text)}
+.success-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:15px}
+.btn-success{height:45px;border:0;border-radius:12px;color:white;font-weight:900;cursor:pointer}
+.btn-ok{background:#475569}.btn-save{background:#22c55e}
+.notification-small{position:fixed;bottom:20px;left:50%;transform:translate(-50%,100px);opacity:0;z-index:5000;min-width:250px;max-width:90%;padding:13px 17px;border-radius:13px;color:white;font-size:12px;font-weight:800;display:flex;gap:9px;align-items:center;transition:.3s}
+.notification-small.show{transform:translate(-50%,0);opacity:1}
+.notification-small.success{background:#16a34a}.notification-small.error{background:#dc2626}.notification-small.info{background:#6366f1}
+.loading-small,.empty-state-small{text-align:center;padding:50px 20px;color:#69758c}
+.loading-spinner-small{width:35px;height:35px;border:3px solid rgba(127,127,127,.15);border-top-color:#8b5cf6;border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 13px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.footer-small{text-align:center;padding:20px;color:#69758c;font-size:10px}
 @media(max-width:600px){
-
-    .compact-header{
-        padding:20px 14px;
-    }
-
-    .compact-title{
-        font-size:18px;
-    }
-
-    .subtitle-small{
-        margin-left:0;
-    }
-
-    .compact-content{
-        padding:8px 12px 25px;
-    }
-
-    .compact-stats{
-        gap:5px;
-    }
-
-    .stat-item{
-        padding:10px 3px;
-    }
-
-    .stat-value-small{
-        font-size:17px;
-    }
-
-    .stat-label-small{
-        font-size:7px;
-    }
-
-    .user-details-small{
-        grid-template-columns:1fr;
-    }
-
-    .form-actions-small{
-        grid-template-columns:1fr;
-    }
-
-    /* Ticket export stays large */
-    .card-capture-area{
-        width:1200px;
-        left:-12000px;
-    }
-
-    .card-capture-area .vip-card{
-        width:1200px;
-        height:700px;
-    }
+.compact-header{padding:20px 14px}.compact-title{font-size:18px}.subtitle-small{margin-left:0}.compact-content{padding:8px 12px 25px}
+.compact-stats{gap:5px}.stat-item{padding:10px 3px}.stat-value-small{font-size:17px}.stat-label-small{font-size:7px}
+.user-details-small{grid-template-columns:1fr}.form-actions-small{grid-template-columns:1fr}
+.duration-buttons{grid-template-columns:repeat(2,1fr)}
+.card-capture-area{width:1000px;left:-12000px}
 }
-
-
-/* =================================================
-   REDESIGNED VIP IMAGE TICKET — Aurora Edition
-   Visual-only overrides; existing IDs/export behavior stay intact.
-================================================= */
-.vip-card{
-    background:
-        radial-gradient(ellipse at 18% 0%,rgba(139,92,246,.30),transparent 38%),
-        radial-gradient(ellipse at 92% 92%,rgba(6,182,212,.18),transparent 34%),
-        linear-gradient(125deg,#080b17 0%,#11162a 54%,#17132c 100%);
-    border:1px solid rgba(196,181,253,.34);
-    border-radius:38px;
-    box-shadow:0 36px 100px rgba(0,0,0,.58),inset 0 1px 0 rgba(255,255,255,.10);
-}
-.vip-card:before{
-    width:610px;height:610px;right:-325px;top:-330px;
-    border:1px solid rgba(167,139,250,.17);
-    box-shadow:0 0 0 35px rgba(167,139,250,.035),0 0 0 75px rgba(167,139,250,.025);
-}
-.vip-card:after{
-    width:430px;height:430px;left:-290px;bottom:-300px;
-    border:1px solid rgba(34,211,238,.15);
-    box-shadow:0 0 0 35px rgba(34,211,238,.025);
-}
-.ticket-main{padding:58px 64px;}
-.vip-card-logo{
-    width:88px;height:88px;border-radius:26px;padding:3px;
-    background:linear-gradient(135deg,#c4b5fd,#8b5cf6 48%,#22d3ee);
-    box-shadow:0 12px 38px rgba(139,92,246,.34),0 0 0 7px rgba(255,255,255,.035);
-}
-.vip-card-logo img{border-radius:23px;}
-.vip-card-title{font-size:38px;letter-spacing:1.2px;text-shadow:0 3px 22px rgba(167,139,250,.25);}
-.vip-card-subtitle{color:#a5b4fc;letter-spacing:3.5px;font-size:12px;}
-.vip-card-crown{
-    width:76px;height:76px;border-radius:25px;
-    background:linear-gradient(145deg,#ffe7a3,#f5b942 55%,#d98b1c);
-    color:#382106;border:1px solid rgba(255,255,255,.38);
-    box-shadow:0 14px 36px rgba(245,158,11,.24),inset 0 1px 0 rgba(255,255,255,.55);
-}
-.vip-card-line{
-    height:1px;margin:36px 0 34px;
-    background:linear-gradient(90deg,rgba(196,181,253,.65),rgba(34,211,238,.48),rgba(255,255,255,.04));
-}
-.vip-card-user{font-size:49px;letter-spacing:.6px;margin-bottom:34px;text-shadow:0 5px 24px rgba(0,0,0,.24);}
-.vip-card-user:before{color:#c4b5fd;font-size:11px;letter-spacing:3.5px;}
-.vip-info{
-    min-height:116px;padding:20px 21px;border-radius:20px;
-    background:linear-gradient(145deg,rgba(255,255,255,.095),rgba(255,255,255,.025));
-    border:1px solid rgba(196,181,253,.17);
-    box-shadow:inset 0 1px 0 rgba(255,255,255,.055);
-}
-.vip-info-label{color:#9aa6c1;font-size:10px;letter-spacing:2.2px;}
-.vip-info-value{font-size:21px;color:#f8fafc;}
-.ticket-perforation{border-right:2px dashed rgba(196,181,253,.32);}
-.ticket-hole{background:#0d1020;}
-.ticket-side{
-    background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(7,10,20,.16));
-    border-left:1px solid rgba(255,255,255,.055);
-    padding:42px 35px;
-}
-.ticket-side-badge{
-    background:linear-gradient(145deg,#a78bfa,#6d5ce7 62%,#4f46e5);
-    border:1px solid rgba(255,255,255,.28);
-    box-shadow:0 15px 42px rgba(99,102,241,.30),inset 0 1px 0 rgba(255,255,255,.25);
-}
-.ticket-side-title{font-size:19px;letter-spacing:1.4px;}
-.ticket-side-subtitle{color:#a0abc0;}
-.fake-qr{border-radius:15px;box-shadow:0 12px 30px rgba(0,0,0,.24);}
-.ticket-side-owner{color:#8994ab;}
-.ticket-side-owner strong,.vip-card-footer strong{color:#c4b5fd;}
-.vip-card-footer{color:#8792aa;}
-
-
-/* BUSINESS CARD REDESIGN — horizontal, clean two-column identity card */
-.card-capture-area{width:1000px;}
-.vip-card{
-  width:1000px;height:560px;display:grid;grid-template-columns:350px 1fr;
-  color:#14213a;background:#fff;border:0;border-radius:30px;overflow:hidden;
-  box-shadow:0 28px 70px rgba(0,0,0,.28);font-family:Inter,"Segoe UI",Arial,sans-serif;
-}
-.biz-brand-panel{position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;padding:46px 42px;color:white;background:linear-gradient(145deg,#162342,#172d55 58%,#245978);}
-.biz-brand-panel:before{content:"";position:absolute;width:510px;height:510px;border:1px solid rgba(255,255,255,.13);border-radius:50%;right:-290px;top:-190px;box-shadow:0 0 0 36px rgba(255,255,255,.035),0 0 0 80px rgba(255,255,255,.025);}
-.biz-logo-frame{position:relative;z-index:2;width:88px;height:88px;padding:5px;border-radius:28px;background:white;box-shadow:0 16px 35px rgba(0,0,0,.22);}
-.biz-logo-frame img{width:100%;height:100%;object-fit:cover;border-radius:23px;}
-.biz-brand-copy{position:relative;z-index:2;margin-top:auto;}
-.biz-kicker{font-size:15px;letter-spacing:4px;font-weight:800;color:#a9dff0;margin-bottom:15px;}
-.biz-name{font-size:62px;line-height:1;font-weight:950;letter-spacing:2px;}
-.biz-name span{font-weight:300;color:#6ed3e3;}
-.biz-rule{height:3px;width:72px;background:#69d1de;border-radius:3px;margin:23px 0 18px;}
-.biz-tagline{font-size:15px;letter-spacing:2px;font-weight:750;color:rgba(255,255,255,.78);}
-.biz-orbit{position:absolute;border:1px solid rgba(116,220,235,.18);border-radius:50%;pointer-events:none;}
-.biz-orbit-one{width:300px;height:300px;right:-175px;bottom:25px;}
-.biz-orbit-two{width:205px;height:205px;right:-127px;bottom:73px;}
-.biz-details-panel{position:relative;display:flex;flex-direction:column;padding:48px 52px 36px;background:linear-gradient(135deg,#fff 0%,#f7f9fc 100%);}
-.biz-member-label{display:flex;align-items:center;gap:11px;color:#65728a;font-size:15px;font-weight:850;letter-spacing:2px;}
-.biz-status-dot{width:10px;height:10px;border-radius:50%;background:#13b981;box-shadow:0 0 0 5px rgba(19,185,129,.12);}
-.biz-member-name{margin-top:20px;color:#15233d;font-size:54px;line-height:1.08;font-weight:900;letter-spacing:-1px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
-.biz-member-caption{margin-top:12px;color:#8b96a8;font-size:14px;font-weight:700;letter-spacing:1.5px;}
-.biz-divider{height:1px;margin:28px 0 25px;background:linear-gradient(90deg,#d5dce7,transparent);}
-.biz-data-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px 30px;}
-.biz-data{display:flex;flex-direction:column;gap:9px;min-width:0;}
-.biz-data-label{color:#8995a8;font-size:14px;font-weight:850;letter-spacing:1.5px;}
-.biz-data strong{color:#22324e;font-size:25px;line-height:1.25;font-weight:850;overflow-wrap:anywhere;}
-.biz-data-wide{grid-column:1/-1;}
-.biz-card-footer{margin-top:auto;padding-top:18px;border-top:1px solid #e5e9f0;display:flex;align-items:center;justify-content:space-between;gap:12px;color:#8995a8;font-size:12px;font-weight:800;letter-spacing:1px;}
-.biz-chip{display:inline-flex;align-items:center;gap:7px;padding:9px 12px;border-radius:20px;background:#e9f8f5;color:#159475;font-size:10px;letter-spacing:1px;}
-.biz-chip i{font-size:12px;}
-
-
-/* Center the complete brand lockup and keep VIRGOVPN within the panel */
-.biz-brand-panel{align-items:center;text-align:center;}
-.biz-logo-frame{flex:0 0 auto;}
-.biz-brand-copy{width:100%;text-align:center;}
-.biz-kicker,.biz-tagline{white-space:nowrap;}
-.biz-name{font-size:49px;letter-spacing:0;white-space:nowrap;line-height:1.08;}
-.biz-rule{margin-left:auto;margin-right:auto;}
-
 </style>
 </head>
 
 <body>
 
-
-<!-- =================================================
-     LOGIN
-================================================= -->
-
 <div class="login-container" id="loginContainer">
-
-    <div class="login-box">
-
-        <div class="login-logo">
-
-            <img src="https://raw.githubusercontent.com/kyawkolatt2026-alt/virgovpn/main/file_00000000db78821181d9b896c0f7b588.png">
-
-        </div>
-
-        <h1 class="login-title">
-            VIRGO VPN
-        </h1>
-
-        <p class="login-subtitle">
-            Secure Admin Control Panel
-        </p>
-
-        <div class="login-error" id="loginError">
-            Invalid email or password
-        </div>
-
-        <div class="form-group">
-
-            <label>Email</label>
-
-            <input
-                type="email"
-                id="loginUsername"
-                placeholder="Enter admin email">
-
-        </div>
-
-        <div class="form-group">
-
-            <label>Password</label>
-
-            <input
-                type="password"
-                id="loginPassword"
-                placeholder="Enter password">
-
-        </div>
-
-        <button class="btn-login" id="btnLogin">
-
-            <i class="fas fa-arrow-right-to-bracket"></i>
-
-            LOGIN TO PANEL
-
-        </button>
-
-    </div>
-
+<div class="login-box">
+<div class="login-logo">
+<img src="https://raw.githubusercontent.com/kyawkolatt2026-alt/virgovpn/main/file_00000000db78821181d9b896c0f7b588.png" alt="Logo">
 </div>
-
-
-<!-- =================================================
-     APP
-================================================= -->
+<h1 class="login-title">VIRGO VPN</h1>
+<p class="login-subtitle">Secure Admin Control Panel</p>
+<div class="login-error" id="loginError">Invalid email or password</div>
+<div class="form-group">
+<label>Email</label>
+<input type="email" id="loginUsername" placeholder="Enter admin email">
+</div>
+<div class="form-group">
+<label>Password</label>
+<input type="password" id="loginPassword" placeholder="Enter password">
+</div>
+<button class="btn-login" id="btnLogin"><i class="fas fa-arrow-right-to-bracket"></i> LOGIN TO PANEL</button>
+</div>
+</div>
 
 <div class="app-container" id="appContainer">
-
-<button class="theme-toggle" id="themeToggle">
-    <i class="fas fa-moon"></i>
-</button>
-
-<button class="logout-btn" id="logoutBtn">
-    <i class="fas fa-power-off"></i>
-</button>
-
+<button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></button>
+<button class="logout-btn" id="logoutBtn"><i class="fas fa-power-off"></i></button>
 
 <div class="container">
-
-
-<!-- HEADER -->
-
 <div class="compact-header">
-
-    <div class="title-row">
-
-        <div class="logo-small">
-
-            <img src="https://raw.githubusercontent.com/kyawkolatt2026-alt/virgovpn/main/file_00000000db78821181d9b896c0f7b588.png">
-
-        </div>
-
-        <div>
-
-            <div class="compact-title">
-                VIRGO VPN PANEL
-            </div>
-
-            <div class="title-line">
-                VIP USER MANAGEMENT
-            </div>
-
-        </div>
-
-    </div>
-
-    <p class="subtitle-small">
-        Real-time VPN subscription management
-    </p>
-
-
-    <div class="compact-stats">
-
-        <div class="stat-item total-stat">
-
-            <div class="stat-value-small">
-
-                <i class="fas fa-users stat-icon"></i>
-
-                <span id="totalUsers">0</span>
-
-            </div>
-
-            <div class="stat-label-small">
-                Total
-            </div>
-
-        </div>
-
-
-        <div class="stat-item active-stat">
-
-            <div class="stat-value-small">
-
-                <i class="fas fa-circle stat-icon"></i>
-
-                <span id="activeUsers">0</span>
-
-            </div>
-
-            <div class="stat-label-small">
-                Online
-            </div>
-
-        </div>
-
-
-        <div class="stat-item inactive-stat">
-
-            <div class="stat-value-small">
-
-                <i class="fas fa-circle stat-icon"></i>
-
-                <span id="inactiveUsers">0</span>
-
-            </div>
-
-            <div class="stat-label-small">
-                Offline
-            </div>
-
-        </div>
-
-
-        <div class="stat-item offline-stat">
-
-            <div class="stat-value-small">
-
-                <i class="fas fa-circle stat-icon"></i>
-
-                <span id="offlineUsers">0</span>
-
-            </div>
-
-            <div class="stat-label-small">
-                Expired
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <div class="demo-badge">
-
-        <i class="fas fa-crown"></i>
-
-        OWNER : KKL
-
-    </div>
-
+<div class="title-row">
+<div class="logo-small"><img src="https://raw.githubusercontent.com/kyawkolatt2026-alt/virgovpn/main/file_00000000db78821181d9b896c0f7b588.png" alt="Logo"></div>
+<div>
+<div class="compact-title">VIRGO VPN PANEL</div>
+<div class="title-line">VIP USER MANAGEMENT</div>
 </div>
+</div>
+<p class="subtitle-small">Real-time VPN subscription management</p>
 
-
-<!-- CONTENT -->
+<div class="compact-stats">
+<div class="stat-item total-stat"><div class="stat-value-small"><i class="fas fa-users stat-icon"></i><span id="totalUsers">0</span></div><div class="stat-label-small">Total</div></div>
+<div class="stat-item active-stat"><div class="stat-value-small"><i class="fas fa-circle stat-icon"></i><span id="activeUsers">0</span></div><div class="stat-label-small">Online</div></div>
+<div class="stat-item inactive-stat"><div class="stat-value-small"><i class="fas fa-circle stat-icon"></i><span id="inactiveUsers">0</span></div><div class="stat-label-small">Offline</div></div>
+<div class="stat-item offline-stat"><div class="stat-value-small"><i class="fas fa-circle stat-icon"></i><span id="offlineUsers">0</span></div><div class="stat-label-small">Expired</div></div>
+</div>
+<div class="demo-badge"><i class="fas fa-crown"></i> OWNER : KKL</div>
+</div>
 
 <div class="compact-content">
-
-    <div class="search-container-small">
-
-        <div class="search-box-small">
-
-            <i class="fas fa-search"></i>
-
-            <input
-                type="text"
-                id="searchInput"
-                placeholder="Search ID or username...">
-
-        </div>
-
-        <button
-            class="btn-back-search"
-            id="backFromSearch">
-
-            <i class="fas fa-arrow-left"></i>
-
-            Back
-
-        </button>
-
-    </div>
-
-
-    <button
-        class="btn-add-small"
-        id="openForm">
-
-        <i class="fas fa-user-plus"></i>
-
-        ADD NEW VIP USER
-
-    </button>
-
-
-    <div
-        class="compact-users-list"
-        id="usersList">
-
-        <div class="loading-small">
-
-            <div class="loading-spinner-small"></div>
-
-            <p>
-                Loading users...
-            </p>
-
-        </div>
-
-    </div>
-
+<div class="search-container-small">
+<div class="search-box-small">
+<i class="fas fa-search"></i>
+<input type="text" id="searchInput" placeholder="Search ID or username...">
+</div>
+<button class="btn-back-search" id="backFromSearch"><i class="fas fa-arrow-left"></i> Back</button>
+</div>
+<button class="btn-add-small" id="openForm"><i class="fas fa-user-plus"></i> ADD NEW VIP USER</button>
+<div class="compact-users-list" id="usersList">
+<div class="loading-small"><div class="loading-spinner-small"></div><p>Loading users...</p></div>
+</div>
 </div>
 
+<div class="footer-small"><i class="fas fa-shield-halved"></i> VIRGO VPN • VIP MANAGEMENT SYSTEM</div>
 
-<div class="footer-small">
-
-    <i class="fas fa-shield-halved"></i>
-
-    VIRGO VPN • VIP MANAGEMENT SYSTEM
-
-</div>
-
-
-<!-- =================================================
-     FORM
-================================================= -->
-
+<!-- USER FORM -->
 <div class="form-overlay" id="formOverlay">
-
-    <div class="form-modal">
-
-        <div class="form-header-small">
-
-            <h3>
-
-                <i class="fas fa-user-pen"></i>
-
-                Manage VIP User
-
-            </h3>
-
-            <button
-                class="btn-close"
-                id="closeForm">
-
-                <i class="fas fa-xmark"></i>
-
-            </button>
-
-        </div>
-
-
-        <div class="form-body">
-
-            <div class="form-group-small">
-
-                <label>ID *</label>
-
-                <input
-                    type="text"
-                    id="token"
-                    class="form-input-small"
-                    placeholder="Enter user ID">
-
-            </div>
-
-
-            <div class="form-group-small">
-
-                <label>Username</label>
-
-                <input
-                    type="text"
-                    id="formUsername"
-                    class="form-input-small"
-                    placeholder="Enter username">
-
-            </div>
-
-
-            <div class="form-group-small">
-
-                <label>Expiry Date</label>
-
-                <input
-                    type="date"
-                    id="expiry"
-                    class="form-input-small">
-
-            </div>
-
-
-            <div class="form-group-small">
-
-                <div class="switch-group-small">
-
-                    <span>
-
-                        <i class="fas fa-toggle-on"></i>
-
-                        Active Status
-
-                    </span>
-
-
-                    <label class="switch-small">
-
-                        <input
-                            type="checkbox"
-                            id="isActive"
-                            checked>
-
-                        <span class="slider-small"></span>
-
-                    </label>
-
-                </div>
-
-            </div>
-
-
-            <div
-                class="extend-box"
-                id="extendBox">
-
-                <button
-                    class="btn-extend"
-                    id="btnExtend">
-
-                    <i class="fas fa-calendar-plus"></i>
-
-                    EXTEND 30 DAYS
-
-                </button>
-
-            </div>
-
-
-            <div class="form-actions-small">
-
-                <button
-                    class="btn-form-small btn-back-form"
-                    id="btnBack">
-
-                    <i class="fas fa-arrow-left"></i>
-
-                    Back
-
-                </button>
-
-
-                <button
-                    class="btn-form-small btn-update-form"
-                    id="btnUpdate">
-
-                    <i class="fas fa-save"></i>
-
-                    Update
-
-                </button>
-
-            </div>
-
-        </div>
-
-    </div>
-
+<div class="form-modal">
+<div class="form-header-small">
+<h3><i class="fas fa-user-pen"></i> Manage VIP User</h3>
+<button class="btn-close" id="closeForm"><i class="fas fa-xmark"></i></button>
+</div>
+<div class="form-body">
+<div class="form-group-small">
+<label>ID *</label>
+<input type="text" id="token" class="form-input-small" placeholder="Enter user ID">
+</div>
+<div class="form-group-small">
+<label>Username</label>
+<input type="text" id="formUsername" class="form-input-small" placeholder="Enter username">
 </div>
 
-
-<!-- =================================================
-     SUCCESS
-================================================= -->
-
-<div
-    class="success-overlay"
-    id="successOverlay">
-
-    <div
-        class="success-modal"
-        id="successModal">
-
-        <div class="success-icon">
-
-            <i class="fas fa-check"></i>
-
-        </div>
-
-
-        <h3
-            class="success-title"
-            id="successTitle">
-
-            User Saved Successfully
-
-        </h3>
-
-
-        <p
-            class="success-message"
-            id="successMessage">
-
-            VIP account information has been updated.
-
-        </p>
-
-
-        <div class="user-details-box">
-
-            <div class="detail-item">
-
-                <span class="detail-label">
-                    ID
-                </span>
-
-                <span
-                    class="detail-value"
-                    id="successId">
-                    -
-                </span>
-
-            </div>
-
-
-            <div class="detail-item">
-
-                <span class="detail-label">
-                    Username
-                </span>
-
-                <span
-                    class="detail-value"
-                    id="successUsername">
-                    -
-                </span>
-
-            </div>
-
-
-            <div class="detail-item">
-
-                <span class="detail-label">
-                    Expiry
-                </span>
-
-                <span
-                    class="detail-value"
-                    id="successExpiry">
-                    -
-                </span>
-
-            </div>
-
-
-            <div class="detail-item">
-
-                <span class="detail-label">
-                    Status
-                </span>
-
-                <span
-                    class="detail-value"
-                    id="successStatus">
-                    -
-                </span>
-
-            </div>
-
-
-            <div class="detail-item">
-
-                <span class="detail-label">
-                    Day Left
-                </span>
-
-                <span
-                    class="detail-value"
-                    id="successDayLeft">
-                    -
-                </span>
-
-            </div>
-
-        </div>
-
-
-        <div class="success-actions">
-
-            <button
-                class="btn-success btn-ok"
-                id="btnOk">
-
-                <i class="fas fa-check"></i>
-
-                OK
-
-            </button>
-
-
-            <button
-                class="btn-success btn-save"
-                id="btnSaveImage">
-
-                <i class="fas fa-ticket"></i>
-
-                Save Ticket
-
-            </button>
-
-        </div>
-
-    </div>
-
+<div class="form-group-small">
+<label>Expiry Date</label>
+<input type="date" id="expiry" class="form-input-small">
+<div class="duration-label">Quick subscription duration</div>
+<div class="duration-buttons">
+<button type="button" class="duration-btn" data-months="1">1 MONTH</button>
+<button type="button" class="duration-btn" data-months="3">3 MONTHS</button>
+<button type="button" class="duration-btn" data-months="6">6 MONTHS</button>
+<button type="button" class="duration-btn" data-months="12">12 MONTHS</button>
+</div>
+<div class="duration-hint">ရွေးချယ်ထားတဲ့ ရက်စွဲကနေ သက်တမ်းကို အလိုအလျောက်တွက်ပေးပါမယ်။</div>
 </div>
 
+<div class="form-group-small">
+<div class="switch-group-small">
+<span><i class="fas fa-toggle-on"></i> Active Status</span>
+<label class="switch-small">
+<input type="checkbox" id="isActive" checked>
+<span class="slider-small"></span>
+</label>
+</div>
+</div>
 
-<!-- =================================================
-     🎫 HIDDEN TICKET
-================================================= -->
+<div class="extend-box" id="extendBox">
+<button class="btn-extend" id="btnExtend"><i class="fas fa-calendar-plus"></i> EXTEND 30 DAYS</button>
+</div>
 
+<div class="form-actions-small">
+<button class="btn-form-small btn-back-form" id="btnBack"><i class="fas fa-arrow-left"></i> Back</button>
+<button class="btn-form-small btn-update-form" id="btnUpdate"><i class="fas fa-save"></i> Save User</button>
+</div>
+</div>
+</div>
+</div>
+
+<!-- SUCCESS -->
+<div class="success-overlay" id="successOverlay">
+<div class="success-modal" id="successModal">
+<div class="success-icon"><i class="fas fa-check"></i></div>
+<h3 class="success-title" id="successTitle">User Saved Successfully</h3>
+<p class="success-message" id="successMessage">VIP account information has been updated.</p>
+<div class="user-details-box">
+<div class="detail-item"><span class="detail-label">ID</span><span class="detail-value" id="successId">-</span></div>
+<div class="detail-item"><span class="detail-label">Username</span><span class="detail-value" id="successUsername">-</span></div>
+<div class="detail-item"><span class="detail-label">Expiry</span><span class="detail-value" id="successExpiry">-</span></div>
+<div class="detail-item"><span class="detail-label">Status</span><span class="detail-value" id="successStatus">-</span></div>
+<div class="detail-item"><span class="detail-label">Day Left</span><span class="detail-value" id="successDayLeft">-</span></div>
+</div>
+<div class="success-actions">
+<button class="btn-success btn-ok" id="btnOk"><i class="fas fa-check"></i> OK</button>
+<button class="btn-success btn-save" id="btnSaveImage"><i class="fas fa-ticket"></i> Save Ticket</button>
+</div>
+</div>
+</div>
+
+<!-- VIP TICKET -->
 <div class="card-capture-area">
-    <div class="vip-card" id="vipCard">
-        <section class="biz-brand-panel">
-            <div class="biz-logo-frame"><img src="https://raw.githubusercontent.com/kyawkolatt2026-alt/virgovpn/main/file_00000000db78821181d9b896c0f7b588.png" alt="Virgo VPN logo"></div>
-            <div class="biz-brand-copy">
-                <div class="biz-kicker">SECURE CONNECTION</div>
-                <div class="biz-name">VIRGO<span>VPN</span></div>
-                <div class="biz-rule"></div>
-                <div class="biz-tagline">FAST · PRIVATE · RELIABLE</div>
-            </div>
-            <div class="biz-orbit biz-orbit-one"></div>
-            <div class="biz-orbit biz-orbit-two"></div>
-        </section>
-        <section class="biz-details-panel">
-            <div class="biz-member-label"><span class="biz-status-dot"></span> PREMIUM MEMBER</div>
-            <div class="biz-member-name" id="cardUsername">VIP USER</div>
-            <div class="biz-member-caption">YOUR DIGITAL MEMBERSHIP CARD</div>
-            <div class="biz-divider"></div>
-            <div class="biz-data-grid">
-                <div class="biz-data"><span class="biz-data-label">MEMBER ID</span><strong id="cardId">-</strong></div>
-                <div class="biz-data"><span class="biz-data-label">VALID THROUGH</span><strong id="cardExpiry">-</strong></div>
-                <div class="biz-data biz-data-wide"><span class="biz-data-label">SUBSCRIPTION</span><strong id="cardDays">-</strong></div>
-            </div>
-            <div class="biz-card-footer"><span>VIRGO VPN · VIP ACCESS</span><span class="biz-chip"><i class="fas fa-shield-alt"></i> VERIFIED</span></div>
-        </section>
-    </div>
+<div class="vip-card" id="vipCard">
+<section class="biz-brand-panel">
+<div class="biz-logo-frame"><img src="https://raw.githubusercontent.com/kyawkolatt2026-alt/virgovpn/main/file_00000000db78821181d9b896c0f7b588.png" alt="Virgo VPN logo"></div>
+<div class="biz-brand-copy">
+<div class="biz-kicker">SECURE CONNECTION</div>
+<div class="biz-name">VIRGO<span>VPN</span></div>
+<div class="biz-rule"></div>
+<div class="biz-tagline">FAST · PRIVATE · RELIABLE</div>
 </div>
-
-<div
-    class="notification-small"
-    id="notification">
+<div class="biz-orbit biz-orbit-one"></div>
+<div class="biz-orbit biz-orbit-two"></div>
+</section>
+<section class="biz-details-panel">
+<div class="biz-member-label"><span class="biz-status-dot"></span> PREMIUM MEMBER</div>
+<div class="biz-member-name" id="cardUsername">VIP USER</div>
+<div class="biz-member-caption">YOUR DIGITAL MEMBERSHIP CARD</div>
+<div class="biz-divider"></div>
+<div class="biz-data-grid">
+<div class="biz-data"><span class="biz-data-label">MEMBER ID</span><strong id="cardId">-</strong></div>
+<div class="biz-data"><span class="biz-data-label">VALID THROUGH</span><strong id="cardExpiry">-</strong></div>
+<div class="biz-data biz-data-wide"><span class="biz-data-label">SUBSCRIPTION</span><strong id="cardDays">-</strong></div>
 </div>
-
-
+<div class="biz-card-footer"><span>VIRGO VPN · VIP ACCESS</span><span class="biz-chip"><i class="fas fa-shield-alt"></i> VERIFIED</span></div>
+</section>
 </div>
 </div>
 
+<div class="notification-small" id="notification"></div>
+</div>
+</div>
 
 <script>
-
-/* =================================================
-   FIREBASE
-================================================= */
-
-const firebaseConfig = {
-
-    apiKey:
-        "AIzaSyCFYW9uE4vn_0KqhoDC1hKaM0_uFx8w9rg",
-
-    authDomain:
-        "virgo-vpn-panel-624bb.firebaseapp.com",
-
-    projectId:
-        "virgo-vpn-panel-624bb",
-
-    storageBucket:
-        "virgo-vpn-panel-624bb.firebasestorage.app",
-
-    messagingSenderId:
-        "306616479145",
-
-    appId:
-        "1:306616479145:web:b5ec32aed6a5e2765968b8"
-
+/* FIREBASE */
+const firebaseConfig={
+apiKey:"AIzaSyCFYW9uE4vn_0KqhoDC1hKaM0_uFx8w9rg",
+authDomain:"virgo-vpn-panel-624bb.firebaseapp.com",
+projectId:"virgo-vpn-panel-624bb",
+storageBucket:"virgo-vpn-panel-624bb.firebasestorage.app",
+messagingSenderId:"306616479145",
+appId:"1:306616479145:web:b5ec32aed6a5e2765968b8"
 };
 
 firebase.initializeApp(firebaseConfig);
+const db=firebase.firestore();
+const auth=firebase.auth();
 
-const db =
-    firebase.firestore();
-
-const auth =
-    firebase.auth();
-
-
-/* =================================================
-   GLOBAL
-================================================= */
-
+/* GLOBAL */
 let allUsers=[];
-
 let filteredUsers=[];
-
 let currentEditToken=null;
-
 let currentCardUser=null;
 
-
-/* =================================================
-   DOM
-================================================= */
-
-const loginContainer=
-    document.getElementById("loginContainer");
-
-const appContainer=
-    document.getElementById("appContainer");
-
-const usernameInput=
-    document.getElementById("loginUsername");
-
-const passwordInput=
-    document.getElementById("loginPassword");
-
-const btnLogin=
-    document.getElementById("btnLogin");
-
-const loginError=
-    document.getElementById("loginError");
-
-const logoutBtn=
-    document.getElementById("logoutBtn");
-
-const formOverlay=
-    document.getElementById("formOverlay");
-
-const openFormBtn=
-    document.getElementById("openForm");
-
-const closeFormBtn=
-    document.getElementById("closeForm");
-
-const searchInput=
-    document.getElementById("searchInput");
-
-const usersList=
-    document.getElementById("usersList");
-
-const notification=
-    document.getElementById("notification");
-
-const successOverlay=
-    document.getElementById("successOverlay");
-
-const successModal=
-    document.getElementById("successModal");
-
-const themeToggle=
-    document.getElementById("themeToggle");
-
-const backFromSearch=
-    document.getElementById("backFromSearch");
-
-const tokenInput=
-    document.getElementById("token");
-
-const formUsernameInput=
-    document.getElementById("formUsername");
-
-const expiryInput=
-    document.getElementById("expiry");
-
-const isActiveInput=
-    document.getElementById("isActive");
-
-const btnUpdate=
-    document.getElementById("btnUpdate");
-
-const btnBack=
-    document.getElementById("btnBack");
-
-const btnExtend=
-    document.getElementById("btnExtend");
-
-const extendBox=
-    document.getElementById("extendBox");
-
-const successId=
-    document.getElementById("successId");
-
-const successUsername=
-    document.getElementById("successUsername");
-
-const successExpiry=
-    document.getElementById("successExpiry");
-
-const successStatus=
-    document.getElementById("successStatus");
-
-const successDayLeft=
-    document.getElementById("successDayLeft");
-
-const successTitle=
-    document.getElementById("successTitle");
-
-const successMessage=
-    document.getElementById("successMessage");
-
-const btnOk=
-    document.getElementById("btnOk");
-
-const btnSaveImage=
-    document.getElementById("btnSaveImage");
-
-const totalUsersEl=
-    document.getElementById("totalUsers");
-
-const activeUsersEl=
-    document.getElementById("activeUsers");
-
-const inactiveUsersEl=
-    document.getElementById("inactiveUsers");
-
-const offlineUsersEl=
-    document.getElementById("offlineUsers");
-
-const cardUsername=
-    document.getElementById("cardUsername");
-
-const cardId=
-    document.getElementById("cardId");
-
-const cardExpiry=
-    document.getElementById("cardExpiry");
-
-const cardDays=
-    document.getElementById("cardDays");
-
-const vipCard=
-    document.getElementById("vipCard");
-
-
-/* =================================================
-   AUTH
-================================================= */
-
-document.addEventListener(
-    "DOMContentLoaded",
-    ()=>{
-
-        auth.onAuthStateChanged(
-            user=>{
-
-                if(user){
-
-                    showApp();
-
-                }else{
-
-                    appContainer.style.display="none";
-
-                    loginContainer.style.display="flex";
-
-                }
-
-            }
-        );
-
-
-        btnLogin.addEventListener(
-            "click",
-            handleLogin
-        );
-
-
-        usernameInput.addEventListener(
-            "keypress",
-            e=>{
-
-                if(e.key==="Enter")
-                    handleLogin();
-
-            }
-        );
-
-
-        passwordInput.addEventListener(
-            "keypress",
-            e=>{
-
-                if(e.key==="Enter")
-                    handleLogin();
-
-            }
-        );
-
-
-        logoutBtn.addEventListener(
-            "click",
-            handleLogout
-        );
-
-    }
-);
-
-
-/* =================================================
-   LOGIN
-================================================= */
-
+/* DOM */
+const $=id=>document.getElementById(id);
+
+const loginContainer=$("loginContainer");
+const appContainer=$("appContainer");
+const usernameInput=$("loginUsername");
+const passwordInput=$("loginPassword");
+const btnLogin=$("btnLogin");
+const loginError=$("loginError");
+const logoutBtn=$("logoutBtn");
+const formOverlay=$("formOverlay");
+const openFormBtn=$("openForm");
+const closeFormBtn=$("closeForm");
+const searchInput=$("searchInput");
+const usersList=$("usersList");
+const notification=$("notification");
+const successOverlay=$("successOverlay");
+const themeToggle=$("themeToggle");
+const backFromSearch=$("backFromSearch");
+const tokenInput=$("token");
+const formUsernameInput=$("formUsername");
+const expiryInput=$("expiry");
+const isActiveInput=$("isActive");
+const btnUpdate=$("btnUpdate");
+const btnBack=$("btnBack");
+const btnExtend=$("btnExtend");
+const extendBox=$("extendBox");
+const successId=$("successId");
+const successUsername=$("successUsername");
+const successExpiry=$("successExpiry");
+const successStatus=$("successStatus");
+const successDayLeft=$("successDayLeft");
+const successTitle=$("successTitle");
+const successMessage=$("successMessage");
+const btnOk=$("btnOk");
+const btnSaveImage=$("btnSaveImage");
+const totalUsersEl=$("totalUsers");
+const activeUsersEl=$("activeUsers");
+const inactiveUsersEl=$("inactiveUsers");
+const offlineUsersEl=$("offlineUsers");
+const cardUsername=$("cardUsername");
+const cardId=$("cardId");
+const cardExpiry=$("cardExpiry");
+const cardDays=$("cardDays");
+const vipCard=$("vipCard");
+
+/* AUTH */
+document.addEventListener("DOMContentLoaded",()=>{
+auth.onAuthStateChanged(user=>{
+if(user){showApp();}
+else{
+appContainer.style.display="none";
+loginContainer.style.display="flex";
+}
+});
+btnLogin.addEventListener("click",handleLogin);
+usernameInput.addEventListener("keypress",e=>{if(e.key==="Enter")handleLogin();});
+passwordInput.addEventListener("keypress",e=>{if(e.key==="Enter")handleLogin();});
+logoutBtn.addEventListener("click",handleLogout);
+});
+
+/* LOGIN */
 async function handleLogin(){
-
-    const email=
-        usernameInput.value.trim();
-
-    const password=
-        passwordInput.value.trim();
-
-    loginError.style.display="none";
-
-
-    if(!email || !password){
-
-        loginError.textContent=
-            "Enter your email and password";
-
-        loginError.style.display="block";
-
-        return;
-
-    }
-
-
-    btnLogin.disabled=true;
-
-
-    try{
-
-        await auth.signInWithEmailAndPassword(
-            email,
-            password
-        );
-
-    }catch(error){
-
-        console.error(error);
-
-        loginError.textContent=
-            "Invalid email or password";
-
-        loginError.style.display="block";
-
-        passwordInput.value="";
-
-    }finally{
-
-        btnLogin.disabled=false;
-
-    }
-
+const email=usernameInput.value.trim();
+const password=passwordInput.value.trim();
+loginError.style.display="none";
+if(!email||!password){
+loginError.textContent="Enter your email and password";
+loginError.style.display="block";
+return;
+}
+btnLogin.disabled=true;
+try{
+await auth.signInWithEmailAndPassword(email,password);
+}catch(error){
+console.error(error);
+loginError.textContent="Invalid email or password";
+loginError.style.display="block";
+passwordInput.value="";
+}finally{
+btnLogin.disabled=false;
+}
 }
 
-
-/* =================================================
-   LOGOUT
-================================================= */
-
+/* LOGOUT */
 async function handleLogout(){
-
-    if(
-        !confirm(
-            "Are you sure you want to logout?"
-        )
-    )
-        return;
-
-
-    await auth.signOut();
-
-    appContainer.style.display="none";
-
-    loginContainer.style.display="flex";
-
+if(!confirm("Are you sure you want to logout?"))return;
+await auth.signOut();
+appContainer.style.display="none";
+loginContainer.style.display="flex";
 }
 
-
-/* =================================================
-   APP
-================================================= */
-
+/* APP */
 function showApp(){
-
-    loginContainer.style.display="none";
-
-    appContainer.style.display="block";
-
-    initApp();
-
+loginContainer.style.display="none";
+appContainer.style.display="block";
+initApp();
 }
-
 
 function initApp(){
+openFormBtn.onclick=openForm;
+closeFormBtn.onclick=closeForm;
+btnUpdate.onclick=updateUser;
+btnBack.onclick=closeForm;
+btnExtend.onclick=extend30Days;
+searchInput.oninput=filterUsers;
+themeToggle.onclick=toggleTheme;
+backFromSearch.onclick=clearSearch;
+btnOk.onclick=closeSuccessModal;
+btnSaveImage.onclick=saveAsImage;
 
-    openFormBtn.onclick=
-        openForm;
+document.querySelectorAll(".duration-btn").forEach(button=>{
+button.onclick=()=>{
+const months=Number(button.dataset.months);
+applyDuration(months);
+document.querySelectorAll(".duration-btn").forEach(b=>b.classList.remove("selected"));
+button.classList.add("selected");
+};
+});
 
-    closeFormBtn.onclick=
-        closeForm;
-
-
-    btnUpdate.onclick=
-        updateUser;
-
-    btnBack.onclick=
-        closeForm;
-
-    btnExtend.onclick=
-        extend30Days;
-
-    searchInput.oninput=
-        filterUsers;
-
-    themeToggle.onclick=
-        toggleTheme;
-
-    backFromSearch.onclick=
-        clearSearch;
-
-    btnOk.onclick=
-        closeSuccessModal;
-
-    btnSaveImage.onclick=
-        saveAsImage;
-
-    loadTheme();
-
-    loadUsers();
-
+loadTheme();
+loadUsers();
 }
 
-
-/* =================================================
-   THEME
-================================================= */
-
+/* THEME */
 function toggleTheme(){
-
-    document.body.classList.toggle(
-        "light-mode"
-    );
-
-    const light=
-        document.body.classList.contains(
-            "light-mode"
-        );
-
-
-    themeToggle.innerHTML=
-        light
-        ? '<i class="fas fa-sun"></i>'
-        : '<i class="fas fa-moon"></i>';
-
-
-    localStorage.setItem(
-        "theme",
-        light
-        ? "light"
-        : "dark"
-    );
-
+document.body.classList.toggle("light-mode");
+const light=document.body.classList.contains("light-mode");
+themeToggle.innerHTML=light?'<i class="fas fa-sun"></i>':'<i class="fas fa-moon"></i>';
+localStorage.setItem("theme",light?"light":"dark");
 }
-
 
 function loadTheme(){
-
-    const theme=
-        localStorage.getItem("theme");
-
-
-    if(theme==="light"){
-
-        document.body.classList.add(
-            "light-mode"
-        );
-
-        themeToggle.innerHTML=
-            '<i class="fas fa-sun"></i>';
-
-    }
-
+if(localStorage.getItem("theme")==="light"){
+document.body.classList.add("light-mode");
+themeToggle.innerHTML='<i class="fas fa-sun"></i>';
+}
 }
 
-
-/* =================================================
-   FIRESTORE
-================================================= */
-
+/* FIRESTORE */
 function loadUsers(){
-
-    db.collection("users")
-    .onSnapshot(
-        snapshot=>{
-
-            allUsers=[];
-
-            let active=0;
-
-            let inactive=0;
-
-            let expired=0;
-
-
-            snapshot.forEach(doc=>{
-
-                const user={
-
-                    token:doc.id,
-
-                    ...doc.data()
-
-                };
-
-
-                allUsers.push(user);
-
-
-                const isExpired=
-                    user.expiryDate
-                    ? isDateExpired(
-                        user.expiryDate
-                    )
-                    : true;
-
-
-                if(isExpired){
-
-                    expired++;
-
-                }else if(user.isActive){
-
-                    active++;
-
-                }else{
-
-                    inactive++;
-
-                }
-
-            });
-
-
-            totalUsersEl.textContent=
-                allUsers.length;
-
-            activeUsersEl.textContent=
-                active;
-
-            inactiveUsersEl.textContent=
-                inactive;
-
-            offlineUsersEl.textContent=
-                expired;
-
-
-            filteredUsers=
-                [...allUsers];
-
-
-            renderUsers();
-
-        },
-        error=>{
-
-            console.error(error);
-
-            usersList.innerHTML=`
-
-                <div class="empty-state-small">
-
-                    <i class="fas fa-triangle-exclamation"></i>
-
-                    <h3>
-                        Database Error
-                    </h3>
-
-                    <p>
-                        ${escapeHtml(error.message)}
-                    </p>
-
-                </div>
-
-            `;
-
-        }
-    );
-
+db.collection("users").onSnapshot(snapshot=>{
+allUsers=[];
+let active=0,inactive=0,expired=0;
+snapshot.forEach(doc=>{
+const user={token:doc.id,...doc.data()};
+allUsers.push(user);
+const isExpired=user.expiryDate?isDateExpired(user.expiryDate):true;
+if(isExpired)expired++;
+else if(user.isActive)active++;
+else inactive++;
+});
+totalUsersEl.textContent=allUsers.length;
+activeUsersEl.textContent=active;
+inactiveUsersEl.textContent=inactive;
+offlineUsersEl.textContent=expired;
+filteredUsers=[...allUsers];
+renderUsers();
+},error=>{
+console.error(error);
+usersList.innerHTML=`<div class="empty-state-small"><i class="fas fa-triangle-exclamation"></i><h3>Database Error</h3><p>${escapeHtml(error.message)}</p></div>`;
+});
 }
 
-
-/* =================================================
-   DATE
-================================================= */
-
+/* DATE HELPERS */
 function parseDate(value){
-
-    if(!value)
-        return null;
-
-
-    if(value instanceof Date)
-        return new Date(value);
-
-
-    if(
-        typeof value==="object"
-        &&
-        value.toDate
-    )
-        return value.toDate();
-
-
-    let str=
-        String(value).trim();
-
-
-    str=
-        str
-        .replace(/\./g,"-")
-        .replace(/\//g,"-");
-
-
-    const parts=
-        str.split("-");
-
-
-    if(parts.length!==3)
-        return null;
-
-
-    const y=
-        parseInt(parts[0]);
-
-    const m=
-        parseInt(parts[1]);
-
-    const d=
-        parseInt(parts[2]);
-
-
-    if(!y || !m || !d)
-        return null;
-
-
-    return new Date(
-        y,
-        m-1,
-        d
-    );
-
+if(!value)return null;
+if(value instanceof Date)return new Date(value);
+if(typeof value==="object"&&typeof value.toDate==="function")return value.toDate();
+const str=String(value).trim().replace(/\./g,"-").replace(/\//g,"-");
+const parts=str.split("-");
+if(parts.length!==3)return null;
+const y=Number(parts[0]),m=Number(parts[1]),d=Number(parts[2]);
+if(!y||!m||!d||m<1||m>12||d<1||d>31)return null;
+const date=new Date(y,m-1,d);
+if(date.getFullYear()!==y||date.getMonth()!==m-1||date.getDate()!==d)return null;
+return date;
 }
-
 
 function formatDate(date){
-
-    const y=
-        date.getFullYear();
-
-    const m=
-        String(
-            date.getMonth()+1
-        ).padStart(2,"0");
-
-    const d=
-        String(
-            date.getDate()
-        ).padStart(2,"0");
-
-
-    return `${y}-${m}-${d}`;
-
+return `${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,"0")}-${String(date.getDate()).padStart(2,"0")}`;
 }
 
+function startOfDay(date){
+const result=new Date(date);
+result.setHours(0,0,0,0);
+return result;
+}
 
 function isDateExpired(value){
-
-    const date=
-        parseDate(value);
-
-
-    if(!date)
-        return true;
-
-
-    const today=
-        new Date();
-
-
-    today.setHours(
-        0,0,0,0
-    );
-
-    date.setHours(
-        0,0,0,0
-    );
-
-
-    return date<today;
-
+const date=parseDate(value);
+if(!date)return true;
+return startOfDay(date)<startOfDay(new Date());
 }
-
 
 function calculateDaysRemaining(value){
-
-    const date=
-        parseDate(value);
-
-
-    if(!date){
-
-        return {
-
-            days:0,
-
-            text:"No date"
-
-        };
-
-    }
-
-
-    const today=
-        new Date();
-
-
-    today.setHours(
-        0,0,0,0
-    );
-
-    date.setHours(
-        0,0,0,0
-    );
-
-
-    const diff=
-        Math.ceil(
-            (date-today)
-            /86400000
-        );
-
-
-    if(diff<0){
-
-        return {
-
-            days:0,
-
-            text:"Expired"
-
-        };
-
-    }
-
-
-    if(diff===0){
-
-        return {
-
-            days:0,
-
-            text:"Today"
-
-        };
-
-    }
-
-
-    return {
-
-        days:diff,
-
-        text:`${diff} days`
-
-    };
-
+const date=parseDate(value);
+if(!date)return{days:0,text:"No date"};
+const diff=Math.ceil((startOfDay(date)-startOfDay(new Date()))/86400000);
+if(diff<0)return{days:0,text:"Expired"};
+if(diff===0)return{days:0,text:"Today"};
+return{days:diff,text:`${diff} days`};
 }
 
+/* Add calendar months without overflowing into the following month */
+function addCalendarMonths(date,months){
+const result=new Date(date);
+const originalDay=result.getDate();
+result.setDate(1);
+result.setMonth(result.getMonth()+months);
+const lastDay=new Date(result.getFullYear(),result.getMonth()+1,0).getDate();
+result.setDate(Math.min(originalDay,lastDay));
+return result;
+}
 
+/* QUICK DURATION */
+function applyDuration(months){
+if(![1,3,6,12].includes(months))return;
+
+let baseDate=parseDate(expiryInput.value);
+const today=startOfDay(new Date());
+
+if(!baseDate||startOfDay(baseDate)<today){
+baseDate=today;
+}
+
+const newDate=addCalendarMonths(baseDate,months);
+expiryInput.value=formatDate(newDate);
+
+showNotification(`${months} month${months>1?"s":""} selected • ${expiryInput.value}`,"success");
+}
+
+/* Progress */
 function calculateProgressPercentage(value){
-
-    const result=
-        calculateDaysRemaining(value);
-
-
-    if(result.days<=0){
-
-        return {
-
-            percentage:0,
-
-            color:"red",
-
-            text:"Expired"
-
-        };
-
-    }
-
-
-    let percentage=
-        Math.min(
-            100,
-            Math.round(
-                (result.days/30)*100
-            )
-        );
-
-
-    let color="green";
-
-
-    if(result.days<=10)
-        color="yellow";
-
-
-    if(result.days<=5)
-        color="red";
-
-
-    return {
-
-        percentage,
-
-        color,
-
-        text:`${percentage}%`
-
-    };
-
+const result=calculateDaysRemaining(value);
+if(result.days<=0)return{percentage:0,color:"red",text:"Expired"};
+const percentage=Math.min(100,Math.round((result.days/30)*100));
+let color="green";
+if(result.days<=10)color="yellow";
+if(result.days<=5)color="red";
+return{percentage,color,text:`${percentage}%`};
 }
-
 
 function getDayLeftColor(days){
-
-    if(days<=5)
-        return "red";
-
-    if(days<=10)
-        return "yellow";
-
-    return "green";
-
+if(days<=5)return"red";
+if(days<=10)return"yellow";
+return"green";
 }
-
 
 function getUserStatus(user){
-
-    const expired=
-        user.expiryDate
-        ? isDateExpired(
-            user.expiryDate
-        )
-        : true;
-
-
-    if(expired){
-
-        return {
-
-            statusClass:"expired",
-
-            statusText:"Expired",
-
-            statusTextClass:
-                "status-text-expired"
-
-        };
-
-    }
-
-
-    if(user.isActive){
-
-        return {
-
-            statusClass:"active",
-
-            statusText:"Online",
-
-            statusTextClass:
-                "status-text-online"
-
-        };
-
-    }
-
-
-    return {
-
-        statusClass:"inactive",
-
-        statusText:"Offline",
-
-        statusTextClass:
-            "status-text-offline"
-
-    };
-
+const expired=user.expiryDate?isDateExpired(user.expiryDate):true;
+if(expired)return{statusClass:"expired",statusText:"Expired",statusTextClass:"status-text-expired"};
+if(user.isActive)return{statusClass:"active",statusText:"Online",statusTextClass:"status-text-online"};
+return{statusClass:"inactive",statusText:"Offline",statusTextClass:"status-text-offline"};
 }
 
-
-/* =================================================
-   USER CARD
-================================================= */
-
+/* USER CARD */
 function createUserCard(user){
+const days=calculateDaysRemaining(user.expiryDate);
+const progress=calculateProgressPercentage(user.expiryDate);
+const dayColor=getDayLeftColor(days.days);
+const status=getUserStatus(user);
+const safeToken=encodeURIComponent(user.token);
 
-    const days=
-        calculateDaysRemaining(
-            user.expiryDate
-        );
-
-
-    const progress=
-        calculateProgressPercentage(
-            user.expiryDate
-        );
-
-
-    const dayColor=
-        getDayLeftColor(
-            days.days
-        );
-
-
-    const status=
-        getUserStatus(user);
-
-
-    const safeToken=
-        encodeURIComponent(
-            user.token
-        );
-
-
-    return `
-
+return `
 <div class="user-item ${status.statusClass}">
-
-    <div class="vip-badge">
-
-        <i class="fas fa-crown"></i>
-
-        VIP
-
-    </div>
-
-
-    <div class="status-display-row">
-
-        <span class="status-text-label">
-            Account Status
-        </span>
-
-
-        <span
-            class="status-text-value ${status.statusTextClass}">
-
-            ${status.statusText}
-
-        </span>
-
-    </div>
-
-
-    <div class="user-header-small">
-
-
-        <div class="user-name-container">
-
-            <div
-                class="status-light ${status.statusClass}">
-            </div>
-
-
-            <div class="user-name">
-
-                ${escapeHtml(
-                    user.username || user.token
-                )}
-
-            </div>
-
-        </div>
-
-
-        <div class="user-actions">
-
-
-            <button
-                class="btn-action btn-edit"
-                data-edit="${safeToken}"
-                title="Edit">
-
-                <i class="fas fa-pen"></i>
-
-            </button>
-
-
-            <button
-                class="btn-action btn-delete"
-                data-delete="${safeToken}"
-                title="Delete">
-
-                <i class="fas fa-trash"></i>
-
-            </button>
-
-
-        </div>
-
-    </div>
-
-
-    <div class="user-details-small">
-
-
-        <div class="detail-row">
-
-            <i class="fas fa-fingerprint"></i>
-
-            <span class="detail-label">
-                ID
-            </span>
-
-            <span class="detail-value">
-
-                ${escapeHtml(
-                    user.token
-                )}
-
-            </span>
-
-        </div>
-
-
-        <div class="detail-row">
-
-            <i class="fas fa-user"></i>
-
-            <span class="detail-label">
-                User
-            </span>
-
-            <span class="detail-value">
-
-                ${escapeHtml(
-                    user.username ||
-                    user.token
-                )}
-
-            </span>
-
-        </div>
-
-
-        <div class="detail-row">
-
-            <i class="fas fa-calendar"></i>
-
-            <span class="detail-label">
-                Expiry
-            </span>
-
-            <span class="detail-value">
-
-                ${escapeHtml(
-                    String(
-                        user.expiryDate ||
-                        "No date"
-                    )
-                )}
-
-            </span>
-
-        </div>
-
-
-        <div class="detail-row">
-
-            <i class="fas fa-hourglass-half"></i>
-
-            <span class="detail-label">
-                Left
-            </span>
-
-            <span
-                class="detail-value day-left ${dayColor}">
-
-                ${days.text}
-
-            </span>
-
-        </div>
-
-
-    </div>
-
-
-    <div class="progress-container">
-
-
-        <div class="progress-header">
-
-            <span class="progress-label">
-                SUBSCRIPTION
-            </span>
-
-            <span
-                class="progress-percent ${progress.color}">
-
-                ${progress.text}
-
-            </span>
-
-        </div>
-
-
-        <div class="progress-bar">
-
-            <div
-                class="progress-fill ${progress.color}"
-                style="width:${progress.percentage}%">
-            </div>
-
-        </div>
-
-    </div>
-
+<div class="vip-badge"><i class="fas fa-crown"></i> VIP</div>
+<div class="status-display-row">
+<span class="status-text-label">Account Status</span>
+<span class="status-text-value ${status.statusTextClass}">${status.statusText}</span>
 </div>
-
-`;
-
+<div class="user-header-small">
+<div class="user-name-container">
+<div class="status-light ${status.statusClass}"></div>
+<div class="user-name">${escapeHtml(user.username||user.token)}</div>
+</div>
+<div class="user-actions">
+<button class="btn-action btn-edit" data-edit="${safeToken}" title="Edit"><i class="fas fa-pen"></i></button>
+<button class="btn-action btn-delete" data-delete="${safeToken}" title="Delete"><i class="fas fa-trash"></i></button>
+</div>
+</div>
+<div class="user-details-small">
+<div class="detail-row"><i class="fas fa-fingerprint"></i><span class="detail-label">ID</span><span class="detail-value">${escapeHtml(user.token)}</span></div>
+<div class="detail-row"><i class="fas fa-user"></i><span class="detail-label">User</span><span class="detail-value">${escapeHtml(user.username||user.token)}</span></div>
+<div class="detail-row"><i class="fas fa-calendar"></i><span class="detail-label">Expiry</span><span class="detail-value">${escapeHtml(String(user.expiryDate||"No date"))}</span></div>
+<div class="detail-row"><i class="fas fa-hourglass-half"></i><span class="detail-label">Left</span><span class="detail-value day-left ${dayColor}">${days.text}</span></div>
+</div>
+<div class="progress-container">
+<div class="progress-header"><span class="progress-label">SUBSCRIPTION</span><span class="progress-percent ${progress.color}">${progress.text}</span></div>
+<div class="progress-bar"><div class="progress-fill ${progress.color}" style="width:${progress.percentage}%"></div></div>
+</div>
+</div>`;
 }
 
-
-/* =================================================
-   RENDER
-================================================= */
-
+/* RENDER */
 function renderUsers(){
-
-    if(filteredUsers.length===0){
-
-        usersList.innerHTML=`
-
-            <div class="empty-state-small">
-
-                <i class="fas fa-user-slash"></i>
-
-                <h3>
-                    No Users Found
-                </h3>
-
-                <p>
-                    Try another search
-                </p>
-
-            </div>
-
-        `;
-
-        return;
-
-    }
-
-
-    usersList.innerHTML=
-        filteredUsers
-        .map(createUserCard)
-        .join("");
-
-
-    attachUserButtons();
-
+if(filteredUsers.length===0){
+usersList.innerHTML=`<div class="empty-state-small"><i class="fas fa-user-slash"></i><h3>No Users Found</h3><p>Try another search</p></div>`;
+return;
+}
+usersList.innerHTML=filteredUsers.map(createUserCard).join("");
+attachUserButtons();
 }
 
-
-/* =================================================
-   BUTTONS
-================================================= */
-
+/* BUTTONS */
 function attachUserButtons(){
-
-    document
-    .querySelectorAll("[data-edit]")
-    .forEach(button=>{
-
-        button.addEventListener(
-            "click",
-            ()=>{
-
-                const token=
-                    decodeURIComponent(
-                        button.dataset.edit
-                    );
-
-                fillForm(token);
-
-            }
-        );
-
-    });
-
-
-    document
-    .querySelectorAll("[data-delete]")
-    .forEach(button=>{
-
-        button.addEventListener(
-            "click",
-            ()=>{
-
-                const token=
-                    decodeURIComponent(
-                        button.dataset.delete
-                    );
-
-                deleteUserByToken(token);
-
-            }
-        );
-
-    });
-
+document.querySelectorAll("[data-edit]").forEach(button=>{
+button.addEventListener("click",()=>{
+fillForm(decodeURIComponent(button.dataset.edit));
+});
+});
+document.querySelectorAll("[data-delete]").forEach(button=>{
+button.addEventListener("click",()=>{
+deleteUserByToken(decodeURIComponent(button.dataset.delete));
+});
+});
 }
 
-
-/* =================================================
-   SEARCH
-================================================= */
-
+/* SEARCH */
 function filterUsers(){
-
-    const keyword=
-        searchInput.value
-        .toLowerCase()
-        .trim();
-
-
-    backFromSearch.style.display=
-        keyword
-        ? "flex"
-        : "none";
-
-
-    if(!keyword){
-
-        filteredUsers=
-            [...allUsers];
-
-        renderUsers();
-
-        return;
-
-    }
-
-
-    filteredUsers=
-        allUsers.filter(
-            user=>
-
-                String(
-                    user.token || ""
-                )
-                .toLowerCase()
-                .includes(keyword)
-
-                ||
-
-                String(
-                    user.username || ""
-                )
-                .toLowerCase()
-                .includes(keyword)
-
-        );
-
-
-    renderUsers();
-
+const keyword=searchInput.value.toLowerCase().trim();
+backFromSearch.style.display=keyword?"flex":"none";
+if(!keyword){filteredUsers=[...allUsers];renderUsers();return;}
+filteredUsers=allUsers.filter(user=>
+String(user.token||"").toLowerCase().includes(keyword)||
+String(user.username||"").toLowerCase().includes(keyword)
+);
+renderUsers();
 }
-
 
 function clearSearch(){
-
-    searchInput.value="";
-
-    backFromSearch.style.display=
-        "none";
-
-    filteredUsers=
-        [...allUsers];
-
-    renderUsers();
-
+searchInput.value="";
+backFromSearch.style.display="none";
+filteredUsers=[...allUsers];
+renderUsers();
 }
 
-
-/* =================================================
-   FORM
-================================================= */
-
+/* FORM */
 function openForm(){
-
-    clearForm();
-
-    formOverlay.style.display=
-        "flex";
-
+clearForm();
+formOverlay.style.display="flex";
 }
-
 
 function closeForm(){
-
-    formOverlay.style.display=
-        "none";
-
-    clearForm();
-
+formOverlay.style.display="none";
+clearForm();
 }
 
+function clearDurationSelection(){
+document.querySelectorAll(".duration-btn").forEach(button=>button.classList.remove("selected"));
+}
 
 function clearForm(){
-
-    tokenInput.value="";
-
-    tokenInput.disabled=false;
-
-    formUsernameInput.value="";
-
-    const today=
-        new Date();
-
-
-    expiryInput.value=
-        formatDate(today);
-
-
-    isActiveInput.checked=
-        true;
-
-
-    currentEditToken=
-        null;
-
-
-    extendBox.style.display=
-        "none";
-
+tokenInput.value="";
+tokenInput.disabled=false;
+formUsernameInput.value="";
+expiryInput.value=formatDate(new Date());
+isActiveInput.checked=true;
+currentEditToken=null;
+extendBox.style.display="none";
+btnUpdate.innerHTML='<i class="fas fa-save"></i> Save User';
+clearDurationSelection();
 }
-
 
 function fillForm(token){
-
-    const user=
-        allUsers.find(
-            u=>u.token===token
-        );
-
-
-    if(!user){
-
-        showNotification(
-            "User not found",
-            "error"
-        );
-
-        return;
-
-    }
-
-
-    tokenInput.value=
-        user.token;
-
-    tokenInput.disabled=
-        true;
-
-
-    formUsernameInput.value=
-        user.username || "";
-
-
-    const parsed=
-        parseDate(
-            user.expiryDate
-        );
-
-
-    expiryInput.value=
-        parsed
-        ? formatDate(parsed)
-        : formatDate(
-            new Date()
-        );
-
-
-    isActiveInput.checked=
-        user.isActive === true;
-
-
-    currentEditToken=
-        user.token;
-
-
-    extendBox.style.display=
-        "block";
-
-
-    formOverlay.style.display=
-        "flex";
-
+const user=allUsers.find(u=>u.token===token);
+if(!user){
+showNotification("User not found","error");
+return;
+}
+tokenInput.value=user.token;
+tokenInput.disabled=true;
+formUsernameInput.value=user.username||"";
+const parsed=parseDate(user.expiryDate);
+expiryInput.value=parsed?formatDate(parsed):formatDate(new Date());
+isActiveInput.checked=user.isActive===true;
+currentEditToken=user.token;
+extendBox.style.display="block";
+btnUpdate.innerHTML='<i class="fas fa-save"></i> Update User';
+clearDurationSelection();
+formOverlay.style.display="flex";
 }
 
-
-/* =================================================
-   EXTEND 30 DAYS
-================================================= */
-
+/* EXTEND 30 DAYS */
 async function extend30Days(){
+const token=currentEditToken;
+if(!token){
+showNotification("Please select a user first","error");
+return;
+}
+const user=allUsers.find(u=>u.token===token);
+if(!user){
+showNotification("User not found","error");
+return;
+}
+let baseDate=parseDate(user.expiryDate);
+const today=startOfDay(new Date());
+if(!baseDate||startOfDay(baseDate)<today)baseDate=today;
+const newDate=new Date(baseDate);
+newDate.setDate(newDate.getDate()+30);
+const newExpiry=formatDate(newDate);
 
-    const token=
-        currentEditToken;
-
-
-    if(!token){
-
-        showNotification(
-            "Please select a user first",
-            "error"
-        );
-
-        return;
-
-    }
-
-
-    const user=
-        allUsers.find(
-            u=>u.token===token
-        );
-
-
-    if(!user){
-
-        showNotification(
-            "User not found",
-            "error"
-        );
-
-        return;
-
-    }
-
-
-    let baseDate=
-        parseDate(
-            user.expiryDate
-        );
-
-
-    const today=
-        new Date();
-
-
-    today.setHours(
-        0,0,0,0
-    );
-
-
-    if(
-        !baseDate ||
-        baseDate<today
-    ){
-
-        baseDate=
-            new Date(today);
-
-    }
-
-
-    baseDate.setDate(
-        baseDate.getDate()+30
-    );
-
-
-    const newExpiry=
-        formatDate(
-            baseDate
-        );
-
-
-    try{
-
-        await db
-        .collection("users")
-        .doc(token)
-        .set(
-
-            {
-
-                expiryDate:
-                    newExpiry,
-
-                isActive:
-                    true
-
-            },
-
-            {
-                merge:true
-            }
-
-        );
-
-
-        expiryInput.value=
-            newExpiry;
-
-        isActiveInput.checked=
-            true;
-
-
-        showNotification(
-            `Extended 30 days • ${newExpiry}`,
-            "success"
-        );
-
-    }catch(error){
-
-        console.error(error);
-
-        showNotification(
-            "Extend failed: "+
-            error.message,
-            "error"
-        );
-
-    }
-
+try{
+await db.collection("users").doc(token).set({
+expiryDate:newExpiry,
+isActive:true
+},{merge:true});
+expiryInput.value=newExpiry;
+isActiveInput.checked=true;
+clearDurationSelection();
+showNotification(`Extended 30 days • ${newExpiry}`,"success");
+}catch(error){
+console.error(error);
+showNotification("Extend failed: "+error.message,"error");
+}
 }
 
-
-/* =================================================
-   ADD
-================================================= */
-
-async function addUser(){
-
-    const token=
-        tokenInput.value.trim();
-
-    const username=
-        formUsernameInput.value.trim();
-
-    const expiryDate=
-        expiryInput.value;
-
-    const isActive=
-        isActiveInput.checked;
-
-
-    if(!token){
-
-        showNotification(
-            "ID is required",
-            "error"
-        );
-
-        return;
-
-    }
-
-
-    if(!expiryDate){
-
-        showNotification(
-            "Expiry date is required",
-            "error"
-        );
-
-        return;
-
-    }
-
-
-    try{
-
-        await db
-        .collection("users")
-        .doc(token)
-        .set({
-
-            username:
-                username || token,
-
-            expiryDate,
-
-            isActive
-
-        });
-
-
-        closeForm();
-
-
-        showSuccessMessage(
-
-            {
-
-                token,
-
-                username:
-                    username || token,
-
-                expiryDate,
-
-                isActive
-
-            },
-
-            "added"
-
-        );
-
-    }catch(error){
-
-        console.error(error);
-
-        showNotification(
-            "Error adding user: "+
-            error.message,
-            "error"
-        );
-
-    }
-
-}
-
-
-/* =================================================
-   UPDATE
-================================================= */
-
+/* ADD / UPDATE */
 async function updateUser(){
+const isEditing=Boolean(currentEditToken);
+const token=currentEditToken||tokenInput.value.trim();
+const username=formUsernameInput.value.trim();
+const expiryDate=expiryInput.value;
+const isActive=isActiveInput.checked;
 
-    const isEditing=Boolean(currentEditToken);
-
-    const token=
-        currentEditToken ||
-        tokenInput.value.trim();
-
-
-    if(!token){
-
-        showNotification(
-            "Please select a user",
-            "error"
-        );
-
-        return;
-
-    }
-
-
-    const username=
-        formUsernameInput.value.trim();
-
-    const expiryDate=
-        expiryInput.value;
-
-    const isActive=
-        isActiveInput.checked;
-
-
-    try{
-
-        await db
-        .collection("users")
-        .doc(token)
-        .set(
-
-            {
-
-                username:
-                    username || token,
-
-                expiryDate,
-
-                isActive
-
-            },
-
-            {
-                merge:true
-            }
-
-        );
-
-
-        closeForm();
-
-
-        showSuccessMessage(
-
-            {
-
-                token,
-
-                username:
-                    username || token,
-
-                expiryDate,
-
-                isActive
-
-            },
-
-            isEditing ? "updated" : "added"
-
-        );
-
-    }catch(error){
-
-        console.error(error);
-
-        showNotification(
-            "Error saving user: "+
-            error.message,
-            "error"
-        );
-
-    }
-
+if(!token){
+showNotification("ID is required","error");
+return;
+}
+if(!expiryDate||!parseDate(expiryDate)){
+showNotification("Valid expiry date is required","error");
+return;
 }
 
+const data={
+username:username||token,
+expiryDate,
+isActive
+};
 
-/* =================================================
-   DELETE
-================================================= */
+try{
+if(isEditing){
+await db.collection("users").doc(token).set(data,{merge:true});
+}else{
+const existing=await db.collection("users").doc(token).get();
+if(existing.exists){
+showNotification("This ID already exists","error");
+return;
+}
+await db.collection("users").doc(token).set(data);
+}
+closeForm();
+showSuccessMessage({token,...data},isEditing?"updated":"added");
+}catch(error){
+console.error(error);
+showNotification("Error saving user: "+error.message,"error");
+}
+}
 
+/* DELETE */
 async function deleteUserByToken(token){
-
-    if(!token)
-        return;
-
-
-    const user=
-        allUsers.find(
-            u=>u.token===token
-        );
-
-
-    const name=
-        user
-        ? user.username || token
-        : token;
-
-
-    if(
-        !confirm(
-            `Delete user "${name}"?\n\nThis action cannot be undone.`
-        )
-    )
-        return;
-
-
-    try{
-
-        await db
-        .collection("users")
-        .doc(token)
-        .delete();
-
-
-        showNotification(
-            "User deleted successfully",
-            "success"
-        );
-
-    }catch(error){
-
-        console.error(error);
-
-        showNotification(
-            "Error deleting user: "+
-            error.message,
-            "error"
-        );
-
-    }
-
+if(!token)return;
+const user=allUsers.find(u=>u.token===token);
+const name=user?user.username||token:token;
+if(!confirm(`Delete user "${name}"?\n\nThis action cannot be undone.`))return;
+try{
+await db.collection("users").doc(token).delete();
+showNotification("User deleted successfully","success");
+}catch(error){
+console.error(error);
+showNotification("Error deleting user: "+error.message,"error");
+}
 }
 
+/* SUCCESS */
+function showSuccessMessage(user,type){
+const status=getUserStatus(user);
+const days=calculateDaysRemaining(user.expiryDate);
+currentCardUser=user;
+successId.textContent=user.token;
+successUsername.textContent=user.username||user.token;
+successExpiry.textContent=user.expiryDate||"No date";
+successStatus.textContent=status.statusText;
+successDayLeft.textContent=days.text;
 
-/* =================================================
-   SUCCESS
-================================================= */
-
-function showSuccessMessage(
-    user,
-    type
-){
-
-    const status=
-        getUserStatus(user);
-
-
-    const days=
-        calculateDaysRemaining(
-            user.expiryDate
-        );
-
-
-    currentCardUser=
-        user;
-
-
-    successId.textContent=
-        user.token;
-
-
-    successUsername.textContent=
-        user.username ||
-        user.token;
-
-
-    successExpiry.textContent=
-        user.expiryDate ||
-        "No date";
-
-
-    successStatus.textContent=
-        status.statusText;
-
-
-    successDayLeft.textContent=
-        days.text;
-
-
-    if(type==="added"){
-
-        successTitle.textContent=
-            "User Added Successfully";
-
-        successMessage.textContent=
-            "VIP account has been added.";
-
-    }else{
-
-        successTitle.textContent=
-            "User Updated Successfully";
-
-        successMessage.textContent=
-            "VIP account has been updated.";
-
-    }
-
-
-    successOverlay.style.display=
-        "flex";
-
+if(type==="added"){
+successTitle.textContent="User Added Successfully";
+successMessage.textContent="VIP account has been added.";
+}else{
+successTitle.textContent="User Updated Successfully";
+successMessage.textContent="VIP account has been updated.";
+}
+successOverlay.style.display="flex";
 }
 
-
-/* =================================================
-   PREPARE TICKET
-================================================= */
-
+/* TICKET */
 function prepareVipCard(user){
-
-    const days=
-        calculateDaysRemaining(
-            user.expiryDate
-        );
-
-
-    cardUsername.textContent=
-        user.username ||
-        user.token;
-
-
-    cardId.textContent=
-        user.token;
-
-
-    cardExpiry.textContent=
-        user.expiryDate ||
-        "No date";
-
-
-    cardDays.textContent=
-        days.text;
-
+const days=calculateDaysRemaining(user.expiryDate);
+cardUsername.textContent=user.username||user.token;
+cardId.textContent=user.token;
+cardExpiry.textContent=user.expiryDate||"No date";
+cardDays.textContent=days.text;
 }
-
-
-/* =================================================
-   SAVE TICKET IMAGE
-================================================= */
 
 async function saveAsImage(){
-
-    if(!currentCardUser){
-
-        showNotification(
-            "No user selected",
-            "error"
-        );
-
-        return;
-
-    }
-
-
-    prepareVipCard(
-        currentCardUser
-    );
-
-
-    try{
-
-        if(
-            document.fonts &&
-            document.fonts.ready
-        ){
-
-            await document.fonts.ready;
-
-        }
-
-
-        const img=
-            vipCard.querySelector("img");
-
-
-        if(
-            img &&
-            !img.complete
-        ){
-
-            await new Promise(
-                resolve=>{
-
-                    img.onload=
-                        resolve;
-
-                    img.onerror=
-                        resolve;
-
-                }
-            );
-
-        }
-
-
-        await new Promise(
-            resolve=>
-                setTimeout(
-                    resolve,
-                    200
-                )
-        );
-
-
-        const canvas=
-            await html2canvas(
-                vipCard,
-                {
-
-                    scale:3,
-
-                    backgroundColor:
-                        "#0b1020",
-
-                    useCORS:true,
-
-                    allowTaint:false,
-
-                    logging:false,
-
-                    imageTimeout:
-                        10000,
-
-                    width:1000,
-
-                    height:560,
-
-                    windowWidth:1000,
-
-                    windowHeight:560
-
-                }
-            );
-
-
-        const link=
-            document.createElement("a");
-
-
-        link.download=
-            `VIRGO_VPN_TICKET_${safeFileName(
-                currentCardUser.token
-            )}.png`;
-
-
-        link.href=
-            canvas.toDataURL(
-                "image/png",
-                1.0
-            );
-
-
-        document.body.appendChild(
-            link
-        );
-
-
-        link.click();
-
-
-        link.remove();
-
-
-        showNotification(
-            "VIP ticket saved successfully",
-            "success"
-        );
-
-
-    }catch(error){
-
-        console.error(error);
-
-        showNotification(
-            "Could not save ticket",
-            "error"
-        );
-
-    }
-
+if(!currentCardUser){
+showNotification("No user selected","error");
+return;
 }
+prepareVipCard(currentCardUser);
+try{
+if(document.fonts&&document.fonts.ready)await document.fonts.ready;
+const img=vipCard.querySelector("img");
+if(img&&!img.complete){
+await new Promise(resolve=>{
+img.onload=resolve;
+img.onerror=resolve;
+});
+}
+await new Promise(resolve=>setTimeout(resolve,200));
 
+const canvas=await html2canvas(vipCard,{
+scale:3,
+backgroundColor:"#0b1020",
+useCORS:true,
+allowTaint:false,
+logging:false,
+imageTimeout:10000,
+width:1000,
+height:560,
+windowWidth:1000,
+windowHeight:560
+});
 
-/* =================================================
-   CLOSE SUCCESS
-================================================= */
+const link=document.createElement("a");
+link.download=`VIRGO_VPN_TICKET_${safeFileName(currentCardUser.token)}.png`;
+link.href=canvas.toDataURL("image/png",1.0);
+document.body.appendChild(link);
+link.click();
+link.remove();
+showNotification("VIP ticket saved successfully","success");
+}catch(error){
+console.error(error);
+showNotification("Could not save ticket","error");
+}
+}
 
 function closeSuccessModal(){
-
-    successOverlay.style.display=
-        "none";
-
+successOverlay.style.display="none";
 }
 
-
-/* =================================================
-   NOTIFICATION
-================================================= */
-
-function showNotification(
-    message,
-    type="info"
-){
-
-    const icon=
-        type==="success"
-
-        ? "fas fa-check-circle"
-
-        : type==="error"
-
-        ? "fas fa-circle-exclamation"
-
-        : "fas fa-circle-info";
-
-
-    notification.innerHTML=`
-
-        <i class="${icon}"></i>
-
-        <span>
-            ${escapeHtml(message)}
-        </span>
-
-    `;
-
-
-    notification.className=
-        `notification-small ${type} show`;
-
-
-    clearTimeout(
-        notification._timer
-    );
-
-
-    notification._timer=
-        setTimeout(
-            ()=>{
-
-                notification.classList.remove(
-                    "show"
-                );
-
-            },
-            3000
-        );
-
+/* NOTIFICATION */
+function showNotification(message,type="info"){
+const icon=type==="success"?"fas fa-check-circle":type==="error"?"fas fa-circle-exclamation":"fas fa-circle-info";
+notification.innerHTML=`<i class="${icon}"></i><span>${escapeHtml(message)}</span>`;
+notification.className=`notification-small ${type} show`;
+clearTimeout(notification._timer);
+notification._timer=setTimeout(()=>notification.classList.remove("show"),3000);
 }
 
-
-/* =================================================
-   HELPERS
-================================================= */
-
+/* HELPERS */
 function escapeHtml(value){
-
-    return String(value)
-
-        .replace(
-            /&/g,
-            "&amp;"
-        )
-
-        .replace(
-            /</g,
-            "&lt;"
-        )
-
-        .replace(
-            />/g,
-            "&gt;"
-        )
-
-        .replace(
-            /"/g,
-            "&quot;"
-        )
-
-        .replace(
-            /'/g,
-            "&#039;"
-        );
-
+return String(value)
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
 }
-
 
 function safeFileName(value){
-
-    return String(value)
-
-        .replace(
-            /[^a-z0-9_-]/gi,
-            "_"
-        )
-
-        .slice(
-            0,
-            60
-        );
-
+return String(value).replace(/[^a-z0-9_-]/gi,"_").slice(0,60);
 }
 
-
-/* =================================================
-   CLOSE MODALS OUTSIDE
-================================================= */
-
-formOverlay.addEventListener(
-    "click",
-    e=>{
-
-        if(
-            e.target===formOverlay
-        )
-            closeForm();
-
-    }
-);
-
-
-successOverlay.addEventListener(
-    "click",
-    e=>{
-
-        if(
-            e.target===successOverlay
-        )
-            closeSuccessModal();
-
-    }
-);
-
+/* CLOSE MODALS OUTSIDE */
+formOverlay.addEventListener("click",e=>{
+if(e.target===formOverlay)closeForm();
+});
+successOverlay.addEventListener("click",e=>{
+if(e.target===successOverlay)closeSuccessModal();
+});
 </script>
-
 </body>
 </html>
